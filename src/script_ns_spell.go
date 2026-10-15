@@ -172,7 +172,7 @@ func (obj nsObj) AwardSpell(name nsp.Spell) bool {
 	if !sp.Valid() {
 		return false
 	}
-	return legacy.Nox_xxx_spellGrantToPlayer_4FB550(obj.SObj(), sp, 1, 0, 0) != 0
+	return noxServer.spellGrantToPlayer(obj.SObj(), sp, 1, 0, 0)
 }
 
 func (obj nsObj) Enchant(enc enchant.Enchant, dt ns4.Duration) {
@@ -228,7 +228,7 @@ func (g nsObjGroup) AwardSpell(sp nsp.Spell) {
 		if noxflags.HasGame(noxflags.GameModeCoop) && it.Class().Has(object.ClassPlayer) && obj.UpdateDataPlayer().Player.SpellLvl[spl] == 0 {
 			val = 1
 		}
-		legacy.Nox_xxx_spellGrantToPlayer_4FB550(obj, spl, 1, val, 0)
+		noxServer.spellGrantToPlayer(obj, spl, 1, val, 0)
 		return true
 	})
 }

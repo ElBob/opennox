@@ -56,7 +56,7 @@ func objectMonsterInit(obj *server.Object) {
 		if obj.Nox_xxx_monsterCanAttackAtWill_534390() {
 			obj.MonsterPushAction(ai.ACTION_HUNT)
 		} else {
-			obj.MonsterPushAction(ai.ACTION_ROAM, 0, 0, uint32(uint8(ud.Field333)))
+			obj.MonsterPushAction(ai.ACTION_ROAM, 0, 0, uint32(uint8(ud.RoamFlags)))
 		}
 	case ai.ACTION_FIGHT:
 		obj.MonsterPushAction(ai.ACTION_FIGHT, obj.Pos(), uint32(s.Frame()))
@@ -127,7 +127,7 @@ func nox_xxx_monsterCreateFn_54C480(u *server.Object) {
 	ud.Field332 = 0.5
 	ud.SightRange = 150.0
 	ud.Field329 = 30.0
-	ud.Field333 = math.MaxUint8
+	ud.RoamFlags = math.MaxUint8
 	ud.Field331 = 30
 	ud.Field338 = 1.0
 

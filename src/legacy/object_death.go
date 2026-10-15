@@ -2,6 +2,7 @@ package legacy
 
 /*
 #include "server__object__die__die.h"
+#include "server__object__objutil.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
 
@@ -14,6 +15,11 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/server"
+)
+
+var (
+	Nox_xxx_dieWeapon_54E370 func(obj *server.Object)
+	Nox_xxx_dieArmor_54E170  func(obj *server.Object)
 )
 
 func init() {
@@ -49,4 +55,18 @@ func Nox_call_objectType_parseDeath_go(a1 unsafe.Pointer, a2 string, a3 unsafe.P
 	cstr := CString(a2)
 	defer StrFree(cstr)
 	return int(C.nox_call_objectType_parseDeath_go((*[0]byte)(a1), cstr, a3))
+}
+
+//export nox_xxx_dieWeapon_54E370_obj_die
+func nox_xxx_dieWeapon_54E370_obj_die(a1 C.int) {
+	Nox_xxx_dieWeapon_54E370(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1)))))
+}
+
+//export nox_xxx_dieArmor_54E170_obj_die
+func nox_xxx_dieArmor_54E170_obj_die(a1 C.int) {
+	Nox_xxx_dieArmor_54E170(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1)))))
+}
+
+func Nox_xxx_itemGetName_4E77E0(obj *server.Object) string {
+	return GoWString(C.nox_xxx_itemGetName_4E77E0_obj_util(C.int(uintptr(unsafe.Pointer(asObjectC(obj))))))
 }

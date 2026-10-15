@@ -4,8 +4,8 @@ package legacy
 #include "defs.h"
 #include "GAME3_3.h"
 #include "GAME4_3.h"
-int nox_xxx_pickupGold_4F3A60_obj_pickup(int a1, int a2, int a3);
 int nox_objectPickupAudEvent_4F3D50(nox_object_t* a1, nox_object_t* a2, int a3);
+int nox_xxx_pickupGold_4F3A60_obj_pickup(nox_object_t* a1, nox_object_t* a2, int a3);
 */
 import "C"
 import (
@@ -19,6 +19,7 @@ var (
 	Nox_xxx_pickupDefault_4F31E0         server.PickupFunc
 	Nox_objectPickupAudEvent_4F3D50      server.PickupFunc
 	Nox_xxx_pickupPotion_4F37D0          server.PickupFunc
+	Nox_xxx_pickupGold_4F3A60            server.PickupFunc
 	Nox_xxx_playerClassCanUseItem_57B3D0 func(item *server.Object, cl player.Class) bool
 	Sub_57B370                           func(cl object.Class, sub object.SubClass, typ int) byte
 )
@@ -37,7 +38,9 @@ func init() {
 	server.RegisterObjectPickup("PotionPickup", C.nox_xxx_pickupPotion_4F37D0, func(who, it *server.Object, a3, a4 int) bool {
 		return Nox_xxx_pickupPotion_4F37D0(who, it, a3, a4)
 	})
-	server.RegisterObjectPickupC("GoldPickup", C.nox_xxx_pickupGold_4F3A60_obj_pickup)
+	server.RegisterObjectPickup("GoldPickup", C.nox_xxx_pickupGold_4F3A60_obj_pickup, func(who, it *server.Object, a3, a4 int) bool {
+		return Nox_xxx_pickupGold_4F3A60(who, it, a3, a4)
+	})
 	server.RegisterObjectPickupC("AmmoPickup", C.nox_xxx_pickupAmmo_4F3B00)
 	server.RegisterObjectPickupC("SpellBookPickup", C.nox_xxx_pickupSpellbook_4F3C60)
 	server.RegisterObjectPickupC("AbilityBookPickup", C.nox_xxx_pickupAbilitybook_4F3CE0)
@@ -86,4 +89,9 @@ func sub_419EA0() int {
 //export nox_xxx_playerClassCanUseItem_57B3D0
 func nox_xxx_playerClassCanUseItem_57B3D0(item *nox_object_t, cl int8) int {
 	return bool2int(Nox_xxx_playerClassCanUseItem_57B3D0(asObjectS(item), player.Class(cl)))
+}
+
+//export nox_xxx_pickupGold_4F3A60_obj_pickup
+func nox_xxx_pickupGold_4F3A60_obj_pickup(cobj1 *nox_object_t, cobj2 *nox_object_t, a3 int) int {
+	return bool2int(Nox_xxx_pickupGold_4F3A60(asObjectS(cobj1), asObjectS(cobj2), a3, 0))
 }

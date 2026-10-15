@@ -4000,24 +4000,6 @@ int nox_xxx_netReportDequip_4D8590(int a1, const nox_object_t* object) {
 	return nox_xxx_netSendPacket1_4E5390(a1, (int)v4, 3, 0, 0);
 }
 
-//----- (004D85C0) --------------------------------------------------------
-int nox_xxx_netReportTotalHealth_4D85C0(int a1, uint32_t* a2) {
-	int result;   // eax
-	uint16_t* v3; // eax
-	char v4[7];   // [esp+4h] [ebp-8h]
-
-	result = a2[139];
-	if (result) {
-		v4[0] = -35;
-		*(uint16_t*)&v4[1] = nox_xxx_netGetUnitCodeServ_578AC0(a2);
-		v3 = (uint16_t*)a2[139];
-		*(uint16_t*)&v4[3] = *v3;
-		*(uint16_t*)&v4[5] = v3[2];
-		result = nox_xxx_netSendPacket1_4E5390(a1, (int)v4, 7, 0, 1);
-	}
-	return result;
-}
-
 //----- (004D8620) --------------------------------------------------------
 int nox_xxx_netReportUnitCurrentHP_4D8620(int a1, uint32_t* a2) {
 	uint32_t* v2;    // esi
@@ -4623,25 +4605,6 @@ int nox_xxx_netFxShield_0_4D9200(int a1, int a2) {
 		BYTE2(v4) |= 0x80u;
 	}
 	return nox_xxx_netSendPacket1_4E5390(a1, (int)&v4, 3, 0, 1);
-}
-
-//----- (004D9250) --------------------------------------------------------
-int nox_xxx_netMonitorCreature_4D9250(int a1, int a2) {
-	char v3[5]; // [esp+8h] [ebp-8h]
-
-	v3[0] = -37;
-	*(uint16_t*)&v3[1] = nox_xxx_netGetUnitCodeServ_578AC0((uint32_t*)a2);
-	*(uint16_t*)&v3[3] = *(uint16_t*)(a2 + 4);
-	nox_xxx_netSendPacket1_4E5390(a1, (int)v3, 5, 0, 1);
-	return nox_xxx_netReportTotalHealth_4D85C0(a1, (uint32_t*)a2);
-}
-
-//----- (004D92A0) --------------------------------------------------------
-int nox_xxx_netSendUnMonitorCrea_4D92A0(int a1, uint32_t* a2) {
-	char v4[3]; // [esp+0h] [ebp-4h]
-	v4[0] = -36;
-	*(uint16_t*)&v4[1] = nox_xxx_netGetUnitCodeServ_578AC0(a2);
-	return nox_xxx_netSendPacket1_4E5390(a1, (int)v4, 3, 0, 1);
 }
 
 //----- (004D92D0) --------------------------------------------------------

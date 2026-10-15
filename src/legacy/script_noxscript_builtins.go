@@ -17,10 +17,6 @@ int nox_script_SetResumeLevel_515E80();
 int nox_script_SetResumeLevelGroup_515EE0();
 int nox_script_GiveExp_516190();
 int nox_script_IsTalking_5166A0();
-int nox_script_MakeFriendly_516720();
-int nox_script_MakeEnemy_516760();
-int nox_script_BecomePet_5167D0();
-int nox_script_BecomeEnemy_516810();
 int nox_script_builtin_516790();
 int nox_script_builtin_516850();
 int nox_script_OblivionGive_516890();
@@ -92,10 +88,6 @@ var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{
 	asm.BuiltinJournalEdit:         wrapScriptC(C.nox_script_JournalEdit_5155A0),
 	asm.BuiltinGiveXp:              wrapScriptC(C.nox_script_GiveExp_516190),
 	asm.BuiltinIsTalking:           wrapScriptC(C.nox_script_IsTalking_5166A0),
-	asm.BuiltinMakeFriendly:        wrapScriptC(C.nox_script_MakeFriendly_516720),
-	asm.BuiltinMakeEnemy:           wrapScriptC(C.nox_script_MakeEnemy_516760),
-	asm.BuiltinBecomePet:           wrapScriptC(C.nox_script_BecomePet_5167D0),
-	asm.BuiltinBecomeEnemy:         wrapScriptC(C.nox_script_BecomeEnemy_516810),
 	asm.BuiltinUnknownb8:           wrapScriptC(C.nox_script_builtin_516790),
 	asm.BuiltinUnknownb9:           wrapScriptC(C.nox_script_builtin_516850),
 	asm.BuiltinSetHalberd:          wrapScriptC(C.nox_script_OblivionGive_516890),

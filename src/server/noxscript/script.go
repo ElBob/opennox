@@ -29,6 +29,8 @@ func init() {
 	Register(asm.BuiltinBlind, nsBlind)
 	Register(asm.BuiltinUnBlind, nsUnBlind)
 	Register(asm.BuiltinJournalEntry, nsJournalEntry)
+	Register(asm.BuiltinJournalEdit, nsJournalEdit)
+	Register(asm.BuiltinJournalDelete, nsJournalDelete)
 	Register(asm.BuiltinGetCharacterData, nsGetCharacterData)
 }
 
@@ -148,6 +150,35 @@ func nsJournalEntry(s VM) int {
 	msg := s.PopString()
 	obj := s.PopObjectNS()
 	s.NoxScript().JournalEntry(obj, msg, typ)
+	return 0
+}
+
+// popObjectOrAll pops an object where zero means all players.
+// Unlike PopObjectNS, an invalid non-zero handle is reported as not ok.
+func popObjectOrAll(s VM) (ns.Obj, bool) {
+	h := s.PopI32()
+	if h == 0 {
+		return nil, true
+	}
+	s.PushI32(h)
+	obj := s.PopObjectNS()
+	return obj, obj != nil
+}
+
+func nsJournalEdit(s VM) int {
+	typ := ns.EntryType(int16(s.PopI32()))
+	msg := s.PopString()
+	if obj, ok := popObjectOrAll(s); ok {
+		s.NoxScript().JournalEdit(obj, msg, typ)
+	}
+	return 0
+}
+
+func nsJournalDelete(s VM) int {
+	msg := s.PopString()
+	if obj, ok := popObjectOrAll(s); ok {
+		s.NoxScript().JournalDelete(obj, msg)
+	}
 	return 0
 }
 

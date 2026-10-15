@@ -60,7 +60,7 @@ func (s *Server) DelayedDelete(obj *server.Object) {
 	}
 	if owner := obj.Owner(); owner != nil && owner.Class().Has(object.ClassPlayer) {
 		if obj.Class().Has(object.ClassMonster) && !server.Nox_xxx_creatureIsMonitored_500CC0(owner, obj) && (obj.SubClass()&0x80 != 0) {
-			legacy.Nox_xxx_monsterRemoveMonitors_4E7B60(owner, obj)
+			s.ObjRemoveMonitors(owner, obj)
 		}
 	}
 

@@ -341,7 +341,7 @@ func nox_common_parsecfg_all(sect cfg.Section) error {
 				if err != nil {
 					return fmt.Errorf("cannot parse %s: %w", kv.Key, err)
 				}
-				legacy.Sub_409FB0_settings(uint16(configModeCodes[i]), uint16(v))
+				setGameLessons(uint16(configModeCodes[i]), uint16(v))
 			}
 		case "TimeLimit":
 			max := len(configModeCodes)

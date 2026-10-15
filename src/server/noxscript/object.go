@@ -15,6 +15,7 @@ func init() {
 	Register(asm.BuiltinIsTrigger, nsIsTrigger)
 	Register(asm.BuiltinIsCaller, nsIsCaller)
 	Register(asm.BuiltinObject, nsObject)
+	Register(asm.BuiltinSetRoamFlag, nsSetRoamFlag)
 	Register(asm.BuiltinCreateObject, nsCreateObject)
 	Register(asm.BuiltinGetObjectX, nsObjectX)
 	Register(asm.BuiltinGetObjectY, nsObjectY)
@@ -848,6 +849,14 @@ func nsSetShopkeeperText(vm VM) int {
 	obj := vm.PopObjectNS()
 	if obj != nil {
 		obj.SetShopText(ns4.StringID(str))
+	}
+	return 0
+}
+
+func nsSetRoamFlag(s VM) int {
+	flags := int(s.PopI32())
+	if obj := s.PopObjectNS(); obj != nil {
+		obj.SetRoamFlag(flags)
 	}
 	return 0
 }

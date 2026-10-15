@@ -633,9 +633,14 @@ func (obj nsObj) AggressionLevel(level float32) {
 	obj.Object.SetAggression(level)
 }
 
-func (obj nsObj) SetRoamFlag(flags int) {
-	//TODO implement me
-	panic("implement me")
+func (obj nsObj) SetRoamFlag(flags int) { // sub_515C80
+	u := obj.SObj()
+	if !u.Class().Has(object.ClassMonster) {
+		return
+	}
+	// Only the lowest byte is set.
+	ud := u.UpdateDataMonster()
+	ud.RoamFlags = ud.RoamFlags&^0xff | uint32(uint8(flags))
 }
 
 func (obj nsObj) RetreatLevel(percent float32) {
@@ -884,8 +889,10 @@ func (g nsObjGroup) AggressionLevel(level float32) {
 }
 
 func (g nsObjGroup) SetRoamFlag(flags int) {
-	//TODO implement me
-	panic("implement me")
+	g.EachObject(true, func(obj ns4.Obj) bool {
+		obj.SetRoamFlag(flags)
+		return true
+	})
 }
 
 func (g nsObjGroup) RetreatLevel(percent float32) {

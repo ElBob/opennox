@@ -173,24 +173,43 @@ func (s noxScriptNS) DestroyEveryChat() {
 	legacy.Nox_xxx_destroyEveryChatMB_528D60()
 }
 
+func (s noxScriptNS) hostPlayerUnit() *server.Object {
+	if pl := s.s.Players.ByInd(server.HostPlayerIndex); pl != nil {
+		return pl.PlayerUnit
+	}
+	return nil
+}
+
 func (s noxScriptNS) MakeFriendly(obj ns4.Obj) {
-	//TODO implement me
-	panic("implement me")
+	u := s.asObj(obj)
+	if u == nil {
+		return
+	}
+	u.ObjSubClass |= 0x100
+	if host := s.hostPlayerUnit(); host != nil {
+		s.s.ObjSetOwner(host, u)
+	}
 }
 
 func (s noxScriptNS) MakeEnemy(obj ns4.Obj) {
-	//TODO implement me
-	panic("implement me")
+	u := s.asObj(obj)
+	if u == nil {
+		return
+	}
+	u.ObjSubClass &^= 0x100
+	s.s.ObjClearOwner(u)
 }
 
 func (s noxScriptNS) BecomePet(obj ns4.Obj) {
-	//TODO implement me
-	panic("implement me")
+	if u := s.asObj(obj); u != nil {
+		s.s.ObjBecomePet(s.hostPlayerUnit(), u)
+	}
 }
 
 func (s noxScriptNS) BecomeEnemy(obj ns4.Obj) {
-	//TODO implement me
-	panic("implement me")
+	if u := s.asObj(obj); u != nil {
+		s.s.ObjRemoveMonitors(s.hostPlayerUnit(), u)
+	}
 }
 
 type nsObjType struct {

@@ -112,6 +112,7 @@ type Server struct {
 	Balance      serverBalance
 	AI           serverAI
 	Storage      serverStorage
+	QuestStatus  QuestStatus
 	NoxScriptVM  NoxScriptVM
 	VMs          ScriptVMs
 	ScriptEvents scriptEvents

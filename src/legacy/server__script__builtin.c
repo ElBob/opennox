@@ -409,46 +409,6 @@ int nox_script_PlayerIsTrading_5166E0() {
 	return 0;
 }
 
-//----- (00516720) --------------------------------------------------------
-int nox_script_MakeFriendly_516720() {
-	char* v0; // esi
-	int v1;   // eax
-	int v2;   // eax
-	int v3;   // ecx
-	int v4;   // ecx
-
-	v0 = nox_common_playerInfoFromNum_417090(31);
-	v1 = nox_script_pop();
-	v2 = nox_server_scriptValToObjectPtr_511B60(v1);
-	if (v2) {
-		v3 = *(uint32_t*)(v2 + 12);
-		BYTE1(v3) |= 1u;
-		*(uint32_t*)(v2 + 12) = v3;
-		v4 = *((uint32_t*)v0 + 514);
-		if (v4) {
-			nox_xxx_unitSetOwner_4EC290(v4, v2);
-		}
-	}
-	return 0;
-}
-
-//----- (00516760) --------------------------------------------------------
-int nox_script_MakeEnemy_516760() {
-	int v0; // eax
-	int v1; // eax
-	int v2; // edx
-
-	v0 = nox_script_pop();
-	v1 = nox_server_scriptValToObjectPtr_511B60(v0);
-	if (v1) {
-		v2 = *(uint32_t*)(v1 + 12);
-		BYTE1(v2) &= 0xFEu;
-		*(uint32_t*)(v1 + 12) = v2;
-		nox_xxx_unitClearOwner_4EC300(v1);
-	}
-	return 0;
-}
-
 //----- (00516790) --------------------------------------------------------
 int nox_script_builtin_516790(void* this) {
 	int v1;   // eax
@@ -462,44 +422,6 @@ int nox_script_builtin_516790(void* this) {
 		nox_script_push((*(uint32_t*)(v2 + 12) >> 8) & 1);
 	} else {
 		nox_script_push((int)v4);
-	}
-	return 0;
-}
-
-//----- (005167D0) --------------------------------------------------------
-int nox_script_BecomePet_5167D0() {
-	char* v0; // esi
-	int v1;   // eax
-	int v2;   // eax
-	int v3;   // ecx
-
-	v0 = nox_common_playerInfoFromNum_417090(31);
-	v1 = nox_script_pop();
-	v2 = nox_server_scriptValToObjectPtr_511B60(v1);
-	if (v2) {
-		v3 = *((uint32_t*)v0 + 514);
-		if (v3) {
-			nox_xxx_unitBecomePet_4E7B00(v3, v2);
-		}
-	}
-	return 0;
-}
-
-//----- (00516810) --------------------------------------------------------
-int nox_script_BecomeEnemy_516810() {
-	char* v0;     // esi
-	int v1;       // eax
-	uint32_t* v2; // eax
-	int v3;       // ecx
-
-	v0 = nox_common_playerInfoFromNum_417090(31);
-	v1 = nox_script_pop();
-	v2 = (uint32_t*)nox_server_scriptValToObjectPtr_511B60(v1);
-	if (v2) {
-		v3 = *((uint32_t*)v0 + 514);
-		if (v3) {
-			nox_xxx_monsterRemoveMonitors_4E7B60(v3, v2);
-		}
 	}
 	return 0;
 }

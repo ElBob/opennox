@@ -167,6 +167,16 @@ func nox_xxx_netMarkMinimapObject_417190(a1 int, obj *nox_object_t, a3 uint32) {
 	GetServer().S().Players.Nox_xxx_netMarkMinimapObject_417190(ntype.PlayerInd(a1), asObjectS(obj), a3)
 }
 
+//export nox_xxx_netMonitorCreature_4D9250
+func nox_xxx_netMonitorCreature_4D9250(a1 C.int, obj *nox_object_t) C.int {
+	return C.int(GetServer().S().NetMonitorCreature(ntype.PlayerInd(a1), asObjectS(obj)))
+}
+
+//export nox_xxx_netReportTotalHealth_4D85C0
+func nox_xxx_netReportTotalHealth_4D85C0(a1 C.int, obj *nox_object_t) C.int {
+	return C.int(GetServer().S().NetReportTotalHealth(ntype.PlayerInd(a1), asObjectS(obj)))
+}
+
 //export nox_xxx_netUnmarkMinimapObj_417300
 func nox_xxx_netUnmarkMinimapObj_417300(a1 int, obj *nox_object_t, a3 uint32) {
 	GetServer().S().Players.Nox_xxx_netUnmarkMinimapObj_417300(ntype.PlayerInd(a1), asObjectS(obj), a3)
@@ -369,9 +379,6 @@ func sub_415B60(obj *nox_object_t) *wchar2_t {
 
 func Nox_server_getObjectFromNetCode_4ECCB0(a1 int) *server.Object {
 	return asObjectS(C.nox_server_getObjectFromNetCode_4ECCB0(C.int(a1)))
-}
-func Nox_xxx_monsterRemoveMonitors_4E7B60(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_monsterRemoveMonitors_4E7B60(asObjectC(a1), asObjectC(a2))
 }
 func Sub_4ED0C0(a1 *server.Object, a2 *server.Object) {
 	C.sub_4ED0C0(asObjectC(a1), asObjectC(a2))

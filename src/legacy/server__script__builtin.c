@@ -521,32 +521,3 @@ int nox_script_builtin_516850(void* this) {
 	return 0;
 }
 
-//----- (00516890) --------------------------------------------------------
-int nox_script_OblivionGive_516890() {
-	uint32_t* v0; // edi
-	int v1;       // esi
-	int v2;       // ebx
-	uint32_t* v3; // eax
-	uint32_t* v4; // eax
-
-	v0 = (uint32_t*)*((uint32_t*)nox_common_playerInfoFromNum_417090(31) + 514);
-	v1 = 0;
-	v2 = nox_script_pop();
-	v3 = (uint32_t*)v0[126];
-	if (v3) {
-		while (!(v3[2] & 0x1000000) || !(v3[3] & 0x7800000)) {
-			v3 = (uint32_t*)v3[124];
-			if (!v3) {
-				goto LABEL_7;
-			}
-		}
-		v1 = (v3[4] >> 8) & 1;
-		nox_xxx_delayedDeleteObject_4E5CC0((int)v3);
-	}
-LABEL_7:
-	v4 = nox_xxx_playerRespawnItem_4EF750((int)v0, *(char**)getMemAt(0x587000, 247336 + 4 * v2), 0, 1, 1);
-	if (v1) {
-		nox_xxx_playerTryEquip_4F2F70(v0, (int)v4);
-	}
-	return 0;
-}

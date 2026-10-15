@@ -7,7 +7,6 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5_2.h"
 #include "server__script__builtin.h"
-void nox_server_gotoHome(nox_object_t* obj);
 */
 import "C"
 import (
@@ -52,12 +51,6 @@ func Nox_xxx_unitFreeze_4E79C0(a1 *server.Object, a2 int) {
 }
 func Nox_xxx_unitUnFreeze_4E7A60(a1 *server.Object, a2 int) {
 	C.nox_xxx_unitUnFreeze_4E7A60(asObjectC(a1), C.int(a2))
-}
-func Nox_xxx_scriptMonsterRoam_512930(a1 *server.Object) {
-	C.nox_xxx_scriptMonsterRoam_512930(asObjectC(a1))
-}
-func Nox_server_gotoHome(a1 *server.Object) {
-	C.nox_server_gotoHome(asObjectC(a1))
 }
 func Nox_xxx_unitIdle_515820(a1 *server.Object) {
 	C.nox_xxx_unitIdle_515820(asObjectC(a1))

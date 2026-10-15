@@ -12,7 +12,6 @@ package legacy
 void nox_xxx_updateHarpoon_54F380(nox_object_t* a1);
 int nox_objectDropAudEvent_4EE2F0(nox_object_t* a1, nox_object_t* a2, float2* a3);
 void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1, nox_object_t* a2);
-wchar2_t* sub_4E39F0_obj_db(nox_object_t* a1);
 void nox_xxx_scriptDialog_548D30(nox_object_t* a1, char a2);
 void nox_server_scriptFleeFrom_515F70(nox_object_t* a1, void* a2);
 void nox_xxx_monsterActionMelee_515A30(nox_object_t* a1, float2* a2);
@@ -469,9 +468,6 @@ func Nox_object_setGold_4FA620(obj *server.Object, v int) {
 }
 func Nox_xxx_script_forcedialog_548CD0(obj, obj2 *server.Object) {
 	C.nox_xxx_script_forcedialog_548CD0(asObjectC(obj), asObjectC(obj2))
-}
-func Sub_4E39F0_obj_db(obj *server.Object) string {
-	return GoWString(C.sub_4E39F0_obj_db(asObjectC(obj)))
 }
 func Nox_xxx_scriptDialog_548D30(obj *server.Object, a2 byte) {
 	C.nox_xxx_scriptDialog_548D30(asObjectC(obj), C.char(a2))

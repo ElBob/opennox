@@ -4,8 +4,6 @@ package legacy
 #include "defs.h"
 int nox_script_SetRoamFlag_515C40();
 int nox_script_SetRoamFlagGroup_515CB0();
-int nox_script_JournalDelete_515550();
-int nox_script_JournalEdit_5155A0();
 int nox_script_RetreatLevel_515DF0();
 int nox_script_RetreatLevelGroup_515E50();
 int nox_script_SetResumeLevel_515E80();
@@ -74,8 +72,6 @@ func Sub_512E80(str string) int {
 var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{
 	asm.BuiltinSetRoamFlag:         wrapScriptC(C.nox_script_SetRoamFlag_515C40),
 	asm.BuiltinGroupSetRoamFlag:    wrapScriptC(C.nox_script_SetRoamFlagGroup_515CB0),
-	asm.BuiltinJournalDelete:       wrapScriptC(C.nox_script_JournalDelete_515550),
-	asm.BuiltinJournalEdit:         wrapScriptC(C.nox_script_JournalEdit_5155A0),
 	asm.BuiltinGiveXp:              wrapScriptC(C.nox_script_GiveExp_516190),
 	asm.BuiltinIsTalking:           wrapScriptC(C.nox_script_IsTalking_5166A0),
 	asm.BuiltinUnknownb8:           wrapScriptC(C.nox_script_builtin_516790),

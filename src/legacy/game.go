@@ -50,7 +50,6 @@ int nox_xxx_mapLoadRequired_4DCC80();
 int  sub_4EF660(nox_object_t* a1p);
 void  sub_500510(const char* a1);
 int nox_xxx_guiChatIconLoad_445650();
-int nox_xxx_loadGuides_427070();
 void sub_41CAC0(char* a1, void* a2);
 
 wchar2_t* nox_xxx_guiServerOptionsGetGametypeName_4573C0(short mode);
@@ -398,9 +397,6 @@ func Nox_xxx_initTime_435570() {
 }
 func Nox_xxx_allocArrayHealthChanges_49A5F0() int {
 	return int(C.nox_xxx_allocArrayHealthChanges_49A5F0())
-}
-func Nox_xxx_loadGuides_427070() int {
-	return int(C.nox_xxx_loadGuides_427070())
 }
 func Sub_494F00() int {
 	return int(C.sub_494F00())

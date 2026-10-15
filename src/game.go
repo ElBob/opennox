@@ -530,8 +530,8 @@ func initGameSession435CC0() error {
 		return err
 	}
 
-	if legacy.Nox_xxx_loadGuides_427070() == 0 {
-		return errors.New("nox_xxx_loadGuides_427070 failed")
+	if !loadCreatureGuides() {
+		return errors.New("loadCreatureGuides failed")
 	}
 
 	if legacy.Sub_494F00() == 0 {

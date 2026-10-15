@@ -309,39 +309,6 @@ int nox_script_JournalEdit_5155A0() {
 	return 0;
 }
 
-//----- (00515C40) --------------------------------------------------------
-int nox_script_SetRoamFlag_515C40(int a1) {
-	char v1; // bl
-	int v2;  // eax
-	int v3;  // eax
-	char v5; // [esp+1h] [ebp-1h]
-
-	v5 = HIBYTE(a1);
-	v1 = nox_script_pop();
-	v2 = nox_script_pop();
-	v3 = nox_server_scriptValToObjectPtr_511B60(v2);
-	if (v3) {
-		v5 = v1;
-		sub_515C80(v3, &v5);
-	}
-	return 0;
-}
-
-//----- (00515CB0) --------------------------------------------------------
-int nox_script_SetRoamFlagGroup_515CB0() {
-	char v0;           // bl
-	int v1;            // eax
-	unsigned char* v2; // eax
-	char v4;           // [esp+1h] [ebp-1h]
-
-	v0 = nox_script_pop();
-	v1 = nox_script_pop();
-	v4 = v0;
-	v2 = (unsigned char*)nox_server_scriptGetGroup_57C0A0(v1);
-	nox_server_scriptExecuteFnForEachGroupObj_502670(v2, 0, sub_515C80, (int)&v4);
-	return 0;
-}
-
 //----- (00516190) --------------------------------------------------------
 int nox_script_GiveExp_516190() {
 	int v0; // esi

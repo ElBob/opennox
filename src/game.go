@@ -1106,7 +1106,7 @@ func (s *Server) nox_xxx_mapExitAndCheckNext_4D1860_server() error {
 	s.Nox_xxx_netMsgFadeBegin_4D9800(false, true)
 	s.scriptOnEvent(script.EventMapExit)
 	v2 := s.getServerMap()
-	legacy.Sub_500510(v2)
+	s.QuestStatus.SetMapName(v2)
 	s.nox_xxx_mapSwitchLevel_4D12E0(true)
 	for _, obj := range s.Objs.AllNonMissiles() {
 		obj.ObjFlags |= object.FlagMarked
@@ -1261,7 +1261,7 @@ func (s *Server) nox_xxx_mapExitAndCheckNext_4D1860_server() error {
 	})
 	legacy.Set_dword_5d4594_1548524(0)
 	v41 := s.getServerMap()
-	legacy.Sub_500510(v41)
+	s.QuestStatus.SetMapName(v41)
 	if !nox_xxx_gameIsSwitchToSolo_4DB240() {
 		s.ShouldCallMapInit = true
 	}

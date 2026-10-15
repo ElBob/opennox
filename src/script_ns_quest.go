@@ -9,28 +9,23 @@ import (
 )
 
 func (s noxScriptNS) GetQuestStatus(name string) int {
-	//TODO implement me
-	panic("implement me")
+	return int(s.s.QuestStatus.GetInt(name))
 }
 
 func (s noxScriptNS) GetQuestStatusFloat(name string) float32 {
-	//TODO implement me
-	panic("implement me")
+	return s.s.QuestStatus.GetFloat(name)
 }
 
 func (s noxScriptNS) SetQuestStatus(status int, name string) {
-	//TODO implement me
-	panic("implement me")
+	s.s.QuestStatus.SetInt(name, int32(status))
 }
 
 func (s noxScriptNS) SetQuestStatusFloat(status float32, name string) {
-	//TODO implement me
-	panic("implement me")
+	s.s.QuestStatus.SetFloat(name, status)
 }
 
 func (s noxScriptNS) ResetQuestStatus(name string) {
-	//TODO implement me
-	panic("implement me")
+	s.s.QuestStatus.Reset(name)
 }
 
 func (s noxScriptNS) JournalEntry(obj ns.Obj, msg ns.StringID, typ ns.EntryType) {

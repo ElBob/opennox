@@ -18,7 +18,7 @@ func (s *Server) scriptMoveTo(obj *server.Object, wp *server.Waypoint) { // nox_
 		obj.ClearActionStack()
 		obj.MonsterPushAction(ai.ACTION_REPORT, 8)
 		if wp.PointsCnt != 0 {
-			obj.MonsterPushAction(ai.ACTION_ROAM, wp.C(), 0, uint32(uint8(ud.Field333)))
+			obj.MonsterPushAction(ai.ACTION_ROAM, wp.C(), 0, uint32(uint8(ud.RoamFlags)))
 		}
 		obj.MonsterPushAction(ai.ACTION_FAR_MOVE_TO, wp.PosVec, 0)
 		return
@@ -51,7 +51,7 @@ func scriptMonsterRoam(obj *server.Object) { // nox_xxx_scriptMonsterRoam_512930
 	ud := obj.UpdateDataMonster()
 	obj.ClearActionStack()
 	obj.MonsterPushAction(ai.ACTION_REPORT, 10)
-	obj.MonsterPushAction(ai.ACTION_ROAM, 0, 0, uint32(uint8(ud.Field333)))
+	obj.MonsterPushAction(ai.ACTION_ROAM, 0, 0, uint32(uint8(ud.RoamFlags)))
 }
 
 func scriptMonsterGoHome(obj *server.Object) { // nox_server_gotoHome

@@ -6,7 +6,6 @@ import (
 
 	"github.com/opennox/noxscript/ns/asm"
 
-	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/server/noxscript"
 )
 
@@ -26,9 +25,6 @@ func (s *noxScript) callBuiltinNative(fi asm.Builtin) error {
 	res, ok := noxscript.CallBuiltin(s, fi)
 	if !ok {
 		res, ok = s.PanicScriptCall(fi)
-	}
-	if !ok {
-		res, ok = legacy.CallScriptBuiltin(fi)
 	}
 	if !ok {
 		if fi < 0 || int(fi) >= len(noxScriptBuiltins) {

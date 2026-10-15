@@ -68,7 +68,7 @@ func registerOnDataPathSet(fnc func()) {
 // Nox only works on 32bit
 var _ = [1]struct{}{}[unsafe.Sizeof(int(0))-4]
 
-func runArgs(args []string, loopFunc func() error) (gerr error) {
+func runArgs(args []string, serverLoop bool, loopFunc func() error) (gerr error) {
 	defer func() {
 		switch r := recover().(type) {
 		case ErrExit:
@@ -256,7 +256,8 @@ func runArgs(args []string, loopFunc func() error) (gerr error) {
 	}
 
 	legacy.Set_nox_gameDisableMapDraw_5d4594_2650672(0)
-	if !isDedicatedServer {
+	if !serverLoop {
+		// The client loop starts the game (or the server, for dedicated builds) from this state.
 		noxClient.GameAddStateCode(client.StateMovies)
 	}
 	noxflags.ResetGame()
@@ -455,14 +456,14 @@ func runArgs(args []string, loopFunc func() error) (gerr error) {
 }
 
 func RunArgs(args []string) error {
-	return runArgs(args, func() error {
+	return runArgs(args, false, func() error {
 		noxClient.cmainLoop()
 		return nil
 	})
 }
 
 func RunServerArgs(args []string) error {
-	return runArgs(args, func() error {
+	return runArgs(args, true, func() error {
 		return noxServer.MainLoop()
 	})
 }

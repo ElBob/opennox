@@ -25,8 +25,6 @@ int nox_script_builtin_516790();
 int nox_script_builtin_516850();
 int nox_script_OblivionGive_516890();
 int nox_script_PlayerIsTrading_5166E0();
-void nox_script_StartupScreen_516600_A();
-int sub_512E80(wchar2_t* a1);
 */
 import "C"
 import (
@@ -69,15 +67,6 @@ func CallScriptBuiltin(fi asm.Builtin) (int, bool) {
 	}
 	res := fnc(GetServer().NoxScriptC())
 	return res, true
-}
-
-func Nox_script_StartupScreen_516600_A() {
-	C.nox_script_StartupScreen_516600_A()
-}
-
-func Sub_512E80(str string) int {
-	cstr, _ := CWString(str)
-	return int(C.sub_512E80(cstr))
 }
 
 var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{

@@ -14,7 +14,6 @@
 #include "server__script__script.h"
 #include "server__script__activator.h"
 
-extern unsigned int dword_5d4594_1599628;
 
 //----- (004F5580) --------------------------------------------------------
 char* nox_script_callbackName(int h);

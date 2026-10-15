@@ -1,6 +1,8 @@
 package opennox
 
 import (
+	"fmt"
+
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/player"
 	"github.com/opennox/libs/spell"
@@ -48,6 +50,24 @@ func nox_xxx_inventoryServPlace_4F36F0(obj *server.Object, it *server.Object, a3
 		s.noxScript.ScriptCallback(&it.ScriptPickup, obj, it, server.NoxEventInventoryPlace)
 		it.ScriptPickup.Func = -1
 	}
+	return true
+}
+
+func nox_xxx_pickupGold_4F3A60(who, item *server.Object, a3, a4 int) bool { // nox_xxx_pickupGold_4F3A60_obj_pickup
+	s := noxServer
+	if !who.Class().Has(object.ClassPlayer) {
+		if !nox_xxx_pickupDefault_4F31E0(who, item, a3, 0) {
+			return false
+		}
+		s.Audio.EventObj(sound.SoundTreasurePickup, who, 0, 0)
+		return true
+	}
+	gold := *(*int32)(item.InitData)
+	legacy.Nox_xxx_playerAddGold_4FA590(who, int(gold))
+	s.DelayedDelete(item)
+	str := s.Strings().GetStringInFile("GoldPickup", "pickup.c")
+	legacy.Nox_xxx_netSendLineMessage_4D9EB0(who, fmt.Sprintf(str, gold))
+	s.Audio.EventObj(sound.SoundTreasurePickup, who, 0, 0)
 	return true
 }
 

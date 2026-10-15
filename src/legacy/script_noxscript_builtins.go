@@ -23,7 +23,6 @@ int nox_script_BecomePet_5167D0();
 int nox_script_BecomeEnemy_516810();
 int nox_script_builtin_516790();
 int nox_script_builtin_516850();
-int nox_script_OblivionGive_516890();
 int nox_script_PlayerIsTrading_5166E0();
 void nox_script_StartupScreen_516600_A();
 int sub_512E80(wchar2_t* a1);
@@ -98,6 +97,5 @@ var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{
 	asm.BuiltinBecomeEnemy:         wrapScriptC(C.nox_script_BecomeEnemy_516810),
 	asm.BuiltinUnknownb8:           wrapScriptC(C.nox_script_builtin_516790),
 	asm.BuiltinUnknownb9:           wrapScriptC(C.nox_script_builtin_516850),
-	asm.BuiltinSetHalberd:          wrapScriptC(C.nox_script_OblivionGive_516890),
 	asm.BuiltinIsTrading:           wrapScriptC(C.nox_script_PlayerIsTrading_5166E0),
 }

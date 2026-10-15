@@ -126,9 +126,36 @@ func (s noxScriptNS) IsTrading() bool {
 	panic("implement me")
 }
 
-func (s noxScriptNS) SetHalberd(upgrade ns.HalberdLevel) {
-	//TODO implement me
-	panic("implement me")
+var oblivionStaffTypes = [...]string{ // 0x587000+247336
+	ns.OblivionHalberd:   "OblivionHalberd",
+	ns.OblivionHeart:     "OblivionHeart",
+	ns.OblivionWierdling: "OblivionWierdling",
+	ns.OblivionOrb:       "OblivionOrb",
+}
+
+func (s noxScriptNS) SetHalberd(upgrade ns.HalberdLevel) { // nox_script_OblivionGive_516890
+	pl := s.s.Players.ByInd(server.HostPlayerIndex)
+	if pl == nil || pl.PlayerUnit == nil {
+		return
+	}
+	u := pl.PlayerUnit
+	const oblivion = object.WeaponStaffOblivionHalberd | object.WeaponStaffOblivionHeart |
+		object.WeaponStaffOblivionWierdling | object.WeaponStaffOblivionOrb
+	equipped := false
+	for it := u.InvFirstItem; it != nil; it = it.InvNextItem {
+		if it.Class().Has(object.ClassWeapon) && it.SubClass().AsWeapon().HasAny(oblivion) {
+			equipped = it.Flags().Has(object.FlagEquipped)
+			s.s.DelayedDelete(it)
+			break
+		}
+	}
+	if upgrade < 0 || int(upgrade) >= len(oblivionStaffTypes) {
+		return
+	}
+	item := legacy.Nox_xxx_playerRespawnItem_4EF750(u, oblivionStaffTypes[upgrade], nil, 1, 1)
+	if equipped && item != nil {
+		legacy.Nox_xxx_playerTryEquip_4F2F70(u, item)
+	}
 }
 
 func (s noxScriptNS) ImmediateBlind() {

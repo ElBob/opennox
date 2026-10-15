@@ -218,6 +218,25 @@ func (s *Server) ObjectsAddPending() {
 
 func (s *Server) sub_4DAE50(obj *server.Object) {
 	legacy.Nox_xxx_action_4DA9F0(obj)
+	if obj.Flags().Has(object.FlagPending) {
+		// The object was created in this frame and is still in the pending list,
+		// for example, when a script picks up an object right after creating it.
+		// The original code always unlinks objects from the main list,
+		// which corrupts both lists and later leads to a use-after-free.
+		prev := obj.ObjPrev
+		if prev != nil {
+			prev.ObjNext = obj.ObjNext
+		} else {
+			s.Objs.Pending = obj.ObjNext
+		}
+		if next := obj.ObjNext; next != nil {
+			next.ObjPrev = prev
+		}
+		obj.ObjNext = nil
+		obj.ObjPrev = nil
+		obj.ObjFlags &^= object.FlagPending
+		return
+	}
 	if obj.Class().Has(object.ClassMissile) {
 		prev := obj.ObjPrev
 		if prev != nil {

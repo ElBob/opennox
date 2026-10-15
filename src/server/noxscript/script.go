@@ -10,12 +10,9 @@ import (
 
 func init() {
 	Register(asm.BuiltinStopScript, nsAbort)
-<<<<<<< HEAD
 	Register(asm.BuiltinIsTalking, nsIsTalking)
 	Register(asm.BuiltinIsTrading, nsIsTrading)
-=======
 	Register(asm.BuiltinSetHalberd, nsSetHalberd)
->>>>>>> port-ns-set-halberd
 	Register(asm.BuiltinIntToString, nsIntToString)
 	Register(asm.BuiltinFloatToString, nsFloatToString)
 	Register(asm.BuiltinRandom, nsRandomInt)
@@ -195,7 +192,6 @@ func nsGetCharacterData(s VM) int {
 	return 0
 }
 
-<<<<<<< HEAD
 func nsIsTalking(s VM) int {
 	s.PushBool(s.NoxScript().IsTalking())
 	return 0
@@ -203,10 +199,11 @@ func nsIsTalking(s VM) int {
 
 func nsIsTrading(s VM) int {
 	s.PushBool(s.NoxScript().IsTrading())
-=======
+	return 0
+}
+
 func nsSetHalberd(s VM) int {
 	lvl := ns.HalberdLevel(s.PopI32())
 	s.NoxScript().SetHalberd(lvl)
->>>>>>> port-ns-set-halberd
 	return 0
 }

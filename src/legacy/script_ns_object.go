@@ -25,14 +25,6 @@ func Nox_xxx_getObjectByScrName_4DA4F0(name string) *server.Object {
 	defer StrFree(cstr)
 	return asObjectS(C.nox_xxx_getObjectByScrName_4DA4F0(cstr))
 }
-<<<<<<< HEAD
-func Nox_xxx_playerCanCarryItem_513B00(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_playerCanCarryItem_513B00(asObjectC(a1), asObjectC(a2))
-=======
-func Nox_server_scriptMoveTo_5123C0(a1 *server.Object, a2 *server.Waypoint) {
-	C.nox_server_scriptMoveTo_5123C0(C.int(uintptr(a1.CObj())), C.int(uintptr(a2.C())))
->>>>>>> port-script-builtin-misc
-}
 
 //export nox_xxx_inventoryServPlace_4F36F0
 func nox_xxx_inventoryServPlace_4F36F0(a1 *nox_object_t, a2 *nox_object_t, a3 int, a4 int) int {

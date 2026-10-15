@@ -10,6 +10,7 @@ import (
 
 func init() {
 	Register(asm.BuiltinStopScript, nsAbort)
+	Register(asm.BuiltinSetHalberd, nsSetHalberd)
 	Register(asm.BuiltinIntToString, nsIntToString)
 	Register(asm.BuiltinFloatToString, nsFloatToString)
 	Register(asm.BuiltinRandom, nsRandomInt)
@@ -155,5 +156,11 @@ func nsGetCharacterData(s VM) int {
 	fld := int(s.PopI32())
 	val := s.NoxScript().GetCharacterData(fld)
 	s.PushI32(int32(val))
+	return 0
+}
+
+func nsSetHalberd(s VM) int {
+	lvl := ns.HalberdLevel(s.PopI32())
+	s.NoxScript().SetHalberd(lvl)
 	return 0
 }

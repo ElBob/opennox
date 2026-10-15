@@ -1155,18 +1155,18 @@ func (obj *Object) DoPickup(item *server.Object) bool {
 	if isPlayerInCoop {
 		if f := s.Frame(); *memmap.PtrUint32(0x5D4594, 2386844) != f {
 			*memmap.PtrUint32(0x5D4594, 2386844) = f
-			legacy.Set_dword_5d4594_2386848(0)
-			legacy.Set_dword_5d4594_2386852(0)
+			pickupCarryCnt = 0
+			pickupCarryWarned = false
 		}
 		if typ := int(it.TypeInd); typ != gold && typ != goldPile && typ != goldChest {
-			legacy.Nox_xxx_playerCanCarryItem_513B00(obj.SObj(), it)
+			noxServer.playerCanCarryItem(obj.SObj(), it)
 		}
 	}
 	if !nox_xxx_inventoryServPlace_4F36F0(obj.SObj(), it, 1, 1) {
 		return false
 	}
 	if isPlayerInCoop && int(it.TypeInd) != gold {
-		legacy.Inc_dword_5d4594_2386848()
+		pickupCarryCnt++
 	}
 	return true
 }

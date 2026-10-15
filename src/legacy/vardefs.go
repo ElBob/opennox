@@ -724,8 +724,6 @@ extern void* dword_5d4594_1308156;
 extern void* dword_5d4594_1308160;
 extern void* dword_5d4594_1308164;
 
-extern int dword_5d4594_2386848;
-extern unsigned int dword_5d4594_2386852;
 
 extern int dword_587000_87412;
 extern unsigned int dword_5d4594_527988;
@@ -763,7 +761,6 @@ extern uint32_t dword_5d4594_3798836;
 extern uint32_t dword_5d4594_3798840;
 extern uint32_t dword_8531A0_2576;
 extern uint32_t dword_8531A0_2572;
-extern unsigned int dword_5d4594_1599628;
 extern void (*func_587000_154940)(int2*, uint32_t, uint32_t);
 extern int (*func_587000_154944)(int, int);
 extern void* nox_video_tileBuf_ptr_3798796;
@@ -1098,10 +1095,6 @@ func Get_nox_client_gui_flag_1556112() int {
 	return int(C.nox_client_gui_flag_1556112)
 }
 
-func Set_dword_5d4594_1599628(v int) {
-	C.dword_5d4594_1599628 = C.uint(v)
-}
-
 func Sub_41E2F0() int {
 	return int(C.dword_5d4594_527988)
 }
@@ -1144,12 +1137,6 @@ func Get_dword_5d4594_2386836() int {
 }
 func Set_dword_5d4594_2386836(v int) {
 	C.dword_5d4594_2386836 = C.uint(v)
-}
-func Set_dword_5d4594_2386848(v int) {
-	C.dword_5d4594_2386848 = C.int(v)
-}
-func Set_dword_5d4594_2386852(v int) {
-	C.dword_5d4594_2386852 = C.uint(v)
 }
 func Set_dword_5d4594_815104(v int) {
 	C.dword_5d4594_815104 = C.int(v)
@@ -1396,9 +1383,6 @@ func Inc_nox_xxx_waypointCounterMB_587000_154948() {
 }
 func Inc_dword_5d4594_2516356() {
 	C.dword_5d4594_2516356++
-}
-func Inc_dword_5d4594_2386848() {
-	C.dword_5d4594_2386848++
 }
 func Inc_nox_wol_server_result_cnt_815088() {
 	C.nox_wol_server_result_cnt_815088++

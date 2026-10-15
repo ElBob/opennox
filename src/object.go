@@ -1159,7 +1159,7 @@ func (obj *Object) DoPickup(item *server.Object) bool {
 			legacy.Set_dword_5d4594_2386852(0)
 		}
 		if typ := int(it.TypeInd); typ != gold && typ != goldPile && typ != goldChest {
-			legacy.Nox_xxx_playerCanCarryItem_513B00(obj.SObj(), it)
+			noxServer.playerCanCarryItem(obj.SObj(), it)
 		}
 	}
 	if !nox_xxx_inventoryServPlace_4F36F0(obj.SObj(), it, 1, 1) {

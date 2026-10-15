@@ -1099,6 +1099,9 @@ func Get_nox_client_gui_flag_1556112() int {
 	return int(C.nox_client_gui_flag_1556112)
 }
 
+func Get_dword_5d4594_1599628() int {
+	return int(C.dword_5d4594_1599628)
+}
 func Set_dword_5d4594_1599628(v int) {
 	C.dword_5d4594_1599628 = C.uint(v)
 }
@@ -1146,8 +1149,14 @@ func Get_dword_5d4594_2386836() int {
 func Set_dword_5d4594_2386836(v int) {
 	C.dword_5d4594_2386836 = C.uint(v)
 }
+func Get_dword_5d4594_2386848() int {
+	return int(C.dword_5d4594_2386848)
+}
 func Set_dword_5d4594_2386848(v int) {
 	C.dword_5d4594_2386848 = C.int(v)
+}
+func Get_dword_5d4594_2386852() int {
+	return int(C.dword_5d4594_2386852)
 }
 func Set_dword_5d4594_2386852(v int) {
 	C.dword_5d4594_2386852 = C.uint(v)

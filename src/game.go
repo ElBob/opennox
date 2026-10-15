@@ -1353,11 +1353,11 @@ func sub_4D2230() {
 	if noxflags.HasGame(0xC000) {
 		if legacy.Nox_xxx_servGamedataGet_40A020(uint16(noxflags.GetGame())) == 0 {
 			if legacy.Sub_40A180(noxflags.GetGame()) == 0 {
-				legacy.Sub_409FB0_settings(uint16(noxflags.GetGame()), 0xF)
+				setGameLessons(uint16(noxflags.GetGame()), 0xF)
 			}
 		}
 	} else if noxflags.HasGame(1024) && legacy.Nox_xxx_servGamedataGet_40A020(1024) == 0 {
-		legacy.Sub_409FB0_settings(1024, 0xF)
+		setGameLessons(1024, 0xF)
 	}
 }
 

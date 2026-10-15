@@ -937,11 +937,11 @@ func (obj *Object) Freeze(freeze bool) {
 }
 
 func (obj *Object) Wander() {
-	legacy.Nox_xxx_scriptMonsterRoam_512930(obj.SObj())
+	scriptMonsterRoam(obj.SObj())
 }
 
 func (obj *Object) Return() {
-	legacy.Nox_server_gotoHome(obj.SObj())
+	scriptMonsterGoHome(obj.SObj())
 }
 
 func (obj *Object) Idle() {
@@ -1062,7 +1062,7 @@ func (obj *Object) Move(w ns4.WaypointObj) {
 		return
 	}
 	wp := w.(*server.Waypoint)
-	legacy.Nox_server_scriptMoveTo_5123C0(obj.SObj(), wp)
+	noxServer.scriptMoveTo(obj.SObj(), wp)
 }
 
 func (obj *Object) Pause(dt ns4.Duration) {

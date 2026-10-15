@@ -214,59 +214,6 @@ void nox_server_gotoHome(nox_object_t* obj) {
 	}
 }
 
-//----- (00514BE0) --------------------------------------------------------
-int nox_script_SetQuestInt_514BE0() {
-	int v0; // esi
-	int v1; // eax
-
-	v0 = nox_script_pop();
-	v1 = nox_script_pop();
-	nox_xxx_journalQuestSet_500540(nox_script_getString_512E40(v0), v1);
-	return 0;
-}
-
-//----- (00514C10) --------------------------------------------------------
-int nox_script_SetQuestFloat_514C10() {
-	int v0; // esi
-	int v1; // eax
-
-	v0 = nox_script_pop();
-	v1 = nox_script_pop();
-	nox_xxx_journalQuestSetBool_5006B0(nox_script_getString_512E40(v0), v1);
-	return 0;
-}
-
-//----- (00514C40) --------------------------------------------------------
-int nox_script_GetQuestInt_514C40() {
-	int v0; // eax
-	int v1; // eax
-
-	v0 = nox_script_pop();
-	v1 = sub_500750(nox_script_getString_512E40(v0));
-	nox_script_push(v1);
-	return 0;
-}
-
-//----- (00514C60) --------------------------------------------------------
-int nox_script_GetQuestFloat_514C60() {
-	int v0; // eax
-	int v2; // [esp+0h] [ebp-4h]
-
-	v0 = nox_script_pop();
-	*(float*)&v2 = sub_500770((char*)nox_script_getString_512E40(v0));
-	nox_script_push(v2);
-	return 0;
-}
-
-//----- (00514C90) --------------------------------------------------------
-int nox_script_ResetQuestStatus_514C90() {
-	int v0; // eax
-
-	v0 = nox_script_pop();
-	sub_5007E0(nox_script_getString_512E40(v0));
-	return 0;
-}
-
 //----- (00515550) --------------------------------------------------------
 int nox_script_JournalDelete_515550() {
 	int v0; // esi

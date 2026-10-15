@@ -48,7 +48,6 @@ char* nox_xxx_getSomeMapName_4D0CF0();
 int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
 int nox_xxx_mapLoadRequired_4DCC80();
 int  sub_4EF660(nox_object_t* a1p);
-void  sub_500510(const char* a1);
 int nox_xxx_guiChatIconLoad_445650();
 int nox_xxx_loadGuides_427070();
 void sub_41CAC0(char* a1, void* a2);
@@ -670,9 +669,6 @@ func Nox_xxx_mapFindPlayerStart_4F7AB0(a2 *server.Object) types.Pointf {
 		X: float32(cp.field_0),
 		Y: float32(cp.field_4),
 	}
-}
-func Sub_500510(a1 string) {
-	C.sub_500510(internCStr(a1))
 }
 func Nox_xxx_mapSwitchLevel_4D12E0_tileFree() {
 	C.nox_xxx_mapSwitchLevel_4D12E0_tileFree()

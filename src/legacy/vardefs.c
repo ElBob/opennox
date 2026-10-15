@@ -48,7 +48,6 @@ uint32_t dword_5d4594_2660652 = 0;
 uint32_t dword_5d4594_1045636 = 0;
 uint32_t dword_5d4594_3798804 = 0;
 uint32_t dword_5d4594_832476 = 0;
-uint32_t dword_5d4594_1570272 = 0;
 uint32_t dword_5d4594_1305684 = 0;
 uint32_t dword_5d4594_1321228 = 0;
 uint32_t nox_game_createOrJoin_815048 = 0;

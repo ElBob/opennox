@@ -2,20 +2,10 @@ package legacy
 
 /*
 #include "defs.h"
-int nox_script_SetRoamFlag_515C40();
-int nox_script_SetRoamFlagGroup_515CB0();
 int nox_script_RetreatLevel_515DF0();
 int nox_script_RetreatLevelGroup_515E50();
 int nox_script_SetResumeLevel_515E80();
 int nox_script_SetResumeLevelGroup_515EE0();
-int nox_script_GiveExp_516190();
-int nox_script_IsTalking_5166A0();
-int nox_script_builtin_516790();
-int nox_script_builtin_516850();
-int nox_script_OblivionGive_516890();
-int nox_script_PlayerIsTrading_5166E0();
-void nox_script_StartupScreen_516600_A();
-int sub_512E80(wchar2_t* a1);
 */
 import "C"
 import (
@@ -60,22 +50,4 @@ func CallScriptBuiltin(fi asm.Builtin) (int, bool) {
 	return res, true
 }
 
-func Nox_script_StartupScreen_516600_A() {
-	C.nox_script_StartupScreen_516600_A()
-}
-
-func Sub_512E80(str string) int {
-	cstr, _ := CWString(str)
-	return int(C.sub_512E80(cstr))
-}
-
-var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{
-	asm.BuiltinSetRoamFlag:         wrapScriptC(C.nox_script_SetRoamFlag_515C40),
-	asm.BuiltinGroupSetRoamFlag:    wrapScriptC(C.nox_script_SetRoamFlagGroup_515CB0),
-	asm.BuiltinGiveXp:              wrapScriptC(C.nox_script_GiveExp_516190),
-	asm.BuiltinIsTalking:           wrapScriptC(C.nox_script_IsTalking_5166A0),
-	asm.BuiltinUnknownb8:           wrapScriptC(C.nox_script_builtin_516790),
-	asm.BuiltinUnknownb9:           wrapScriptC(C.nox_script_builtin_516850),
-	asm.BuiltinSetHalberd:          wrapScriptC(C.nox_script_OblivionGive_516890),
-	asm.BuiltinIsTrading:           wrapScriptC(C.nox_script_PlayerIsTrading_5166E0),
-}
+var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{}

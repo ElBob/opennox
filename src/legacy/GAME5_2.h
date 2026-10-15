@@ -48,6 +48,7 @@ uint32_t* nox_xxx_protectPlayerHPMana_56F870(int a1, unsigned short a2);
 uint32_t* sub_56F8C0(int a1, float a2);
 uint32_t* sub_56F920(int a1, int a2);
 uint32_t* nox_xxx_protectMana_56F9E0(int a1, short a2);
+uint32_t* sub_56F980(int a1, unsigned char a2);
 uint32_t* sub_56FA40(int a1, float a2);
 int nox_xxx_protectionStringCRC_56FAC0(int* a1, unsigned int a2);
 int nox_xxx_protectionStringCRCLen_56FAE0(int* a1, unsigned int a2);

@@ -381,8 +381,8 @@ func runArgs(args []string, loopFunc func() error) (gerr error) {
 	}
 	inputClearKeyTimeouts()
 	noxServer.Rand.Reset()
-	legacy.Nox_xxx_loadLook_415D50()
-	legacy.Nox_xxx_loadModifyers_4158C0()
+	loadArmorLookNames()
+	loadWeaponLookNames()
 	initConsole(noxServer.Strings())
 	legacy.Sub_4D11A0()
 	if !isDedicatedServer {

@@ -223,7 +223,7 @@ type MonsterUpdateData struct {
 	Field330              float32              // 330, 1320
 	Field331              uint32               // 331, 1324, TODO: strength stat?
 	Field332              float32              // 332, 1328, TODO: speed stat?
-	Field333              uint32               // 333, 1332, TODO: roam flags?
+	RoamFlags             uint32               // 333, 1332
 	RetreatLevel          float32              // 334, 1336
 	Field335              uint32               // 335, 1340
 	ResumeLevel           float32              // 336, 1344

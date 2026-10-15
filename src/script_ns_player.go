@@ -116,14 +116,22 @@ func (s noxScriptNS) WideScreen(enable bool) {
 	s.s.CinemaPlayers(enable)
 }
 
+func (s noxScriptNS) hostPlayerUpdateData() *server.PlayerUpdateData {
+	pl := s.s.Players.ByInd(server.HostPlayerIndex)
+	if pl == nil || pl.PlayerUnit == nil {
+		return nil
+	}
+	return pl.PlayerUnit.UpdateDataPlayer()
+}
+
 func (s noxScriptNS) IsTalking() bool {
-	//TODO implement me
-	panic("implement me")
+	ud := s.hostPlayerUpdateData()
+	return ud != nil && ud.DialogWith != nil
 }
 
 func (s noxScriptNS) IsTrading() bool {
-	//TODO implement me
-	panic("implement me")
+	ud := s.hostPlayerUpdateData()
+	return ud != nil && ud.Trade70 != nil
 }
 
 func (s noxScriptNS) SetHalberd(upgrade ns.HalberdLevel) {

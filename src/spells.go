@@ -142,10 +142,10 @@ func serverSetAllSpells(p *Player, enable bool, max int) {
 		// grant default spells for Quest when disabling the cheat
 		switch p.PlayerClass() {
 		case player.Wizard:
-			legacy.Nox_xxx_spellGrantToPlayer_4FB550(u, spell.SPELL_FIREBALL, 1, 1, 1)
+			noxServer.spellGrantToPlayer(u, spell.SPELL_FIREBALL, 1, 1, 1)
 		case player.Conjurer:
-			legacy.Nox_xxx_spellGrantToPlayer_4FB550(u, spell.SPELL_CHARM, 1, 1, 1)
-			legacy.Nox_xxx_spellGrantToPlayer_4FB550(u, spell.SPELL_LESSER_HEAL, 1, 1, 1)
+			noxServer.spellGrantToPlayer(u, spell.SPELL_CHARM, 1, 1, 1)
+			noxServer.spellGrantToPlayer(u, spell.SPELL_LESSER_HEAL, 1, 1, 1)
 		}
 	}
 	legacy.Nox_xxx_playerApplyProtectionCRC_56FD50(p.Prot4636, unsafe.Pointer(&p.SpellLvl[0]), len(p.SpellLvl))

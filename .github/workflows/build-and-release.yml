@@ -24,13 +24,13 @@ jobs:
     name: Cross compile for Windows
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
 
       - name: Get go cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: gocache
           key: mingw-gocache-v3-${{ hashFiles('**/go.sum') }}
@@ -40,7 +40,7 @@ jobs:
       - uses: docker://ghcr.io/opennox/docker-build:latest-win
         name: Docker build
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload artifacts
         if: startsWith(github.ref, 'refs/tags/') || (github.ref == 'refs/heads/dev') || (github.ref == 'refs/heads/ci_tests')
         with:
@@ -61,13 +61,13 @@ jobs:
     runs-on: ubuntu-latest
     if: false # TODO
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
 
       - name: Get go cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: gocache
           key: mingw-win7-gocache-v3-${{ hashFiles('**/go.sum') }}
@@ -79,7 +79,7 @@ jobs:
         env:
           GOTOOLCHAIN: local
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload artifacts
         if: startsWith(github.ref, 'refs/tags/') || (github.ref == 'refs/heads/dev') || (github.ref == 'refs/heads/ci_tests')
         with:
@@ -99,13 +99,13 @@ jobs:
     name: Compile for Linux
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
 
       - name: Get go cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: gocache
           key: linux-gocache-v3-${{ hashFiles('**/go.sum') }}
@@ -115,7 +115,7 @@ jobs:
       - uses: docker://ghcr.io/opennox/docker-build:latest-linux
         name: Docker build
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload artifacts
         if: startsWith(github.ref, 'refs/tags/') || (github.ref == 'refs/heads/dev') || (github.ref == 'refs/heads/ci_tests')
         with:
@@ -132,7 +132,7 @@ jobs:
     runs-on: 'ubuntu-20.04'
     if: startsWith(github.ref, 'refs/tags/v') || (github.ref == 'refs/heads/dev')
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
@@ -142,7 +142,7 @@ jobs:
         with:
           snapcraft-channel: '7.x'
 #      - name: 'Upload the package'
-#        uses: actions/upload-artifact@v3
+#        uses: actions/upload-artifact@v4
 #        with:
 #          name: opennox-snap
 #          path: ${{ steps.snapcraft.outputs.snap }}
@@ -171,7 +171,7 @@ jobs:
       fail-fast: true
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
@@ -213,7 +213,7 @@ jobs:
 #    if: startsWith(github.ref, 'refs/tags/') || (github.ref == 'refs/heads/dev') || (github.ref == 'refs/heads/ci_tests')
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
@@ -254,7 +254,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/') || (github.ref == 'refs/heads/ci_tests')
     needs: [linux_docker]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
@@ -264,7 +264,7 @@ jobs:
           rm -rf /tmp/linux-tmp
           mkdir -p /tmp/linux-tmp
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: opennox-linux
           path: /tmp/linux-tmp/
@@ -285,7 +285,7 @@ jobs:
           tar -czf /tmp/opennox-linux-release/OpenNox-linux-$VERSION.tar.gz ./*
 
       - name: Upload the archive
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: opennox-release-linux-tgz
           path: /tmp/opennox-linux-release/OpenNox-linux-*.tar.gz
@@ -297,7 +297,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/') || (github.ref == 'refs/heads/appimage-workflow-test') || (github.ref == 'refs/heads/ci_tests')
     needs: [linux_docker]
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         name: Retrieving compiled OpenNox
         with:
           name: opennox-linux
@@ -306,7 +306,7 @@ jobs:
       - uses: docker://ghcr.io/opennox/docker-build:latest-linux-packaging-appimage
         name: Using docker build - latest-linux-packaging-appimage
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload the AppImage
         if: startsWith(github.ref, 'refs/tags/') || (github.ref == 'refs/heads/appimage-workflow-test') || (github.ref == 'refs/heads/ci_tests')
         with:
@@ -325,7 +325,7 @@ jobs:
         - name: Install NSIS
           run: sudo apt-get install -y nsis
 
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
           with:
             fetch-depth: 0
             submodules: true
@@ -335,7 +335,7 @@ jobs:
             rm -rf /tmp/win-tmp
             mkdir -p /tmp/win-tmp
 
-        - uses: actions/download-artifact@v3
+        - uses: actions/download-artifact@v4
           with:
             name: opennox-win
             path: /tmp/win-tmp/
@@ -358,7 +358,7 @@ jobs:
             zip -9 -r /tmp/opennox-win-release/OpenNox-$VERSION.zip ./*
 
         - name: Upload the archive
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: opennox-release-win
             path: |
@@ -375,7 +375,7 @@ jobs:
         - name: Install NSIS
           run: sudo apt-get install -y nsis
 
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
           with:
             fetch-depth: 0
             submodules: true
@@ -385,7 +385,7 @@ jobs:
             rm -rf /tmp/win-tmp
             mkdir -p /tmp/win-tmp
 
-        - uses: actions/download-artifact@v3
+        - uses: actions/download-artifact@v4
           with:
             name: opennox-win7
             path: /tmp/win-tmp/
@@ -408,7 +408,7 @@ jobs:
             zip -9 -r /tmp/opennox-win-release/OpenNox-win7-$VERSION.zip ./*
 
         - name: Upload the archive
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: opennox-release-win7
             path: |
@@ -427,25 +427,25 @@ jobs:
           rm -rf /tmp/release-tmp
           mkdir -p /tmp/release-tmp
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         name: Preparing Linux (tar.gz) file for release.
         with:
           name: opennox-release-linux-tgz
           path: /tmp/release-tmp/
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         name: Preparing Linux (AppImage) file for release.
         with:
           name: opennox-release-linux-appimage
           path: /tmp/release-tmp/
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         name: Preparing Windows (NSIS installer, Zip archive) files for release.
         with:
           name: opennox-release-win
           path: /tmp/release-tmp/
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         name: Preparing Windows (Win7 compatible) (NSIS installer, Zip archive) files for release.
         with:
           name: opennox-release-win7

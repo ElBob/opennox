@@ -342,21 +342,6 @@ int nox_script_SetRoamFlagGroup_515CB0() {
 	return 0;
 }
 
-//----- (00516190) --------------------------------------------------------
-int nox_script_GiveExp_516190() {
-	int v0; // esi
-	int v1; // eax
-	int v2; // eax
-
-	v0 = nox_script_pop();
-	v1 = nox_script_pop();
-	v2 = nox_server_scriptValToObjectPtr_511B60(v1);
-	if (v2) {
-		nox_xxx_plyrGiveExp_4EF3A0_exp_level(v2, *(float*)&v0);
-	}
-	return 0;
-}
-
 void nox_script_StartupScreen_516600_A() {
 	int i;  // esi
 	int v1; // esi
@@ -379,34 +364,6 @@ void nox_script_StartupScreen_516600_A() {
 		} while (v2);
 	}
 	*getMemU32Ptr(0x5D4594, 2386832) = 1;
-}
-
-//----- (005166A0) --------------------------------------------------------
-int nox_script_IsTalking_5166A0() {
-	char* v0; // eax
-	int v1;   // ecx
-
-	v0 = nox_common_playerInfoFromNum_417090(31);
-	v1 = 0;
-	if (v0 && *(uint32_t*)(*(uint32_t*)(*((uint32_t*)v0 + 514) + 748) + 284)) {
-		v1 = 1;
-	}
-	nox_script_push(v1);
-	return 0;
-}
-
-//----- (005166E0) --------------------------------------------------------
-int nox_script_PlayerIsTrading_5166E0() {
-	char* v0; // eax
-	int v1;   // ecx
-
-	v0 = nox_common_playerInfoFromNum_417090(31);
-	v1 = 0;
-	if (v0 && *(uint32_t*)(*(uint32_t*)(*((uint32_t*)v0 + 514) + 748) + 280)) {
-		v1 = 1;
-	}
-	nox_script_push(v1);
-	return 0;
 }
 
 //----- (00516720) --------------------------------------------------------
@@ -449,23 +406,6 @@ int nox_script_MakeEnemy_516760() {
 	return 0;
 }
 
-//----- (00516790) --------------------------------------------------------
-int nox_script_builtin_516790(void* this) {
-	int v1;   // eax
-	int v2;   // eax
-	void* v4; // [esp+0h] [ebp-4h]
-
-	v4 = this;
-	v1 = nox_script_pop();
-	v2 = nox_server_scriptValToObjectPtr_511B60(v1);
-	if (v2) {
-		nox_script_push((*(uint32_t*)(v2 + 12) >> 8) & 1);
-	} else {
-		nox_script_push((int)v4);
-	}
-	return 0;
-}
-
 //----- (005167D0) --------------------------------------------------------
 int nox_script_BecomePet_5167D0() {
 	char* v0; // esi
@@ -500,23 +440,6 @@ int nox_script_BecomeEnemy_516810() {
 		if (v3) {
 			nox_xxx_monsterRemoveMonitors_4E7B60(v3, v2);
 		}
-	}
-	return 0;
-}
-
-//----- (00516850) --------------------------------------------------------
-int nox_script_builtin_516850(void* this) {
-	int v1;   // eax
-	int v2;   // eax
-	void* v4; // [esp+0h] [ebp-4h]
-
-	v4 = this;
-	v1 = nox_script_pop();
-	v2 = nox_server_scriptValToObjectPtr_511B60(v1);
-	if (v2) {
-		nox_script_push((*(uint32_t*)(v2 + 12) & 0xFFu) >> 7);
-	} else {
-		nox_script_push((int)v4);
 	}
 	return 0;
 }

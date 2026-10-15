@@ -249,6 +249,9 @@ func init() {
 	legacy.Nox_xxx_pickupDefault_4F31E0 = nox_xxx_pickupDefault_4F31E0
 	legacy.Nox_objectPickupAudEvent_4F3D50 = nox_objectPickupAudEvent_4F3D50
 	legacy.Nox_xxx_pickupPotion_4F37D0 = nox_xxx_pickupPotion_4F37D0
+	legacy.Nox_xxx_pickupGold_4F3A60 = nox_xxx_pickupGold_4F3A60
+	legacy.Nox_xxx_dieWeapon_54E370 = func(obj *server.Object) { noxServer.dieWeapon(obj) }
+	legacy.Nox_xxx_dieArmor_54E170 = func(obj *server.Object) { noxServer.dieArmor(obj) }
 	legacy.Nox_xxx_playerClassCanUseItem_57B3D0 = nox_xxx_playerClassCanUseItem_57B3D0
 	legacy.Nox_xxx_useMushroom_53ECE0 = nox_xxx_useMushroom_53ECE0
 	legacy.Nox_xxx_useCiderConfuse_53EF00 = nox_xxx_useCiderConfuse_53EF00

@@ -5,9 +5,13 @@ package legacy
 #include "GAME3.h"
 #include "client__draw__animdraw.h"
 #include "client__draw__arrowdraw.h"
+#include "client__draw__bubbledraw.h"
+#include "client__draw__fx.h"
 #include "client__draw__harpoondraw.h"
+#include "client__draw__magicdrw.h"
 #include "client__draw__spiderspitdraw.h"
 #include "client__draw__summondraw.h"
+#include "client__draw__vortexdraw.h"
 */
 import "C"
 import (
@@ -66,6 +70,69 @@ func nox_thing_harpoon_rope_draw(vp *C.int, dr *nox_drawable) C.int {
 //export nox_thing_spider_spit_draw
 func nox_thing_spider_spit_draw(vp *C.uint32_t, dr *nox_drawable) C.int {
 	return C.int(Nox_thing_spider_spit_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+var (
+	Nox_thing_magic_draw                  DrawFunc
+	Nox_thing_magic_missle_draw           DrawFunc
+	Nox_thing_magic_missle_tail_link_draw DrawFunc
+	Nox_thing_magic_tail_link_draw        DrawFunc
+	Nox_thing_summon_effect_draw          DrawFunc
+	Nox_thing_bubble_draw                 DrawFunc
+	Nox_thing_vortex_draw                 DrawFunc
+)
+
+//export nox_thing_magic_draw
+func nox_thing_magic_draw(vp *C.int, dr *nox_drawable) C.int {
+	return C.int(Nox_thing_magic_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+//export nox_thing_magic_missle_draw
+func nox_thing_magic_missle_draw(vp *C.int, dr *nox_drawable) C.int {
+	return C.int(Nox_thing_magic_missle_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+//export nox_thing_magic_missle_tail_link_draw
+func nox_thing_magic_missle_tail_link_draw(vp *C.uint32_t, dr *nox_drawable) C.int {
+	return C.int(Nox_thing_magic_missle_tail_link_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+//export nox_thing_magic_tail_link_draw
+func nox_thing_magic_tail_link_draw(vp *C.uint32_t, dr *nox_drawable) C.int {
+	return C.int(Nox_thing_magic_tail_link_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+//export nox_thing_drain_mana_draw
+func nox_thing_drain_mana_draw() C.int { return 1 }
+
+func Get_nox_thing_magic_draw() unsafe.Pointer        { return C.nox_thing_magic_draw }
+func Get_nox_thing_magic_missle_draw() unsafe.Pointer { return C.nox_thing_magic_missle_draw }
+func Get_nox_thing_magic_missle_tail_link_draw() unsafe.Pointer {
+	return C.nox_thing_magic_missle_tail_link_draw
+}
+func Get_nox_thing_magic_tail_link_draw() unsafe.Pointer { return C.nox_thing_magic_tail_link_draw }
+func Get_nox_thing_drain_mana_draw() unsafe.Pointer      { return C.nox_thing_drain_mana_draw }
+
+//export nox_thing_summon_effect_draw
+func nox_thing_summon_effect_draw(vp *C.int, dr *nox_drawable) C.int {
+	return C.int(Nox_thing_summon_effect_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+//export nox_thing_bubble_draw
+func nox_thing_bubble_draw(vp *C.uint32_t, dr *nox_drawable) C.int {
+	return C.int(Nox_thing_bubble_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+//export nox_thing_vortex_draw
+func nox_thing_vortex_draw(vp *C.int, dr *nox_drawable) C.int {
+	return C.int(Nox_thing_vortex_draw(asViewportP(unsafe.Pointer(vp)), asDrawable(dr)))
+}
+
+func Get_nox_thing_bubble_draw() unsafe.Pointer { return C.nox_thing_bubble_draw }
+func Get_nox_thing_vortex_draw() unsafe.Pointer { return C.nox_thing_vortex_draw }
+
+func Nox_xxx_makePointFxCli_499610(typ, a2, a3, a4 int, pos image.Point) {
+	C.nox_xxx_makePointFxCli_499610(C.int(typ), C.int(a2), C.int(a3), C.int(a4), C.int(pos.X), C.int(pos.Y))
 }
 
 func Get_nox_thing_animate_state_draw() unsafe.Pointer   { return C.nox_thing_animate_state_draw }

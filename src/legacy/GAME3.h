@@ -28,7 +28,6 @@ int sub_4A4800(int a1);
 int nox_game_showSelClass_4A4840();
 int sub_4A4970();
 int sub_4A49A0();
-int sub_4A49D0(int yTop, int a2);
 int sub_4A50A0();
 int sub_4A50D0();
 int sub_4A5E90();

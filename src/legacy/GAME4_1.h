@@ -90,7 +90,6 @@ uint32_t* sub_5108D0(int a1, int a2, int a3);
 uint32_t* sub_510AE0(int* a1, int a2, uint32_t* a3);
 void sub_510D10(int* a1, int a2, int a3, unsigned int a4);
 void nox_xxx_shopCancelSession_510DC0(void* a1);
-int sub_510DE0(int a1, int a2);
 void sub_510E20(int a1);
 void sub_510E50();
 signed int nox_xxx_updateSentryGlobe_510E60(int a1);

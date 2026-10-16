@@ -326,6 +326,40 @@ func (s *Server) onPacketOp(pli ntype.PlayerInd, op netmsg.Op, data []byte, pl *
 			return 3, true
 		}
 		return 0, false
+	case netmsg.MSG_PLAYER_SET_WAYPOINT:
+		if len(data) < 7 {
+			return 0, false
+		}
+		pos := types.Pointf{
+			X: float32(binary.LittleEndian.Uint16(data[3:])),
+			Y: float32(binary.LittleEndian.Uint16(data[5:])),
+		}
+		s.playerSetCustomWaypoint(u, pos)
+		return 7, true
+	case netmsg.MSG_TRY_CREATURE_COMMAND:
+		if len(data) < 4 {
+			return 0, false
+		}
+		s.netTryCreatureCommand(pl, u, binary.LittleEndian.Uint16(data[1:]), data[3])
+		return 4, true
+	case netmsg.MSG_TRY_SPELL:
+		if len(data) < 22 {
+			return 0, false
+		}
+		s.netTrySpell(pl, u, data[:22])
+		return 22, true
+	case netmsg.MSG_NEW_ALIAS:
+		if len(data) < 10 {
+			return 0, false
+		}
+		s.netNewAlias(pl, data[:10])
+		return 10, true
+	case netmsg.MSG_INFO_BOOK_DATA:
+		if len(data) < 4 {
+			return 0, false
+		}
+		s.netInfoBookData(pl, u, binary.LittleEndian.Uint16(data[1:]), data[3])
+		return 4, true
 	case netmsg.MSG_TRY_DROP:
 		if len(data) < 7 {
 			return 0, false

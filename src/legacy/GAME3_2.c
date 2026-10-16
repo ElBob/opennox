@@ -4791,16 +4791,6 @@ int nox_xxx_netSendBallStatus_4D95F0(int a1, char a2, short a3) {
 	return nox_xxx_netSendPacket1_4E5390(a1, (int)v4, 4, 0, 1);
 }
 
-//----- (004D9630) --------------------------------------------------------
-int nox_xxx_netReportSpellStat_4D9630(int a1, int a2, char a3) {
-	char v4[6]; // [esp+0h] [ebp-8h]
-
-	*(uint32_t*)&v4[1] = a2;
-	v4[0] = -33;
-	v4[5] = a3;
-	return nox_xxx_netSendPacket0_4E5420(a1, v4, 6, 0, 1);
-}
-
 //----- (004D9670) --------------------------------------------------------
 int nox_xxx_netSendSecondaryWeapon_4D9670(int a1, uint32_t* a2, char a3) {
 	char v4[4]; // [esp+0h] [ebp-4h]

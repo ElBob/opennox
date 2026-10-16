@@ -2800,28 +2800,6 @@ void nox_xxx_shopCancelSession_510DC0(void* a1p) {
 	}
 }
 
-//----- (00510DE0) --------------------------------------------------------
-int sub_510DE0(int a1, int a2) {
-	int v2;       // eax
-	uint32_t* v3; // eax
-
-	v2 = *(uint32_t*)(*(uint32_t*)(a1 + 748) + 280);
-	if (!v2) {
-		return 0;
-	}
-	v3 = *(uint32_t**)(v2 + 20);
-	if (!v3) {
-		return 0;
-	}
-	while (*(uint32_t*)(*v3 + 36) != a2) {
-		v3 = (uint32_t*)v3[2];
-		if (!v3) {
-			return 0;
-		}
-	}
-	return *v3;
-}
-
 //----- (00510E20) --------------------------------------------------------
 void sub_510E20(int a1) {
 	if (*getMemU32Ptr(0x5D4594, 2386364 + 4 * a1)) {

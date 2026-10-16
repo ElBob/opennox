@@ -1096,7 +1096,7 @@ func (obj *Object) Chat(message ns4.StringID) {
 func (obj *Object) ChatTimer(message ns4.StringID, dt ns4.Duration) {
 	s := obj.Server()
 	v, _ := s.Strings().GetVariantInFile(strman.ID(message), "CScrFunc.c")
-	legacy.Nox_xxx_netSendChat_528AC0(obj.SObj(), v.Str, uint16(s.AsFrames(dt)))
+	noxServer.netSendChat(obj.SObj(), v.Str, uint16(s.AsFrames(dt)))
 	if noxflags.HasGame(noxflags.GameModeCoop) {
 		legacy.Dialogs.PlayFile(v.Str2, 100)
 	}
@@ -1107,7 +1107,7 @@ func (obj *Object) ChatStr(message string) {
 }
 
 func (obj *Object) ChatStrTimer(message string, dt ns4.Duration) {
-	legacy.Nox_xxx_netSendChat_528AC0(obj.SObj(), message, uint16(obj.Server().AsFrames(dt)))
+	noxServer.netSendChat(obj.SObj(), message, uint16(obj.Server().AsFrames(dt)))
 }
 
 func (obj *Object) DestroyChat() {

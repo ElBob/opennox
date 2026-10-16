@@ -238,7 +238,7 @@ func (c *Client) drawFallingSparks(typ int, vp *noxrender.Viewport, dr *client.D
 		p := image.Pt(dr.PosVec.X+c.rnd(-15, 15), dr.PosVec.Y+c.rnd(-15, 15))
 		z := p.Y - vp.World.Min.Y
 		vz := c.rnd(8, 12)
-		legacy.Sub_499950(typ, p, dr, uint16(z), -int8(vz))
+		c.spawnFx499950(typ, p, dr.PosVec, uint16(z), -int8(vz))
 	}
 }
 
@@ -268,7 +268,7 @@ func (c *Client) DrawUndeadKiller(vp *noxrender.Viewport, dr *client.Drawable) i
 		pts[3] = uint16(dr.PosVec.Y) + uint16(c.rnd(-5, 5))
 		a5 := c.rnd(6, 10)
 		a4 := c.rnd(-5, 5)
-		legacy.Sub_499490(typ, pts, 0, a4, byte(a5), 0)
+		c.spawnFx499490(typ, pts, 0, a4, byte(a5), 0)
 	}
 	p := vp.ToScreenPos(dr.Pos())
 	p.Y -= int(int16(dr.ZVal2)) + int(int16(dr.ZVal))
@@ -307,7 +307,7 @@ func (c *Client) netDrawRays(data []byte) { // nox_xxx_netDrawRays_49BDD0
 		if c.rnd(0, 100) < 50 {
 			a4 := c.rnd(-20, 20)
 			a3 := c.rnd(-20, 20)
-			legacy.Sub_499490(c.spriteType(orb), pts, a3, a4, byte(a5), 0)
+			c.spawnFx499490(c.spriteType(orb), pts, a3, a4, byte(a5), 0)
 		}
 	}
 	var typ int

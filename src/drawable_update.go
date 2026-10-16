@@ -155,8 +155,8 @@ func (c *Client) updManabombCharge(dr *client.Drawable) { // nox_xxx_updDrawMana
 	for ang := int(frame % 51); ang < 256; ang += 51 {
 		pts[2] = pts[0] + int16(rad/16)*int16(memmap.Uint16(0x587000, 192088+8*uintptr(ang)))
 		pts[3] = pts[1] + int16(rad/16)*int16(memmap.Uint16(0x587000, 192088+8*uintptr(ang)+4))
-		legacy.Sub_499520(orb, pts, int16(ang), 0, 0)
-		legacy.Sub_499520(orb, pts, int16(ang), 1, 0)
+		c.spawnFx499520(orb, pts, int16(ang), 0, 0)
+		c.spawnFx499520(orb, pts, int16(ang), 1, 0)
 	}
 }
 
@@ -275,7 +275,7 @@ func (c *Client) updDeathBallCharge(dr *client.Drawable) { // nox_xxx_updDrawDBa
 			a5 := c.rnd(6, 10)
 			a4 := c.rnd(-20, 20)
 			a3 := c.rnd(-20, 20)
-			legacy.Sub_499490(typ, pts, a3, a4, byte(a5), 0)
+			c.spawnFx499490(typ, pts, a3, a4, byte(a5), 0)
 		}
 	}
 }

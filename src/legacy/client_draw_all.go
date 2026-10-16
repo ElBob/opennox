@@ -60,22 +60,6 @@ func init() {
 	client.RegisterDraw("EnergyBoltDraw", C.nox_thing_energy_bolt_draw, 0, nil)
 	client.RegisterDraw("GreenBoltDraw", C.nox_thing_green_bolt_draw, 0, nil)
 	client.RegisterDraw("PlasmaDraw", C.nox_thing_plasma_draw, 0, nil)
-	client.RegisterDraw("YellowSparkDraw", C.nox_thing_yellow_spark_draw, 0, nil)
-	client.RegisterDraw("RedSparkDraw", C.nox_thing_red_spark_draw, 0, nil)
-	client.RegisterDraw("BlueSparkDraw", C.nox_thing_blue_spark_draw, 0, nil)
-	client.RegisterDraw("CyanSparkDraw", C.nox_thing_cyan_spark_draw, 0, nil)
-	client.RegisterDraw("GreenSparkDraw", C.nox_thing_green_spark_draw, 0, nil)
-	client.RegisterDraw("VioletSparkDraw", C.nox_thing_violet_spark_draw, 0, nil)
-	client.RegisterDraw("WhiteSparkDraw", C.nox_thing_white_spark_draw, 0, nil)
-	client.RegisterDraw("BlueRainSparkDraw", C.nox_thing_blue_rain_spark_draw, 0, nil)
-	client.RegisterDraw("DeathBallSparkDraw", C.nox_thing_death_ball_spark_draw, 0, nil)
-	client.RegisterDraw("PixieDraw", C.nox_thing_pixie_draw, 0, nil)
-	client.RegisterDraw("PixieDustDraw", C.nox_thing_pixie_dust_draw, 0, nil)
-	client.RegisterDraw("ParticleDraw", C.nox_thing_particle_draw, 0, nil)
-	client.RegisterDraw("GlowOrbDraw", C.nox_thing_glow_orb_draw, 0, nil)
-	client.RegisterDraw("GlowOrbMoveDraw", C.nox_thing_glow_orb_move_draw, 0, nil)
-	client.RegisterDraw("MagicSparkleDraw", C.nox_thing_magic_sparkle_draw, 0, nil)
-	client.RegisterDraw("RainOrbDraw", C.nox_thing_rain_orb_draw, 0, nil)
 }
 
 var (

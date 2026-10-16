@@ -477,6 +477,19 @@ func (s *serverObjects) GetObjectByInd(ind int) *Object { // aka nox_xxx_netGetU
 	return nil
 }
 
+// DynamicNetCode converts object net code received from the client.
+// Codes with high bit set refer to object extents instead of net codes.
+func (s *serverObjects) DynamicNetCode(code uint16) int { // nox_xxx_packetDynamicUnitCode_578B40
+	if code&0x8000 == 0 {
+		return int(code)
+	}
+	obj := s.GetObjectByInd(int(code & 0x7fff))
+	if obj == nil {
+		return 0
+	}
+	return int(obj.NetCode)
+}
+
 func (s *serverObjects) getPending() []*Object {
 	var out []*Object
 	for p := s.Pending; p != nil; p = p.ObjNext {
@@ -808,6 +821,15 @@ func (obj *Object) NextItem() *Object {
 		return nil
 	}
 	return obj.InvNextItem
+}
+
+func (obj *Object) InventoryItemByNetCode(code int) *Object { // nox_xxx_equipedItemByCode_4F7920
+	for it := obj.FirstItem(); it != nil; it = it.NextItem() {
+		if int(it.NetCode) == code {
+			return it
+		}
+	}
+	return nil
 }
 
 func (obj *Object) HasItem(item *Object) bool {
@@ -1448,6 +1470,22 @@ func (obj *Object) CallCollide(a2, a3 int) {
 	if obj.Collide != nil {
 		ccall.CallVoidUPtr3(obj.Collide, uintptr(obj.CObj()), uintptr(a2), uintptr(a3))
 	}
+}
+
+// CallUse calls the use handler of the item on behalf of the user.
+// It returns true if the item has no use handler.
+func (obj *Object) CallUse(user *Object) bool { // nox_xxx_useByNetCode_53F8E0
+	if obj == nil {
+		return true
+	}
+	fnc := obj.Use.Get()
+	if fnc == nil {
+		return true
+	}
+	if obj.Server().Players.CheckXxx(user) {
+		return true
+	}
+	return fnc(user, obj)
 }
 
 func (obj *Object) SetPickup(cfnc unsafe.Pointer) {

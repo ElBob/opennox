@@ -5188,24 +5188,6 @@ int nox_xxx_dropWeapon_53AB10(int a1, uint32_t* a2, int* a3) {
 	return 1;
 }
 
-//----- (0053AB90) --------------------------------------------------------
-void sub_53AB90(int a1, int a2) {
-	int v2; // esi
-	int v3; // eax
-
-	if (a1) {
-		v2 = *(uint32_t*)(a1 + 748);
-		if (a2) {
-			if (!nox_xxx_playerClassCanUseItem_57B3D0(a2, *(uint8_t*)(*(uint32_t*)(v2 + 276) + 2251)) ||
-				(LOBYTE(v3) = nox_xxx_playerCheckStrength_4F3180(a1, a2), !v3)) {
-				nox_xxx_netSendSecondaryWeapon_4D9670(*(unsigned char*)(*(uint32_t*)(v2 + 276) + 2064), 0, 1);
-			}
-		}
-		*(uint32_t*)(v2 + 108) = a2;
-	}
-}
-// 53ABD1: variable 'v3' is possibly undefined
-
 //----- (0053AC50) --------------------------------------------------------
 char nox_xxx_updateDoor_53AC50(int a1) {
 	uint32_t* v1; // edi
@@ -8076,23 +8058,6 @@ int sub_53F830(int a1, int a2) {
 		}
 	}
 	return 1;
-}
-
-//----- (0053F8E0) --------------------------------------------------------
-int nox_xxx_useByNetCode_53F8E0(int a1, int a2) {
-	int result; // eax
-
-	if (!a2) {
-		return 1;
-	}
-	if (!*(uint32_t*)(a2 + 732)) {
-		return 1;
-	}
-	result = sub_419E60(a1);
-	if (result != 1) {
-		result = (*(int (**)(int, int))(a2 + 732))(a1, a2);
-	}
-	return result;
 }
 
 //----- (0053F930) --------------------------------------------------------

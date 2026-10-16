@@ -939,6 +939,18 @@ func Get_dword_5d4594_1064868() int {
 func Get_dword_5d4594_1316972() *gui.Window {
 	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1316972)))
 }
+func Get_dword_5d4594_1307724() *server.PlayerInfo {
+	return (*server.PlayerInfo)(unsafe.Pointer(uintptr(C.dword_5d4594_1307724)))
+}
+func Set_dword_5d4594_1307724(p *server.PlayerInfo) {
+	C.dword_5d4594_1307724 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+}
+func Get_dword_5d4594_1307736() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1307736)))
+}
+func Set_dword_5d4594_1307736(win *gui.Window) {
+	C.dword_5d4594_1307736 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
 func Get_dword_5d4594_1599588() unsafe.Pointer {
 	return C.dword_5d4594_1599588
 }

@@ -419,11 +419,13 @@ func (s *Server) onPacketOp(pli ntype.PlayerInd, op netmsg.Op, data []byte, pl *
 		}
 		s.netInventoryFail(u, binary.LittleEndian.Uint16(data[1:]))
 		return 3, true
+	case netmsg.MSG_VOTE:
+		return s.netVote(u, data)
+	case netmsg.MSG_TRADE:
+		return s.netTrade(pl, u, data)
+	case netmsg.MSG_GAUNTLET:
+		return s.netGauntlet(u, data)
 	default:
-		res := legacy.Nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(pli, data, pl, u, u.UpdateData)
-		if res <= 0 || res > len(data) {
-			return 0, false
-		}
-		return res, true
+		return 0, false
 	}
 }

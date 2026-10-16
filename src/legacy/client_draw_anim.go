@@ -131,10 +131,6 @@ func nox_thing_vortex_draw(vp *C.int, dr *nox_drawable) C.int {
 func Get_nox_thing_bubble_draw() unsafe.Pointer { return C.nox_thing_bubble_draw }
 func Get_nox_thing_vortex_draw() unsafe.Pointer { return C.nox_thing_vortex_draw }
 
-func Nox_xxx_makePointFxCli_499610(typ, a2, a3, a4 int, pos image.Point) {
-	C.nox_xxx_makePointFxCli_499610(C.int(typ), C.int(a2), C.int(a3), C.int(a4), C.int(pos.X), C.int(pos.Y))
-}
-
 func Get_nox_thing_animate_state_draw() unsafe.Pointer   { return C.nox_thing_animate_state_draw }
 func Get_nox_thing_summon_effect_draw() unsafe.Pointer   { return C.nox_thing_summon_effect_draw }
 func Get_nox_thing_arrow_tail_link_draw() unsafe.Pointer { return C.nox_thing_arrow_tail_link_draw }

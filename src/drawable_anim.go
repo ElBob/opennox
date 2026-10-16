@@ -473,7 +473,7 @@ func (c *Client) DrawSummonEffect(vp *noxrender.Viewport, dr *client.Drawable) i
 		return 0
 	}
 	if dt >= dur-1 {
-		legacy.Nox_xxx_makePointFxCli_499610(blueSparkType, 50, 1000, 30, dr.PosVec)
+		c.makePointFx(blueSparkType, 50, 1000, 30, dr.PosVec)
 	}
 	c.DrawAnimate(vp, dr)
 	j := 0

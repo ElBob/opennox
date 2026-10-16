@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"image"
+	"image/color"
 	"unsafe"
 
 	noxcolor "github.com/opennox/libs/color"
@@ -294,5 +295,287 @@ func (c *Client) DrawSpiderSpit(vp *noxrender.Viewport, dr *client.Drawable) int
 	r.Data().SetColor2(nox_color_white_2523948)
 	line(p1, p2)
 	r.DrawRectFilledOpaque(p1.X, p1.Y, 2, 2, r.Data().Color2())
+	return 1
+}
+
+func init() {
+	client.RegisterDraw("BubbleDraw", legacy.Get_nox_thing_bubble_draw(), 0, nil)
+	client.RegisterDraw("VortexDraw", legacy.Get_nox_thing_vortex_draw(), 0, nil)
+}
+
+// effectBytes returns the drawable union as raw bytes.
+func effectBytes(dr *client.Drawable) []byte {
+	return unsafe.Slice((*byte)(unsafe.Pointer(&dr.Union)), unsafe.Sizeof(dr.Union))
+}
+
+func (c *Client) DrawVortex(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_vortex_draw
+	r := c.r
+	u := effectBytes(dr)
+	glowCl := binary.LittleEndian.Uint32(u[0:])
+	pointCl := binary.LittleEndian.Uint32(u[4:])
+	cx := binary.LittleEndian.Uint32(u[8:])
+	cy := binary.LittleEndian.Uint32(u[12:])
+	gray := noxcolor.RGB5551Color(170, 170, 170).Color32()
+
+	ang := int(u[16])
+	rad := int(u[18])
+	p := image.Pt(
+		int(int32(cx+uint32(int32(rad*int(memmap.Int32(0x587000, 192088+8*uintptr(ang)))/16)))),
+		int(int32(cy+uint32(int32(rad*int(memmap.Int32(0x587000, 192092+8*uintptr(ang)))/16)))),
+	)
+	sp := vp.ToScreenPos(p)
+	sp.Y -= int(int16(dr.ZVal))
+	if sp.X <= vp.Screen.Min.X || sp.X >= vp.Screen.Max.X || sp.Y <= vp.Screen.Min.Y || sp.Y >= vp.Screen.Max.Y {
+		c.Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr)
+		return 0
+	}
+	if p.Y >= int(int32(cy)) {
+		r.DrawGlow(sp, noxcolor.RGBA5551(glowCl), 3, 5)
+		r.Data().SetColor2(noxcolor.RGBA5551(pointCl))
+		r.DrawPoint(sp, 3, r.Data().Color2())
+	} else {
+		r.DrawGlow(sp, noxcolor.RGBA5551(gray), 2, 4)
+		r.Data().SetColor2(noxcolor.RGBA5551(gray))
+		r.DrawPoint(sp, 2, r.Data().Color2())
+	}
+	r.AddPoint(sp)
+
+	speed := int(int8(u[17]))
+	ang2 := int(u[16]) - 2*speed
+	if speed > 0 {
+		if ang2 < 0 {
+			ang2 += 0x100
+		}
+	} else if ang2 >= 256 {
+		ang2 -= 256
+	}
+	// The original code uses unsigned arithmetic for the second point.
+	p = image.Pt(
+		int(int32(cx+uint32(rad)*memmap.Uint32(0x587000, 192088+8*uintptr(ang2))/16)),
+		int(int32(cy+uint32(rad)*memmap.Uint32(0x587000, 192092+8*uintptr(ang2))/16)),
+	)
+	sp = vp.ToScreenPos(p)
+	sp.Y -= int(int16(dr.ZVal))
+	r.AddPoint(sp)
+	if p.Y >= int(int32(cy)) {
+		r.Data().SetColor2(noxcolor.RGBA5551(pointCl))
+	} else {
+		r.Data().SetColor2(noxcolor.RGBA5551(gray))
+	}
+	r.DrawLineFromPoints(r.Data().Color2())
+
+	u[16] += u[17]
+	dr.ZVal += uint16(u[19])
+	v := int(float32(float64(int16(dr.ZVal)) * 0.0024999999 * 50.0))
+	if 50-v <= 0 {
+		c.Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr)
+		return 0
+	}
+	u[18] = byte(50 - v)
+	return 1
+}
+
+func (c *Client) DrawBubble(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_bubble_draw
+	r := c.r
+	u := effectBytes(dr)
+	const (
+		size     = 8
+		state    = 9
+		cnt      = 10
+		cntReset = 11
+		dzReset  = 12
+		dzCnt    = 13
+		dz       = 14
+	)
+	if u[state] != 3 {
+		if d := dr.Deadline; d != 0 && d <= c.srv.Frame() {
+			u[state] = 3
+			u[cnt] = 4
+			u[cntReset] = 4
+			c.Cli().Objs.TransparentDecay(dr, int(c.srv.TickRate()))
+		}
+	}
+	if u[state] == 3 && u[size] == 0 {
+		c.Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr)
+		return 0
+	}
+	p := vp.ToScreenPos(dr.Pos())
+	p.Y -= int(int16(dr.ZVal))
+	r.DrawGlow(p, noxcolor.RGBA5551(binary.LittleEndian.Uint32(u[0:])), int(u[size]), int(u[size])+3)
+	r.Data().SetColor2(noxcolor.RGBA5551(binary.LittleEndian.Uint32(u[4:])))
+	r.DrawPoint(p, int(u[size]>>1), r.Data().Color2())
+	if byte(c.srv.Frame())&3 != 0 {
+		dr.ZVal += uint16(int8(u[dz]))
+	}
+	if u[cnt] != 0 {
+		u[cnt]--
+		if u[cnt] == 0 {
+			switch u[state] {
+			case 1:
+				u[size]++
+				if u[size] >= 5 {
+					u[state] = 2
+				}
+			case 2:
+				u[size]--
+				if u[size] == 0 {
+					u[state] = 1
+				}
+			default:
+				u[size]--
+				if u[size] == 0 {
+					c.Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr)
+					return 0
+				}
+			}
+			u[cnt] = u[cntReset]
+		}
+	}
+	if u[dzCnt] != 0 {
+		u[dzCnt]--
+		if u[dzCnt] == 0 {
+			u[dz] = -u[dz]
+			u[dzCnt] = u[dzReset]
+		}
+	}
+	if int16(dr.ZVal) >= 0 {
+		return 1
+	}
+	c.Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr)
+	return 0
+}
+
+var blueSparkType int
+
+func (c *Client) DrawSummonEffect(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_summon_effect_draw
+	r := c.r
+	dd := (*animateDrawData)(dr.DrawData)
+	orig := dr.PosVec
+	origSlave := dr.AnimFrameSlave
+	if blueSparkType == 0 {
+		blueSparkType = c.Cli().Things.IndByID("BlueSpark")
+	}
+	u := effectBytes(dr)
+	summoned := (*client.Drawable)(unsafe.Pointer(uintptr(binary.LittleEndian.Uint32(u[0:]))))
+	dur := int(binary.LittleEndian.Uint16(u[4:]))
+	dt := int(int32(c.srv.Frame() - dr.AnimStart))
+	if uint32(dt) >= uint32(dur) {
+		c.Nox_xxx_spriteDelete_45A4B0(summoned)
+		c.Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr)
+		return 0
+	}
+	if dt >= dur-1 {
+		legacy.Nox_xxx_makePointFxCli_499610(blueSparkType, 50, 1000, 30, dr.PosVec)
+	}
+	c.DrawAnimate(vp, dr)
+	j := 0
+	for off := uintptr(192092); off < 194140; off += 80 {
+		if j >= int(dd.Cnt) {
+			j = 0
+		}
+		fi := (uint32(j) + c.srv.Frame() + dr.NetCode32) / (uint32(dd.Delay) + 1)
+		dr.AnimFrameSlave = fi
+		if fi >= uint32(dd.Cnt) {
+			dr.AnimFrameSlave = fi % uint32(dd.Cnt)
+		}
+		dd.Kind = client.AnimSlave
+		dr.PosVec.X = orig.X + 2*int(memmap.Int32(0x587000, off-4))
+		dr.PosVec.Y = orig.Y + 2*int(memmap.Int32(0x587000, off))
+		if dr.PosVec.X >= 0 && dr.PosVec.X < 5888 && dr.PosVec.Y >= 0 && dr.PosVec.Y < 5888 {
+			c.DrawAnimate(vp, dr)
+		}
+		j++
+	}
+	dr.PosVec = orig
+	dr.AnimFrameSlave = origSlave
+	dd.Kind = client.AnimLoop
+	r.Data().SetAlphaEnabled(true)
+	r.Data().SetAlpha(byte(int64((float64(c.srv.Frame()) - float64(dr.AnimStart)) / float64(dur) * 255.0)))
+	legacy.CallDrawFunc(summoned, vp)
+	r.Data().SetAlphaEnabled(false)
+	return 1
+}
+
+func init() {
+	client.RegisterDraw("DrainManaDraw", legacy.Get_nox_thing_drain_mana_draw(), 0, nil)
+	client.RegisterDraw("MagicDraw", legacy.Get_nox_thing_magic_draw(), 0, nil)
+	client.RegisterDraw("MagicMissileDraw", legacy.Get_nox_thing_magic_missle_draw(), 0, nil)
+	client.RegisterDraw("MagicTailLinkDraw", legacy.Get_nox_thing_magic_tail_link_draw(), 0, nil)
+	client.RegisterDraw("MagicMissileTailLinkDraw", legacy.Get_nox_thing_magic_missle_tail_link_draw(), 0, nil)
+}
+
+func (c *Client) drawMagicSpark(vp *noxrender.Viewport, dr *client.Drawable, glow color.Color, lr, lg, lb byte) int {
+	r := c.r
+	p := vp.ToScreenPos(dr.Pos())
+	p.Y -= int(int16(dr.ZVal2)) + int(int16(dr.ZVal))
+	if p.X-10 < vp.Screen.Min.X || p.Y-10 < vp.Screen.Min.Y || p.X+10 >= vp.Screen.Max.X || p.Y+10 >= vp.Screen.Max.Y {
+		return 1
+	}
+	sz := c.srv.Rand.Other.Int(1, 4)
+	r.DrawGlow(p, glow, 2*sz+1, (sz>>1)+3)
+	r.Data().SetColor2(nox_color_white_2523948)
+	r.DrawRectFilledOpaque(p.X-(sz>>1), p.Y-(sz>>1), sz, sz, r.Data().Color2())
+	dr.SetLightColor(lr, lg, lb)
+	dr.SetLightIntensity(float32(c.srv.Rand.Other.Float(0.0, 100.0)))
+	return 1
+}
+
+func (c *Client) DrawMagic(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_magic_draw
+	return c.drawMagicSpark(vp, dr, noxcolor.RGB5551Color(0, 200, 255), 200, 200, 255)
+}
+
+func (c *Client) DrawMagicMissile(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_magic_missle_draw
+	return c.drawMagicSpark(vp, dr, noxcolor.RGB5551Color(255, 255, 50), 255, 180, 50)
+}
+
+func (c *Client) drawMagicTailLine(vp *noxrender.Viewport, dr *client.Drawable, cl uint32) {
+	r := c.r
+	u := dr.UnionEffect()
+	off := vp.Screen.Min.Sub(vp.World.Min)
+	z := int(int16(dr.ZVal2)) + int(int16(dr.ZVal))
+	p1 := dr.Pos().Add(off)
+	p1.Y -= z
+	p2 := image.Pt(int(int32(u.Field_108)), int(int32(u.Field_109))).Add(off)
+	p2.Y -= z
+	r.Data().SetColor2(noxcolor.RGBA5551(cl))
+	r.Data().SetAlphaEnabled(true)
+	r.Data().SetAlpha(0x80)
+	r.AddPoint(p1)
+	r.AddPoint(p2)
+	r.DrawLineFromPoints(r.Data().Color2())
+	r.Data().SetAlphaEnabled(false)
+}
+
+func (c *Client) DrawMagicMissileTailLink(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_magic_missle_tail_link_draw
+	left := int(int32(dr.Deadline - c.srv.Frame()))
+	if left <= 0 {
+		return 1
+	}
+	fps := int(c.srv.TickRate() / 3)
+	ci := (left << 6) / fps
+	if ci >= 64 {
+		ci = 63
+	}
+	cl := memmap.Uint32(0x5D4594, 1312756+4*uintptr(ci))
+	dr.SetLightColor(255, 128, 50)
+	dr.SetLightIntensity(float32(float64(left) * 20.0 / float64(fps)))
+	c.drawMagicTailLine(vp, dr, cl)
+	return 1
+}
+
+func (c *Client) DrawMagicTailLink(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_magic_tail_link_draw
+	left := int(int32(dr.Deadline - c.srv.Frame()))
+	if left < 0 || dr.Deadline == c.srv.Frame() {
+		return 1
+	}
+	fps := c.srv.TickRate()
+	ci := uint32(left<<6) / fps
+	if int(int32(uint32(left<<6)/fps)) >= 64 {
+		ci = 63
+	}
+	cl := memmap.Uint32(0x5D4594, 1312500+4*uintptr(ci))
+	dr.SetLightColor(128, 128, 255)
+	dr.SetLightIntensity(float32(float64(left) * 20.0 / float64(int(fps))))
+	c.drawMagicTailLine(vp, dr, cl)
 	return 1
 }

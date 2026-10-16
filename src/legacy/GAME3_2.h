@@ -184,7 +184,6 @@ int nox_xxx_netSendJournalUpdate_4D9500(int a1, int a2);
 int nox_xxx_netSendChapterEnd_4D9560(int a1, char a2, int a3);
 int nox_xxx_netSendFlagStatus_4D95A0(int a1, char a2, char a3, char a4, short a5);
 int nox_xxx_netSendBallStatus_4D95F0(int a1, char a2, short a3);
-int nox_xxx_netReportSpellStat_4D9630(int a1, int a2, char a3);
 int nox_xxx_netSendSecondaryWeapon_4D9670(int a1, uint32_t* a2, char a3);
 int nox_xxx_netMsgLastQuiver_4D96B0(int a1, uint32_t* a2);
 int nox_xxx_netMsgInventoryLoaded_4D96E0(int a1);

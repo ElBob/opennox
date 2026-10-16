@@ -56,10 +56,8 @@ import (
 )
 
 func init() {
-	client.RegisterDraw("AnimateDraw", C.nox_thing_animate_draw, 3, wrapDrawParseC(C.nox_things_animate_draw_parse))
 	client.RegisterDraw("ConditionalAnimateDraw", C.nox_thing_cond_animate_draw, 4, wrapDrawParseC(C.nox_things_cond_animate_draw_parse))
 	client.RegisterDraw("MonsterGeneratorDraw", C.nox_thing_monster_gen_draw, 4, wrapDrawParseC(C.nox_things_cond_animate_draw_parse))
-	client.RegisterDraw("AnimateStateDraw", C.nox_thing_animate_state_draw, 8, wrapDrawParseC(C.nox_things_animate_state_draw_parse))
 	client.RegisterDraw("LightningDraw", C.nox_thing_lightning_draw, 0, nil)
 	client.RegisterDraw("ChainLightningBoltDraw", C.nox_thing_chain_lightning_bolt_draw, 0, nil)
 	client.RegisterDraw("EnergyBoltDraw", C.nox_thing_energy_bolt_draw, 0, nil)
@@ -79,7 +77,6 @@ func init() {
 	client.RegisterDraw("ParticleDraw", C.nox_thing_particle_draw, 0, nil)
 	client.RegisterDraw("BubbleDraw", C.nox_thing_bubble_draw, 0, nil)
 	client.RegisterDraw("VortexDraw", C.nox_thing_vortex_draw, 0, nil)
-	client.RegisterDraw("SpiderSpitDraw", C.nox_thing_spider_spit_draw, 0, nil)
 	client.RegisterDraw("DrainManaDraw", C.nox_thing_drain_mana_draw, 0, nil)
 	client.RegisterDraw("GlowOrbDraw", C.nox_thing_glow_orb_draw, 0, nil)
 	client.RegisterDraw("GlowOrbMoveDraw", C.nox_thing_glow_orb_move_draw, 0, nil)
@@ -89,15 +86,11 @@ func init() {
 	client.RegisterDraw("MagicMissileTailLinkDraw", C.nox_thing_magic_missle_tail_link_draw, 0, nil)
 	client.RegisterDraw("MagicSparkleDraw", C.nox_thing_magic_sparkle_draw, 0, nil)
 	client.RegisterDraw("PlayerWaypointDraw", C.nox_thing_player_waypoint_draw, 0, nil)
-	client.RegisterDraw("SummonEffectDraw", C.nox_thing_summon_effect_draw, 3, wrapDrawParseC(C.nox_things_animate_draw_parse))
 	client.RegisterDraw("UndeadKillerDraw", C.nox_thing_undead_killer_draw, 0, nil)
-	client.RegisterDraw("ArrowTailLinkDraw", C.nox_thing_arrow_tail_link_draw, 0, nil)
-	client.RegisterDraw("WeakArrowTailLinkDraw", C.nox_thing_weak_arrow_tail_link_draw, 0, nil)
 	client.RegisterDraw("BlueRainDraw", C.nox_thing_blue_rain_draw, 0, nil)
 	client.RegisterDraw("LevelUpDraw", C.nox_thing_levelup_draw, 0, nil)
 	client.RegisterDraw("OblivionUpDraw", C.nox_thing_oblivion_up_draw, 0, nil)
 	client.RegisterDraw("RainOrbDraw", C.nox_thing_rain_orb_draw, 0, nil)
-	client.RegisterDraw("HarpoonRopeDraw", C.nox_thing_harpoon_rope_draw, 0, nil)
 }
 
 var (
@@ -108,8 +101,6 @@ var (
 	Nox_thing_player_draw         func(vp *noxrender.Viewport, dr *client.Drawable) int
 	Nox_thing_npc_draw            func(vp *noxrender.Viewport, dr *client.Drawable) int
 )
-
-var ParseAnimateDraw = wrapDrawParseC(C.nox_things_animate_draw_parse)
 
 func wrapDrawParseC(fnc unsafe.Pointer) client.ThingFieldFunc {
 	return func(typ *client.ObjectType, f *binfile.MemFile, str string, buf []byte) error {

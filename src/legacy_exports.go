@@ -384,6 +384,27 @@ func init() {
 	legacy.Nox_thing_spider_spit_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
 		return noxClient.DrawSpiderSpit(vp, dr)
 	}
+	legacy.Nox_thing_summon_effect_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawSummonEffect(vp, dr)
+	}
+	legacy.Nox_thing_bubble_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawBubble(vp, dr)
+	}
+	legacy.Nox_thing_vortex_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawVortex(vp, dr)
+	}
+	legacy.Nox_thing_magic_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagic(vp, dr)
+	}
+	legacy.Nox_thing_magic_missle_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagicMissile(vp, dr)
+	}
+	legacy.Nox_thing_magic_missle_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagicMissileTailLink(vp, dr)
+	}
+	legacy.Nox_thing_magic_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagicTailLink(vp, dr)
+	}
 	legacy.Nox_thing_monster_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
 		return noxClient.DrawMonster(vp, dr)
 	}

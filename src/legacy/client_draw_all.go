@@ -55,11 +55,6 @@ import (
 )
 
 func init() {
-	client.RegisterDraw("LightningDraw", C.nox_thing_lightning_draw, 0, nil)
-	client.RegisterDraw("ChainLightningBoltDraw", C.nox_thing_chain_lightning_bolt_draw, 0, nil)
-	client.RegisterDraw("EnergyBoltDraw", C.nox_thing_energy_bolt_draw, 0, nil)
-	client.RegisterDraw("GreenBoltDraw", C.nox_thing_green_bolt_draw, 0, nil)
-	client.RegisterDraw("PlasmaDraw", C.nox_thing_plasma_draw, 0, nil)
 }
 
 var (

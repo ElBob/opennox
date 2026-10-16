@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-int sub_4B6770(int* a1, nox_drawable* dr, int a3, int a4);
 int nox_thing_magic_sparkle_draw(int* a1, nox_drawable* dr);
 int nox_thing_pixie_draw(int* a1, nox_drawable* dr);
 int nox_thing_pixie_dust_draw(int* a1, nox_drawable* dr);

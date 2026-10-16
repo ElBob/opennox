@@ -24,7 +24,6 @@ import (
 
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
 type UpdateFunc = func(vp *noxrender.Viewport, dr *client.Drawable)
@@ -131,21 +130,3 @@ func sub_4CD150(typ C.int, vp *C.uint32_t, dr, dir C.int) {
 func Get_nox_thing_pixie_dust_draw() unsafe.Pointer    { return C.nox_thing_pixie_dust_draw }
 func Get_nox_thing_magic_sparkle_draw() unsafe.Pointer { return C.nox_thing_magic_sparkle_draw }
 func Get_sub_4CE340() unsafe.Pointer                   { return C.sub_4CE340 }
-
-func Sub_499520(typ int, pts [4]int16, a3 int16, a4, a5 byte) {
-	p, free := alloc.Make([]C.short{}, 4)
-	defer free()
-	for i, v := range pts {
-		p[i] = C.short(v)
-	}
-	C.sub_499520(C.int(typ), &p[0], C.short(a3), C.char(a4), C.char(a5))
-}
-
-func Sub_499490(typ int, pts [4]uint16, a3, a4 int, a5, a6 byte) {
-	p, free := alloc.Make([]C.uint16_t{}, 4)
-	defer free()
-	for i, v := range pts {
-		p[i] = C.uint16_t(v)
-	}
-	C.sub_499490(C.int(typ), &p[0], C.int(a3), C.int(a4), C.char(a5), C.char(a6))
-}

@@ -2,53 +2,6 @@
 #include "GAME1_2.h"
 #include "operators.h"
 
-//----- (0044C000) --------------------------------------------------------
-void* nox_xxx_spriteLoadStaticRandomData_44C000(char* attr_value, nox_memfile* f) {
-	uint32_t* v2;      // eax
-	uint32_t* v4;      // ebp
-	void* result;      // eax
-	int v7;            // edi
-	uint8_t* v8;       // ebx
-	int v10;           // ecx
-	char v12;          // cl
-	const char* v13;   // [esp+Ch] [ebp-4h]
-	unsigned char v14; // [esp+14h] [ebp+4h]
-	unsigned char v15; // [esp+18h] [ebp+8h]
-	int v16;           // [esp+18h] [ebp+8h]
-
-	v2 = calloc(1u, 0xCu);
-	v4 = v2;
-	*v2 = 12;
-	v15 = nox_memfile_read_u8(f);
-	*((uint8_t*)v4 + 8) = v15;
-	result = calloc(v15, 4);
-	v4[1] = result;
-	if (result) {
-		v7 = 0;
-		v16 = 0;
-		if (*((uint8_t*)v4 + 8)) {
-			v8 = attr_value;
-			do {
-				v10 = nox_memfile_read_i32(f);
-				*v8 = getMemByte(0x5D4594, 830852);
-				if (v10 == -1) {
-					v12 = nox_memfile_read_i8(f);
-					LOBYTE(v13) = v12;
-					v14 = nox_memfile_read_i8(f);
-					nox_memfile_read(v8, 1u, v14, f);
-					v10 = -1;
-					v8[v14] = 0;
-					v7 = v16;
-				}
-				*(uint32_t*)(v4[1] + 4 * v7++) = nox_xxx_readImgMB_42FAA0(v10, v13, v8);
-				v16 = v7;
-			} while (v7 < *((unsigned char*)v4 + 8));
-		}
-		result = v4;
-	}
-	return result;
-}
-
 //----- (0044B8B0) --------------------------------------------------------
 int nox_xxx_loadVectorAnimated_44B8B0(int a1, nox_memfile* f) {
 	*(uint16_t*)(a1 + 40) = nox_memfile_read_u8(f);

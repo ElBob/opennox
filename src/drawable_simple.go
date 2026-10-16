@@ -39,10 +39,6 @@ func init() {
 	client.RegisterDraw("HarpoonDraw", legacy.Get_nox_thing_harpoon_draw(), 2, parseSlaveDraw)
 }
 
-func parseAnimateDraw(obj *client.ObjectType, f *binfile.MemFile, str string, buf []byte) error {
-	return legacy.ParseAnimateDraw(obj, f, str, buf)
-}
-
 // staticDrawData is a draw data for StaticDraw.
 type staticDrawData struct {
 	Size uint32
@@ -196,7 +192,7 @@ func (c *Client) DrawWeaponItem(vp *noxrender.Viewport, dr *client.Drawable) int
 
 func (c *Client) DrawWeaponAnimate(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_weapon_animate_draw
 	legacy.Sub_4B95D0(dr)
-	return legacy.Nox_thing_animate_draw(vp, dr)
+	return c.DrawAnimate(vp, dr)
 }
 
 func (c *Client) DrawArmorItem(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_armor_draw
@@ -206,7 +202,7 @@ func (c *Client) DrawArmorItem(vp *noxrender.Viewport, dr *client.Drawable) int 
 
 func (c *Client) DrawArmorAnimate(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_armor_animate_draw
 	legacy.Sub_4B96F0(dr)
-	return legacy.Nox_thing_animate_draw(vp, dr)
+	return c.DrawAnimate(vp, dr)
 }
 
 func (c *Client) DrawBase(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_base_draw
@@ -227,7 +223,7 @@ func (c *Client) DrawSphericalShield(vp *noxrender.Viewport, dr *client.Drawable
 		return 0
 	}
 	c.Cli().Nox_xxx_updateSpritePosition_49AA90(dr, owner.PosVec.X, owner.PosVec.Y+3)
-	return legacy.Nox_thing_animate_draw(vp, dr)
+	return c.DrawAnimate(vp, dr)
 }
 
 func (c *Client) DrawGlyph(vp *noxrender.Viewport, dr *client.Drawable) int { // nox_thing_glyph_draw
@@ -253,7 +249,7 @@ func (c *Client) DrawGlyph(vp *noxrender.Viewport, dr *client.Drawable) int { //
 	}
 	r.Data().SetAlphaEnabled(true)
 	r.Data().SetAlpha(alpha)
-	res := legacy.Nox_thing_animate_draw(vp, dr)
+	res := c.DrawAnimate(vp, dr)
 	r.Data().SetAlphaEnabled(false)
 	r.Data().SetColorize17(0)
 	return res

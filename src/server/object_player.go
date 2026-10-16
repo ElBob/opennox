@@ -85,7 +85,7 @@ type PlayerUpdateData struct {
 	Field24          uint32         // 24, 96
 	Field25          uint32         // 25, 100
 	Field26          uint32         // 26, 104
-	Field27          uint32         // 27, 108
+	SecondaryWeapon  *Object        // 27, 108
 	Field28          uint32         // 28, 112
 	Field29          [4]*Object     // 29, 116, TODO: teleport markers? traps?
 	HarpoonTarg      *Object        // 33, 132

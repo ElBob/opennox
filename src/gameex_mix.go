@@ -12,10 +12,6 @@ import (
 	"github.com/opennox/opennox/v1/server"
 )
 
-func init() {
-	legacy.GameexPickupTrap = gameexPickupTrap
-}
-
 func gameexCanUseWeapon(u, it *server.Object) bool {
 	pl := u.UpdateDataPlayer().Player
 	if f := noxServer.Weapons.Nox_xxx_weaponInventoryEquipFlags_415820(it); f == 0 || f == 2 {

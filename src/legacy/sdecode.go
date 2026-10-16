@@ -19,11 +19,6 @@ import (
 	"github.com/opennox/opennox/v1/server"
 )
 
-//export nox_xxx_packetDynamicUnitCode_578B40
-func nox_xxx_packetDynamicUnitCode_578B40(a1 C.int) C.int {
-	return C.int(GetServer().S().Objs.DynamicNetCode(uint16(a1)))
-}
-
 //export nox_xxx_equipedItemByCode_4F7920
 func nox_xxx_equipedItemByCode_4F7920(a1, a2 C.int) C.int {
 	it := asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1)))).InventoryItemByNetCode(int(a2))

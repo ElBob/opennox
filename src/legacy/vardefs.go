@@ -1458,3 +1458,6 @@ func Get_dword_5d4594_1522956_ptr() *uint32 {
 func Get_dword_5d4594_1304328_ptr() *uint32 {
 	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1304328))
 }
+func Get_dword_5d4594_1313692_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313692))
+}

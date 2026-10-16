@@ -15,11 +15,9 @@ package legacy
 */
 import "C"
 import (
-	"image"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
 var (
@@ -96,11 +94,4 @@ func Nox_xxx_spriteDrawCircleMB_4C32A0(x, y, r int, cl uint32) {
 
 func Sub_48C690(x1, y1, x2, y2 int) uint32 {
 	return uint32(C.sub_48C690(C.int(x1), C.int(y1), C.int(x2), C.int(y2)))
-}
-
-func Sub_499950(typ int, p1 image.Point, dr *client.Drawable, a4 uint16, a5 int8) {
-	pts, free := alloc.Make([]C.int2{}, 1)
-	defer free()
-	pts[0] = C.int2{field_0: C.int(p1.X), field_4: C.int(p1.Y)}
-	C.sub_499950(C.int(typ), &pts[0], (*C.int2)(unsafe.Pointer(&dr.PosVec)), C.ushort(a4), C.char(a5))
 }

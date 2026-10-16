@@ -360,6 +360,30 @@ func init() {
 	legacy.Nox_thing_door_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
 		return noxClient.DrawDoor(vp, dr)
 	}
+	legacy.Nox_thing_animate_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawAnimate(vp, dr)
+	}
+	legacy.Nox_thing_arrow_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawArrow(vp, dr)
+	}
+	legacy.Nox_thing_weak_arrow_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawWeakArrow(vp, dr)
+	}
+	legacy.Nox_thing_arrow_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawArrowTailLink(vp, dr)
+	}
+	legacy.Nox_thing_weak_arrow_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawWeakArrowTailLink(vp, dr)
+	}
+	legacy.Nox_thing_harpoon_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawHarpoon(vp, dr)
+	}
+	legacy.Nox_thing_harpoon_rope_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawHarpoonRope(vp, dr)
+	}
+	legacy.Nox_thing_spider_spit_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawSpiderSpit(vp, dr)
+	}
 	legacy.Nox_thing_monster_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
 		return noxClient.DrawMonster(vp, dr)
 	}

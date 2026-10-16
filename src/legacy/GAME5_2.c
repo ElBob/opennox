@@ -909,24 +909,6 @@ unsigned int nox_xxx_netGetUnitCodeCli_578B00(int a1) {
 //----- (00578B30) --------------------------------------------------------
 int nox_xxx_netClearHighBit_578B30(short a1) { return a1 & 0x7FFF; }
 
-//----- (00578B40) --------------------------------------------------------
-int nox_xxx_packetDynamicUnitCode_578B40(int a1) {
-	int result; // eax
-	int v2;     // eax
-
-	result = a1;
-	if ((a1 & 0x8000) == 0x8000) {
-		BYTE1(result) &= 0x7Fu;
-		v2 = nox_xxx_netGetUnitByExtent_4ED020(result);
-		if (v2) {
-			result = *(uint32_t*)(v2 + 36);
-		} else {
-			result = 0;
-		}
-	}
-	return result;
-}
-
 //----- (00578B70) --------------------------------------------------------
 unsigned int nox_xxx_netTestHighBit_578B70(unsigned int a1) { return (a1 >> 15) & 1; }
 

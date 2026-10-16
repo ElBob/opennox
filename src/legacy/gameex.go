@@ -25,13 +25,6 @@ func Sub_4BDFD0() {
 	C.sub_4BDFD0()
 }
 
-var GameexPickupTrap func(u, item *server.Object)
-
-//export OnLibraryNotice_420
-func OnLibraryNotice_420(a1, a2, a3, a4 C.uint32_t) {
-	GameexPickupTrap(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1)))), asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a2)))))
-}
-
 func Nox_xxx_drop_4ED810(u, item *server.Object, pos types.Pointf) {
 	cpos, free := alloc.New(types.Pointf{})
 	defer free()

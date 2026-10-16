@@ -148,10 +148,6 @@ func Get_nox_thing_arrow_draw() unsafe.Pointer            { return C.nox_thing_a
 func Get_nox_thing_weak_arrow_draw() unsafe.Pointer       { return C.nox_thing_weak_arrow_draw }
 func Get_nox_thing_harpoon_draw() unsafe.Pointer          { return C.nox_thing_harpoon_draw }
 
-func Nox_thing_animate_draw(vp *noxrender.Viewport, dr *client.Drawable) int {
-	return int(C.nox_thing_animate_draw((*C.uint32_t)(vp.C()), (*nox_drawable)(dr.C())))
-}
-
 func Sub_4B95D0(dr *client.Drawable) {
 	C.sub_4B95D0((*nox_drawable)(dr.C()))
 }

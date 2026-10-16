@@ -22,7 +22,6 @@
 //-------------------------------------------------------------------------
 // Data declarations
 
-unsigned int gameex_flags = 0x1E;
 
 int nox_CharToOemW(const wchar2_t* pSrc, char* pDst) { return nox_sprintf(pDst, "%S", pSrc); }
 

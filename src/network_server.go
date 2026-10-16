@@ -10,6 +10,7 @@ import (
 	"github.com/opennox/libs/ifs"
 	"github.com/opennox/libs/noxnet"
 	"github.com/opennox/libs/noxnet/netmsg"
+	"github.com/opennox/libs/types"
 
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/ntype"
@@ -325,6 +326,66 @@ func (s *Server) onPacketOp(pli ntype.PlayerInd, op netmsg.Op, data []byte, pl *
 			return 3, true
 		}
 		return 0, false
+	case netmsg.MSG_TRY_DROP:
+		if len(data) < 7 {
+			return 0, false
+		}
+		code := binary.LittleEndian.Uint16(data[1:])
+		pos := types.Pointf{
+			X: float32(binary.LittleEndian.Uint16(data[3:])),
+			Y: float32(binary.LittleEndian.Uint16(data[5:])),
+		}
+		s.netTryDropItem(u, code, pos)
+		return 7, true
+	case netmsg.MSG_TRY_GET:
+		if len(data) < 3 {
+			return 0, false
+		}
+		s.netTryGetItem(u, binary.LittleEndian.Uint16(data[1:]))
+		return 3, true
+	case netmsg.MSG_TRY_USE:
+		if len(data) < 3 {
+			return 0, false
+		}
+		s.netTryUseItem(u, binary.LittleEndian.Uint16(data[1:]))
+		return 3, true
+	case netmsg.MSG_TRY_EQUIP:
+		if len(data) < 3 {
+			return 0, false
+		}
+		s.netTryEquipItem(u, binary.LittleEndian.Uint16(data[1:]))
+		return 3, true
+	case netmsg.MSG_TRY_DEQUIP:
+		if len(data) < 3 {
+			return 0, false
+		}
+		s.netTryDequipItem(u, binary.LittleEndian.Uint16(data[1:]))
+		return 3, true
+	case netmsg.MSG_TRY_COLLIDE:
+		if len(data) < 3 {
+			return 0, false
+		}
+		s.netTryCollide(u, binary.LittleEndian.Uint16(data[1:]))
+		return 3, true
+	case netmsg.MSG_REPORT_SECONDARY_WEAPON:
+		if len(data) < 3 {
+			return 0, false
+		}
+		code := binary.LittleEndian.Uint16(data[1:])
+		netcode := s.Objs.DynamicNetCode(code)
+		netDebugTestHighBit(code)
+		var it *server.Object
+		if code != 0 {
+			it = s.getObjectFromNetCode(netcode)
+		}
+		s.setSecondaryWeapon(u, it)
+		return 3, true
+	case netmsg.MSG_INVENTORY_FAIL:
+		if len(data) < 3 {
+			return 0, false
+		}
+		s.netInventoryFail(u, binary.LittleEndian.Uint16(data[1:]))
+		return 3, true
 	default:
 		res := legacy.Nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(pli, data, pl, u, u.UpdateData)
 		if res <= 0 || res > len(data) {

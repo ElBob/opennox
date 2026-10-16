@@ -18,7 +18,6 @@ package legacy
 #include "client__draw__glyphdraw.h"
 #include "client__draw__harpoondraw.h"
 #include "client__draw__lightning.h"
-#include "client__draw__lvupdraw.h"
 #include "client__draw__magicdrw.h"
 #include "client__draw__maidendraw.h"
 #include "client__draw__mgendraw.h"
@@ -56,8 +55,6 @@ import (
 )
 
 func init() {
-	client.RegisterDraw("ConditionalAnimateDraw", C.nox_thing_cond_animate_draw, 4, wrapDrawParseC(C.nox_things_cond_animate_draw_parse))
-	client.RegisterDraw("MonsterGeneratorDraw", C.nox_thing_monster_gen_draw, 4, wrapDrawParseC(C.nox_things_cond_animate_draw_parse))
 	client.RegisterDraw("LightningDraw", C.nox_thing_lightning_draw, 0, nil)
 	client.RegisterDraw("ChainLightningBoltDraw", C.nox_thing_chain_lightning_bolt_draw, 0, nil)
 	client.RegisterDraw("EnergyBoltDraw", C.nox_thing_energy_bolt_draw, 0, nil)
@@ -78,11 +75,6 @@ func init() {
 	client.RegisterDraw("GlowOrbDraw", C.nox_thing_glow_orb_draw, 0, nil)
 	client.RegisterDraw("GlowOrbMoveDraw", C.nox_thing_glow_orb_move_draw, 0, nil)
 	client.RegisterDraw("MagicSparkleDraw", C.nox_thing_magic_sparkle_draw, 0, nil)
-	client.RegisterDraw("PlayerWaypointDraw", C.nox_thing_player_waypoint_draw, 0, nil)
-	client.RegisterDraw("UndeadKillerDraw", C.nox_thing_undead_killer_draw, 0, nil)
-	client.RegisterDraw("BlueRainDraw", C.nox_thing_blue_rain_draw, 0, nil)
-	client.RegisterDraw("LevelUpDraw", C.nox_thing_levelup_draw, 0, nil)
-	client.RegisterDraw("OblivionUpDraw", C.nox_thing_oblivion_up_draw, 0, nil)
 	client.RegisterDraw("RainOrbDraw", C.nox_thing_rain_orb_draw, 0, nil)
 }
 

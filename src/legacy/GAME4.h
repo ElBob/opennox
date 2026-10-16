@@ -17,7 +17,6 @@ int nox_xxx_XFerMonsterGen_4F7130(int* a1);
 int nox_xxx_XFerRewardMarker_4F74D0(int* a1);
 int nox_xxx_equipedItemByCode_4F7920(int a1, int a2);
 void sub_4F7950(nox_object_t* a1);
-void nox_xxx_playerSetCustomWP_4F79A0(int a1, int a2, int a3);
 int nox_xxx_playerConfusedGetDirection_4F7A40(nox_object_t* a1);
 void nox_xxx_mapFindPlayerStart_4F7AB0(float2* a1, nox_object_t* a2p);
 int sub_4F7CE0(int a1, int a2);

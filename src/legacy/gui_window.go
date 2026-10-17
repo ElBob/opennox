@@ -222,5 +222,5 @@ func sub_46C690(p *nox_window) int {
 }
 
 func Nox_xxx_wnd_46ABB0(p *gui.Window, v int) int {
-	return int(C.nox_xxx_wnd_46ABB0((*nox_window)(p.C()), C.int(v)))
+	return int(nox_xxx_wnd_46ABB0((*nox_window)(p.C()), C.int(v)))
 }

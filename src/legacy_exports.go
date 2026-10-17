@@ -312,6 +312,99 @@ func init() {
 	legacy.Nox_client_getChatMap_49FF40 = nox_client_getChatMap_49FF40
 	legacy.Nox_xxx_soundPlayerDamageSound_5328B0 = Nox_xxx_soundPlayerDamageSound_5328B0
 	legacy.Nox_xxx_soundDefaultDamageSound_532E20 = server.Nox_xxx_soundDefaultDamageSound_532E20
+	legacy.Nox_thing_static_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawStatic(vp, dr)
+	}
+	legacy.Nox_thing_static_random_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawStaticRandom(vp, dr)
+	}
+	legacy.Nox_thing_slave_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawSlave(vp, dr)
+	}
+	legacy.Nox_thing_trigger_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawTrigger(vp, dr)
+	}
+	legacy.Nox_thing_pressure_plate_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawPressurePlate(vp, dr)
+	}
+	legacy.Nox_thing_black_powder_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawBlackPowder(vp, dr)
+	}
+	legacy.Nox_thing_weapon_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawWeaponItem(vp, dr)
+	}
+	legacy.Nox_thing_weapon_animate_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawWeaponAnimate(vp, dr)
+	}
+	legacy.Nox_thing_spherical_shield_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawSphericalShield(vp, dr)
+	}
+	legacy.Nox_thing_armor_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawArmorItem(vp, dr)
+	}
+	legacy.Nox_thing_armor_animate_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawArmorAnimate(vp, dr)
+	}
+	legacy.Nox_thing_base_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawBase(vp, dr)
+	}
+	legacy.Nox_thing_glyph_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawGlyph(vp, dr)
+	}
+	legacy.Nox_thing_flag_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawFlag(vp, dr)
+	}
+	legacy.Nox_thing_boulder_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawBoulder(vp, dr)
+	}
+	legacy.Nox_thing_door_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawDoor(vp, dr)
+	}
+	legacy.Nox_thing_animate_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawAnimate(vp, dr)
+	}
+	legacy.Nox_thing_arrow_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawArrow(vp, dr)
+	}
+	legacy.Nox_thing_weak_arrow_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawWeakArrow(vp, dr)
+	}
+	legacy.Nox_thing_arrow_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawArrowTailLink(vp, dr)
+	}
+	legacy.Nox_thing_weak_arrow_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawWeakArrowTailLink(vp, dr)
+	}
+	legacy.Nox_thing_harpoon_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawHarpoon(vp, dr)
+	}
+	legacy.Nox_thing_harpoon_rope_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawHarpoonRope(vp, dr)
+	}
+	legacy.Nox_thing_spider_spit_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawSpiderSpit(vp, dr)
+	}
+	legacy.Nox_thing_summon_effect_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawSummonEffect(vp, dr)
+	}
+	legacy.Nox_thing_bubble_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawBubble(vp, dr)
+	}
+	legacy.Nox_thing_vortex_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawVortex(vp, dr)
+	}
+	legacy.Nox_thing_magic_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagic(vp, dr)
+	}
+	legacy.Nox_thing_magic_missle_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagicMissile(vp, dr)
+	}
+	legacy.Nox_thing_magic_missle_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagicMissileTailLink(vp, dr)
+	}
+	legacy.Nox_thing_magic_tail_link_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
+		return noxClient.DrawMagicTailLink(vp, dr)
+	}
 	legacy.Nox_thing_monster_draw = func(vp *noxrender.Viewport, dr *client.Drawable) int {
 		return noxClient.DrawMonster(vp, dr)
 	}

@@ -363,7 +363,7 @@ func (c *Client) nox_xxx_cursorUpdate_46B740_sprites(v63 bool, v66 []int) {
 				}
 				v56 := legacy.Nox_client_mousePriKey_430AF0()
 				if v66[v56] == legacy.Nox_xxx_cursor_430B00() {
-					legacy.Nox_xxx_clientPickup_46C140(sprite)
+					c.clientPickup(sprite)
 					v66[v56] = 0
 				}
 			}

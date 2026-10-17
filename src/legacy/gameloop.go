@@ -208,11 +208,6 @@ func Nox_xxx_gameSetMapPath_409D70(a1 string) {
 func Nox_xxx_gui_43E1A0(a1 int) {
 	C.nox_xxx_gui_43E1A0(C.int(a1))
 }
-func Nox_xxx_printCentered_445490(str string) {
-	wstr, free := CWString(str)
-	defer free()
-	C.nox_xxx_printCentered_445490(wstr)
-}
 func Nox_xxx_mapValidateMB_4CF470(a1 string, a2 uint32) int {
 	return int(C.nox_xxx_mapValidateMB_4CF470(internCStr(a1), C.int(a2)))
 }

@@ -6,6 +6,16 @@
 #include "common__strman.h"
 #include "defs.h"
 #include "operators.h"
+#include "noxstring.h"
+
+//----- (00440A20) --------------------------------------------------------
+void sub_440A20(wchar2_t* a1, ...) {
+	va_list va; // [esp+8h] [ebp+8h]
+
+	va_start(va, a1);
+	nox_vswprintf((wchar2_t*)getMemAt(0x5D4594, 822660), a1, va);
+	nox_xxx_printCentered_445490((wchar2_t*)getMemAt(0x5D4594, 822660));
+}
 
 //----- (00409FB0) --------------------------------------------------------
 void sub_409FB0_settings(short a1, unsigned short a2) {

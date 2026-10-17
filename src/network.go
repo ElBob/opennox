@@ -408,6 +408,14 @@ func setCurPlayer(p *Player) {
 func nox_xxx_netTestHighBit_578B70(v uint16) bool    { return (v>>15)&1 != 0 }
 func nox_xxx_netClearHighBit_578B30(v uint16) uint16 { return v & 0x7FFF }
 
+// netDebugTestHighBit is the nox_xxx_netTestHighBit_578B70 call that the original packet handlers
+// make on the received object code when net debug is enabled. The result is discarded, as in the original.
+func netDebugTestHighBit(code uint16) {
+	if noxflags.HasEngine(noxflags.EngineNetDebug) {
+		nox_xxx_netTestHighBit_578B70(code)
+	}
+}
+
 func nox_xxx_playerCantTalkMB_57A160(pl *server.Player) bool {
 	if pl == nil {
 		return false

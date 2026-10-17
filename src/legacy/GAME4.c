@@ -1122,23 +1122,6 @@ int nox_xxx_XFerRewardMarker_4F74D0(int* a1) {
 }
 // 4F74D0: using guessed type char var_100[256];
 
-//----- (004F7920) --------------------------------------------------------
-int nox_xxx_equipedItemByCode_4F7920(int a1, int a2) {
-	int result; // eax
-
-	result = *(uint32_t*)(a1 + 504);
-	if (!result) {
-		return 0;
-	}
-	while (*(uint32_t*)(result + 36) != a2) {
-		result = *(uint32_t*)(result + 496);
-		if (!result) {
-			return 0;
-		}
-	}
-	return result;
-}
-
 //----- (004F7950) --------------------------------------------------------
 void sub_4F7950(nox_object_t* a1p) {
 	int a1 = a1p;
@@ -1159,28 +1142,6 @@ void sub_4F7950(nox_object_t* a1p) {
 	} while (v2);
 	*(uint8_t*)(v1 + 181) = 0;
 	*(uint8_t*)(v1 + 180) = 0;
-}
-
-//----- (004F79A0) --------------------------------------------------------
-void nox_xxx_playerSetCustomWP_4F79A0(int a1, int a2, int a3) {
-	int v3;    // esi
-	int v4;    // eax
-	float2 v5; // [esp+8h] [ebp-8h]
-
-	v3 = *(uint32_t*)(a1 + 748);
-	if (!(*(uint8_t*)(*(uint32_t*)(v3 + 276) + 3680) & 3)) {
-		v4 = *(uint32_t*)(v3 + 4 * *(unsigned char*)(v3 + 180) + 168);
-		if (v4) {
-			LODWORD(v5.field_0) = a2;
-			LODWORD(v5.field_4) = a3;
-			nox_xxx_unitMove_4E7010(v4, &v5);
-		} else {
-			*(uint32_t*)(v3 + 4 * *(unsigned char*)(v3 + 180) + 168) =
-				nox_xxx_newObjectByTypeID_4E3810("PlayerWaypoint");
-			nox_xxx_createAt_4DAA50(*(uint32_t*)(v3 + 4 * *(unsigned char*)(v3 + 180) + 168), a1, *(float*)&a2,
-									*(float*)&a3);
-		}
-	}
 }
 
 //----- (004F7A40) --------------------------------------------------------

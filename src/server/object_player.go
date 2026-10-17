@@ -85,7 +85,7 @@ type PlayerUpdateData struct {
 	Field24          uint32         // 24, 96
 	Field25          uint32         // 25, 100
 	Field26          uint32         // 26, 104
-	Field27          uint32         // 27, 108
+	SecondaryWeapon  *Object        // 27, 108
 	Field28          uint32         // 28, 112
 	Field29          [4]*Object     // 29, 116, TODO: teleport markers? traps?
 	HarpoonTarg      *Object        // 33, 132
@@ -98,9 +98,7 @@ type PlayerUpdateData struct {
 	Field40_0        uint16         // 40, 160
 	Field40_1        uint16         // 40, 162
 	Field41          uint32         // 41, 164
-	Field42          uint32         // 42, 168
-	Field43          uint32         // 43, 172
-	Field44          uint32         // 44, 176
+	CustomWaypoints  [3]*Object     // 42, 168
 	Field45          uint32         // 45, 180
 	SpellPhonemeLeaf *PhonemeLeaf   // 46, 184
 	Field47_0        uint8          // 47, 188

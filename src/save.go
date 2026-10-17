@@ -833,7 +833,7 @@ func saveCoopGame(name string) bool {
 	if !legacy.Nox_xxx_mapSaveMap_51E010(path, 0) {
 		return false
 	}
-	legacy.Nox_xxx_monstersAllBelongToHost_4DB6A0()
+	noxServer.monstersAllBelongToHost()
 	ppath := datapath.Save(common.SaveTmp, common.PlayerFile)
 	save := clientCurSave()
 	save.Flags &^= 0x8

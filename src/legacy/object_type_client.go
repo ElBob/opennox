@@ -3,30 +3,15 @@ package legacy
 /*
 #include "GAME2_3.h"
 #include "client__draw__debugdraw.h"
-
-bool nox_parse_thing_light_dir(nox_thing* obj, nox_memfile* f, char* attr_value);
-bool nox_parse_thing_light_penumbra(nox_thing* obj, nox_memfile* f, char* attr_value);
-bool nox_parse_thing_client_update(nox_thing* obj, nox_memfile* f, char* attr_value);
-bool nox_parse_thing_pretty_image(nox_thing* obj, nox_memfile* f, char* attr_value);
-
-static bool go_nox_drawable_call_parse_func(bool (*fnc)(nox_thing*, nox_memfile*, char*), nox_thing* a1, nox_memfile* a2, void* a3) {
-	return fnc(a1, a2, a3);
-}
 */
 import "C"
 import (
-	"fmt"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client"
-	"github.com/opennox/opennox/v1/internal/binfile"
 )
 
 func init() {
-	client.RegisterThingParse("LIGHTDIRECTION", wrapClientThingFuncC(C.nox_parse_thing_light_dir))
-	client.RegisterThingParse("LIGHTPENUMBRA", wrapClientThingFuncC(C.nox_parse_thing_light_penumbra))
-	client.RegisterThingParse("CLIENTUPDATE", wrapClientThingFuncC(C.nox_parse_thing_client_update))
-	client.RegisterThingParse("PRETTYIMAGE", wrapClientThingFuncC(C.nox_parse_thing_pretty_image))
 	client.ThingDrawDefault = C.nox_thing_debug_draw
 }
 
@@ -92,14 +77,4 @@ func nox_get_thing_pretty_image(i int) int {
 //export nox_drawable_link_thing
 func nox_drawable_link_thing(a1c *nox_drawable, i int) int {
 	return GetClient().Cli().DrawableLinkThing(asDrawable(a1c), i)
-}
-
-func wrapClientThingFuncC(fnc unsafe.Pointer) client.ThingFieldFunc {
-	return func(typ *client.ObjectType, f *binfile.MemFile, str string, buf []byte) error {
-		StrNCopyBytes(buf, str)
-		if !C.go_nox_drawable_call_parse_func((*[0]byte)(fnc), (*nox_thing)(typ.C()), (*nox_memfile)(f.C()), unsafe.Pointer(&buf[0])) {
-			return fmt.Errorf("failed to parse %q", str)
-		}
-		return nil
-	}
 }

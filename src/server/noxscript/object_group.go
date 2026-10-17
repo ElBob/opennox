@@ -9,6 +9,7 @@ import (
 )
 
 func init() {
+	Register(asm.BuiltinGroupSetRoamFlag, nsGroupSetRoamFlag)
 	Register(asm.BuiltinObjectGroup, nsGetObjectGroup)
 	Register(asm.BuiltinObjectGroupOn, nsObjectGroupOn)
 	Register(asm.BuiltinObjectGroupOff, nsObjectGroupOff)
@@ -316,6 +317,14 @@ func nsGroupHitFarLocation(vm VM) int {
 	g := vm.PopObjGroupNS()
 	if g != nil {
 		g.HitRanged(pos)
+	}
+	return 0
+}
+
+func nsGroupSetRoamFlag(s VM) int {
+	flags := int(s.PopI32())
+	if g := s.PopObjGroupNS(); g != nil {
+		g.SetRoamFlag(flags)
 	}
 	return 0
 }

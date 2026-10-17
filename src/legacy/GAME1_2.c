@@ -3499,18 +3499,6 @@ uint32_t* sub_435690(uint32_t* a1) {
 	return result;
 }
 
-//----- (004356C0) --------------------------------------------------------
-bool nox_client_drawable_testBuff_4356C0(nox_drawable* dr, char a2) {
-	int a1 = dr;
-	int result; // eax
-
-	result = a1;
-	if (a1) {
-		result = ((1 << a2) & *(uint32_t*)(a1 + 124)) != 0;
-	}
-	return result;
-}
-
 //----- (00435700) --------------------------------------------------------
 wchar2_t* sub_435700(wchar2_t* a1, int a2) {
 	wchar2_t* result; // eax

@@ -424,40 +424,6 @@ int sub_4190F0(wchar2_t* a1) {
 	return 1;
 }
 
-//----- (00419130) --------------------------------------------------------
-int nox_xxx_servObjectHasTeam_419130(int a1) {
-	int result; // eax
-
-	result = a1;
-	if (a1) {
-		result = *(uint8_t*)(a1 + 4) != 0;
-	}
-	return result;
-}
-
-//----- (00419150) --------------------------------------------------------
-int nox_xxx_servCompareTeams_419150(int a1, int a2) {
-	char v2;    // cl
-	char v3;    // al
-	int result; // eax
-
-	result = 0;
-	if (a1) {
-		if (a2) {
-			v2 = *(uint8_t*)(a1 + 4);
-			if (v2) {
-				v3 = *(uint8_t*)(a2 + 4);
-				if (v3) {
-					if (v2 == v3) {
-						result = 1;
-					}
-				}
-			}
-		}
-	}
-	return result;
-}
-
 //----- (00419180) --------------------------------------------------------
 int nox_xxx_teamCompare2_419180(void* a1p, unsigned char a2) {
 	int a1 = a1p;

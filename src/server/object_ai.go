@@ -69,7 +69,9 @@ func (obj *Object) ClearActionStack() { // aka nox_xxx_monsterClearActionStack_5
 	}
 }
 
-func (obj *Object) MonsterActionIsScheduled(act ai.ActionType) bool { // nox_xxx_monsterIsActionScheduled_50A090
+// MonsterActionIsScheduled checks if the action is on the AI stack, including the current one.
+// The original nox_xxx_monsterIsActionScheduled_50A090 skips the current action.
+func (obj *Object) MonsterActionIsScheduled(act ai.ActionType) bool {
 	stack := obj.UpdateDataMonster().GetAIStack()
 	for _, v := range stack {
 		if v.Type() == act {

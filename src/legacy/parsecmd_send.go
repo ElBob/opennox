@@ -7,10 +7,11 @@ package legacy
 import "C"
 import "github.com/opennox/opennox/v1/server"
 
-func Nox_xxx_serverHandleClientConsole_443E90(a1 *server.Player, a2 byte, cmd string) {
-	cstr, free := CWString(cmd)
-	defer free()
-	C.nox_xxx_serverHandleClientConsole_443E90((*nox_playerInfo)(a1.C()), C.char(a2), cstr)
+var ServerHandleClientConsole func(pl *server.Player, typ byte, cmd string) int
+
+//export nox_xxx_serverHandleClientConsole_443E90
+func nox_xxx_serverHandleClientConsole_443E90(pl *nox_playerInfo, typ C.char, cmd *wchar2_t) C.int {
+	return C.int(ServerHandleClientConsole(asPlayerS(pl), byte(typ), GoWString(cmd)))
 }
 func Nox_xxx_cmdSayDo_46A4B0(text string, a2 int) {
 	cstr, free := CWString(text)

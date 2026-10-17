@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 	"unsafe"
 
 	"github.com/opennox/libs/log"
@@ -259,7 +260,7 @@ func (s *Server) nox_read_things_alternative_4E2B60() error {
 		return err
 	}
 	s.ReloadItems()
-	legacy.Sub_4F0640()
+	s.sub_4F0640()
 	sub_42BF10()
 	return nil
 }
@@ -441,4 +442,28 @@ func sub_4E3AD0(ind int) int {
 		}
 	}
 	return 1
+}
+
+// sub_4F0640 resolves object type and modifier names in static tables.
+func (s *Server) sub_4F0640() {
+	// {name, type id, ...} entries; '#' prefix is ignored
+	for off := uintptr(208180); ; off += 20 {
+		p := *memmap.PtrPtr(0x587000, off)
+		if p == nil {
+			break
+		}
+		name := strings.TrimPrefix(alloc.GoString((*byte)(p)), "#")
+		*memmap.PtrUint32(0x587000, off+4) = uint32(s.Types.IndByID(name))
+	}
+	// {modifier desc, name, ...} entries; the name is the second field
+	for _, base := range []uintptr{210712, 210856, 211000, 209344} {
+		for off := base; ; off += 24 {
+			p := *memmap.PtrPtr(0x587000, off)
+			if p == nil {
+				break
+			}
+			id := s.Modif.Nox_xxx_modifGetIdByName413290(alloc.GoString((*byte)(p)))
+			*memmap.PtrPtr(0x587000, off-4) = s.Modif.Nox_xxx_modifGetDescById413330(id).C()
+		}
+	}
 }

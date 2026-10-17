@@ -3527,14 +3527,6 @@ int sub_4FF2D0(int a1, int a2) {
 	return result;
 }
 
-//----- (004FF350) --------------------------------------------------------
-int nox_xxx_testUnitBuffs_4FF350(nox_object_t* unit, char buff) {
-	if ((!unit) || (buff < 0) || (buff >= 32)) {
-		return 0;
-	}
-	return ((1 << buff) & unit->buffs) != 0;
-}
-
 //----- (004FF380) --------------------------------------------------------
 void nox_xxx_buffApplyTo_4FF380(nox_object_t* unit, int buff, short dur, char power) {
 	int a1 = unit;
@@ -3584,21 +3576,6 @@ void nox_xxx_buffApplyTo_4FF380(nox_object_t* unit, int buff, short dur, char po
 			nox_xxx_aud_501960(v6, unit, 0, 0);
 		}
 	}
-}
-
-//----- (004FF550) --------------------------------------------------------
-int nox_xxx_unitGetBuffTimer_4FF550(nox_object_t* unit, int buff) {
-	if ((!unit) || (buff < 0) || (buff >= 32)) {
-		return 0;
-	}
-	return unit->buffs_dur[buff]; }
-
-//----- (004FF570) --------------------------------------------------------
-char nox_xxx_buffGetPower_4FF570(nox_object_t* unit, int buff) {
-	if ((!unit) || (buff < 0) || (buff >= 32)) {
-		return 0;
-	}
-	return unit->buffs_power[buff];
 }
 
 //----- (004FF580) --------------------------------------------------------

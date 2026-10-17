@@ -116,7 +116,7 @@ func noxScriptEndGame(v int) {
 }
 
 func noxScriptStartupScreen(v int) {
-	legacy.Nox_script_StartupScreen_516600_A()
+	noxServer.scriptStartupScreenReset()
 	sub5165D0(v)
 }
 
@@ -298,4 +298,25 @@ func (s *noxScript) ScriptCallback(b *server.ScriptCallback, caller, trigger *se
 	out := memmap.PtrUint32(0x5D4594, 1599076)
 	out = s.ScriptCallbackRaw(b, caller, trigger, out)
 	return unsafe.Pointer(out)
+}
+
+func (s *Server) scriptStartupScreenReset() { // nox_script_StartupScreen_516600_A
+	var host *server.Object
+	for _, u := range s.Players.ListUnits() {
+		if u.UpdateDataPlayer().Player.PlayerIndex() == server.HostPlayerIndex {
+			host = u
+			break
+		}
+	}
+	if host != nil {
+		legacy.Sub_4277B0(host, 0xE)
+		for it := host.InvFirstItem; it != nil; {
+			next := it.InvNextItem
+			if it.Class().Has(object.ClassKey) {
+				s.DelayedDelete(it)
+			}
+			it = next
+		}
+	}
+	*memmap.PtrUint32(0x5D4594, 2386832) = 1
 }

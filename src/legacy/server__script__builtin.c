@@ -35,66 +35,6 @@ int nox_xxx_netSendChat_528AC0(nox_object_t* a1, wchar2_t* a2, wchar2_t a3);
 
 extern unsigned int dword_5d4594_2386836;
 
-unsigned int dword_5d4594_1599628 = 0;
-int dword_5d4594_2386848 = 0;
-unsigned int dword_5d4594_2386852 = 0;
-
-//----- (00512E80) --------------------------------------------------------
-int sub_512E80(wchar2_t* a1) {
-	int v1; // eax
-
-	v1 = dword_5d4594_1599628;
-	if (*(int*)&dword_5d4594_1599628 < 1024) {
-		*getMemU32Ptr(0x973F18, 26664 + 4 * dword_5d4594_1599628) = a1;
-		dword_5d4594_1599628 = ++v1;
-	}
-	return v1 - 1;
-}
-
-//----- (00513B00) --------------------------------------------------------
-void nox_xxx_playerCanCarryItem_513B00(nox_object_t* a1p, nox_object_t* a2p) {
-	int a1 = a1p;
-	int a2 = a2p;
-	uint32_t* v2; // ebp
-	int v3;       // edi
-	int v4;       // esi
-	int v5;       // eax
-	int v6;       // eax
-	float2 v7;    // [esp+0h] [ebp-8h]
-
-	if (!*getMemU32Ptr(0x5D4594, 2386856)) {
-		*getMemU32Ptr(0x5D4594, 2386856) = nox_xxx_getNameId_4E3AA0("Glyph");
-	}
-	if (sub_467B00(*(unsigned short*)(a2 + 4), 1) - *(int*)&dword_5d4594_2386848 <= 0) {
-		v2 = 0;
-		v3 = 999999;
-		v4 = nox_xxx_inventoryGetFirst_4E7980(a1);
-		if (v4) {
-			do {
-				if (!(*(uint8_t*)(v4 + 8) & 0x10)) {
-					v5 = *(uint32_t*)(v4 + 16);
-					if (!(v5 & 0x100) && *(unsigned short*)(v4 + 4) != *getMemU32Ptr(0x5D4594, 2386856) &&
-						!nox_xxx_ItemIsDroppable_53EBF0(v4)) {
-						v6 = nox_xxx_shopGetItemCost_50E3D0(1, 0, *(float*)&v4);
-						if (v6 < v3) {
-							v3 = v6;
-							v2 = (uint32_t*)v4;
-						}
-					}
-				}
-				v4 = nox_xxx_inventoryGetNext_4E7990(v4);
-			} while (v4);
-			if (v2) {
-				sub_4ED970(50.0, (float2*)(a1 + 56), &v7);
-				nox_xxx_drop_4ED790(a1, v2, &v7);
-				if (!dword_5d4594_2386852) {
-					nox_xxx_netPriMsgToPlayer_4DA2C0(a1, "pickup.c:CarryingTooMuch", 0);
-					dword_5d4594_2386852 = 1;
-				}
-			}
-		}
-	}
-}
 
 //----- (005123C0) --------------------------------------------------------
 int* nox_server_scriptMoveTo_5123C0(int a1, int a2) {
@@ -355,30 +295,6 @@ int nox_script_GiveExp_516190() {
 		nox_xxx_plyrGiveExp_4EF3A0_exp_level(v2, *(float*)&v0);
 	}
 	return 0;
-}
-
-void nox_script_StartupScreen_516600_A() {
-	int i;  // esi
-	int v1; // esi
-	int v2; // edi
-
-	for (i = nox_xxx_getFirstPlayerUnit_4DA7C0(); i; i = nox_xxx_getNextPlayerUnit_4DA7F0(i)) {
-		if (*(uint8_t*)(*(uint32_t*)(*(uint32_t*)(i + 748) + 276) + 2064) == 31) {
-			break;
-		}
-	}
-	sub_4277B0(i, 0xEu);
-	v1 = nox_xxx_inventoryGetFirst_4E7980(i);
-	if (v1) {
-		do {
-			v2 = nox_xxx_inventoryGetNext_4E7990(v1);
-			if (*(uint8_t*)(v1 + 8) & 0x40) {
-				nox_xxx_delayedDeleteObject_4E5CC0(v1);
-			}
-			v1 = v2;
-		} while (v2);
-	}
-	*getMemU32Ptr(0x5D4594, 2386832) = 1;
 }
 
 //----- (005166A0) --------------------------------------------------------

@@ -1,12 +1,16 @@
 package opennox
 
 import (
+	"image"
 	"unsafe"
+
+	noxcolor "github.com/opennox/libs/color"
 
 	"github.com/opennox/libs/client/keybind"
 
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/gui"
+	"github.com/opennox/opennox/v1/client/noxrender"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/sound"
@@ -88,7 +92,7 @@ func (c *Client) nox_xxx_wndLoadMainBG_4A2210() int {
 	}
 	v1 := gui.MainBg.ChildByID(98)
 	v1.SetFunc93(sub4A18E0)
-	v1.SetDraw(gui.WrapDrawFuncC(legacy.Get_sub_4A22A0()))
+	v1.SetDraw(mainMenuBgDraw)
 	if memmap.Uint32(0x587000, 168832) != 0 {
 		v3 := memmap.PtrOff(0x587000, 168832)
 		v2 := *(**byte)(v3)
@@ -418,4 +422,90 @@ func nox_xxx_windowMainMenuProc_4A1DC0(a1 *gui.Window, ev gui.WindowEvent) gui.W
 	default:
 		return nil
 	}
+}
+
+// mainMenuEye is an entry of the blinking eyes animation on the main menu background.
+type mainMenuEye struct {
+	Name     *byte
+	Img      noxrender.ImageHandle
+	Pos      [2]int32
+	Closed   int32
+	OpenMin  int32
+	OpenMax  int32
+	CloseMin int32
+	CloseMax int32
+	Timer    int32
+	Blink    int32
+	Cooldown int32
+}
+
+var _ = [1]struct{}{}[48-unsafe.Sizeof(mainMenuEye{})]
+
+func mainMenuEyes() []mainMenuEye {
+	p := (*mainMenuEye)(memmap.PtrOff(0x587000, 168832))
+	n := 0
+	for e := unsafe.Slice(p, 64); e[n].Name != nil; n++ {
+	}
+	return unsafe.Slice(p, n+1)
+}
+
+func mainMenuBgDraw(win *gui.Window, draw *gui.WindowData) int { // sub_4A22A0
+	c := noxClient
+	c.GetInputSeq() // nox_xxx_bookGet_430B40_get_mouse_prev_seq
+	r := c.r
+	pos := win.GlobalPos()
+	if !win.Flags.Has(gui.StatusImage) {
+		if draw.BgColorVal != 0x80000000 {
+			r.Data().SetColor2(noxcolor.RGBA5551(draw.BgColorVal))
+			r.DrawRectFilledOpaque(pos.X, pos.Y, win.SizeVal.X, win.SizeVal.Y, r.Data().Color2())
+		}
+	} else {
+		pos = pos.Add(draw.ImgPtVal)
+		img := draw.BgImageHnd
+		if draw.Field0&2 != 0 {
+			img = draw.HlImageHnd
+		}
+		r.DrawImageAt(r.Bag.AsImage(img), pos)
+	}
+	eyes := mainMenuEyes()
+	if eyes[0].Img != nil {
+		for i := range eyes {
+			e := &eyes[i]
+			if e.Cooldown != 0 {
+				e.Cooldown--
+			}
+			if e.Blink != 0 {
+				e.Blink--
+				e.Cooldown = int32(c.srv.Rand.Other.Int(60, 120))
+			}
+			e.Timer--
+			if e.Timer+1 == 1 {
+				if e.Closed != 0 {
+					e.Closed = 0
+					e.Timer = int32(c.srv.Rand.Other.Int(int(e.OpenMin), int(e.OpenMax)))
+					e.Cooldown = int32(c.srv.Rand.Other.Int(60, 90))
+				} else {
+					e.Closed = 1
+					e.Timer = int32(c.srv.Rand.Other.Int(int(e.CloseMin), int(e.CloseMax)))
+				}
+			} else if e.Closed == 0 && e.Cooldown == 0 && e.Blink == 0 && c.srv.Rand.Other.Int(0, 100) > 75 {
+				e.Blink = int32(c.srv.Rand.Other.Int(4, 8))
+			}
+			if i+1 >= len(eyes) || eyes[i+1].Img == nil {
+				break
+			}
+		}
+	}
+	if eyes[0].Name != nil {
+		for i := range eyes {
+			e := &eyes[i]
+			if e.Closed == 0 && e.Blink == 0 {
+				r.DrawImageAt(r.Bag.AsImage(e.Img), image.Pt(int(e.Pos[0]), int(e.Pos[1])))
+			}
+			if i+1 >= len(eyes) || eyes[i+1].Name == nil {
+				break
+			}
+		}
+	}
+	return 1
 }

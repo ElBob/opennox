@@ -1443,3 +1443,48 @@ func Get_dword_5d4594_2488620() uint32 {
 func Nox_xxx_playerGet_470A90() int {
 	return int(C.dword_5d4594_1096252)
 }
+func Get_dword_5d4594_1313740_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313740))
+}
+func Get_dword_5d4594_1313816_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313816))
+}
+func Get_dword_5d4594_1313804_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313804))
+}
+func Get_dword_5d4594_1522956_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522956))
+}
+func Get_dword_5d4594_1304328_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1304328))
+}
+func Get_dword_5d4594_1313692_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313692))
+}
+func Get_dword_5d4594_1316492_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316492))
+}
+func Get_dword_5d4594_1316448_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316448))
+}
+func Get_dword_5d4594_1316476_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316476))
+}
+func Get_dword_5d4594_1316472_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316472))
+}
+func Get_dword_5d4594_1316452_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316452))
+}
+func Get_dword_5d4594_1316456_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316456))
+}
+func Get_dword_5d4594_1316436_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316436))
+}
+func Get_dword_5d4594_1316484_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316484))
+}
+func Get_nox_xxx_lightningSteps_587000_178216_ptr() *uint32 {
+	return (*uint32)(unsafe.Pointer(&C.nox_xxx_lightningSteps_587000_178216))
+}

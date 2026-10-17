@@ -9,6 +9,7 @@ import (
 
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -134,9 +135,30 @@ func (s noxScriptNS) IsTrading() bool {
 	return ud != nil && ud.Trade70 != nil
 }
 
-func (s noxScriptNS) SetHalberd(upgrade ns.HalberdLevel) {
-	//TODO implement me
-	panic("implement me")
+func (s noxScriptNS) SetHalberd(upgrade ns.HalberdLevel) { // nox_script_OblivionGive_516890
+	pl := s.s.Players.ByInd(server.HostPlayerIndex)
+	if pl == nil || pl.PlayerUnit == nil {
+		return
+	}
+	u := pl.PlayerUnit
+	const oblivion = object.WeaponStaffOblivionHalberd | object.WeaponStaffOblivionHeart |
+		object.WeaponStaffOblivionWierdling | object.WeaponStaffOblivionOrb
+	equipped := false
+	for it := u.InvFirstItem; it != nil; it = it.InvNextItem {
+		if it.Class().Has(object.ClassWeapon) && it.SubClass().AsWeapon().HasAny(oblivion) {
+			equipped = it.Flags().Has(object.FlagEquipped)
+			s.s.DelayedDelete(it)
+			break
+		}
+	}
+	if upgrade < 0 || upgrade > ns.OblivionOrb {
+		return
+	}
+	typ := alloc.GoString((*byte)(*memmap.PtrPtr(0x587000, 247336+4*uintptr(upgrade))))
+	item := legacy.Nox_xxx_playerRespawnItem_4EF750(u, typ, nil, 1, 1)
+	if equipped && item != nil {
+		legacy.Nox_xxx_playerTryEquip_4F2F70(u, item)
+	}
 }
 
 func (s noxScriptNS) ImmediateBlind() {

@@ -30,7 +30,7 @@ import (
 
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
-	"github.com/opennox/opennox/v1/legacy/cnxz"
+	"github.com/opennox/opennox/v1/internal/nxz"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
@@ -64,7 +64,7 @@ func nox_xxx_mapWriteSectionsMB_426E20(a1 unsafe.Pointer) int {
 
 //export nox_xxx_nxzCompressFile_57BDD0
 func nox_xxx_nxzCompressFile_57BDD0(a1, a2 *C.char) int {
-	if err := cnxz.CompressFile(GoString(a1), GoString(a2)); err != nil {
+	if err := nxz.CompressFile(GoString(a1), GoString(a2)); err != nil {
 		mapLog.Println(err)
 		return 0
 	}

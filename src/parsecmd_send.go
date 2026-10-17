@@ -24,10 +24,6 @@ func nox_xxx_netServerCmd_440950(id byte, cmd string) {
 	nox_xxx_netClientSend2_4E53C0(server.HostPlayerIndex, buf, 0, 1)
 }
 
-func nox_xxx_serverHandleClientConsole_443E90(pl *server.Player, a2 byte, cmd string) {
-	legacy.Nox_xxx_serverHandleClientConsole_443E90(pl, a2, cmd)
-}
-
 func nox_xxx_cmdSayDo_46A4B0(text string, a2 int) {
 	legacy.Nox_xxx_cmdSayDo_46A4B0(text, a2)
 }

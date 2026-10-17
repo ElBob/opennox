@@ -14,6 +14,9 @@ int sub_4ADA40();
 char* nox_server_currentMapGetFilename_409B30();
 void nox_xxx_motd_4467F0();
 int sub_40A710(int a1);
+int sub_5095E0();
+int nox_xxx_printToAll_4D9FD0(char a1, wchar2_t* a2, ...);
+static void go_printToAll_flags(char a1, wchar2_t* str) { nox_xxx_printToAll_4D9FD0(a1, str); }
 */
 import "C"
 import (
@@ -58,3 +61,12 @@ func CmdShowMotd() { C.nox_xxx_motd_4467F0() }
 
 // CmdRateForQuality returns the network rate for a connection quality (sub_40A710); available in all builds.
 func CmdRateForQuality(a1 int) int { return int(C.sub_40A710(C.int(a1))) }
+
+func Sub_5095E0() { C.sub_5095E0() }
+
+// PrintToAllFlags sends a text message to all players. As in the original, the text is used as a format string.
+func PrintToAllFlags(flags byte, text string) {
+	cstr, free := CWString(text)
+	defer free()
+	C.go_printToAll_flags(C.char(flags), cstr)
+}

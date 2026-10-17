@@ -177,7 +177,7 @@ func MixRecvFromReplacer(pc net.PacketConn, buf1 []byte, from netip.AddrPort) {
 				v9 &= 0xEF
 			}
 			if v10.ControllingPlayer().PlayerClass() == player.Warrior || v36 {
-				if legacy.Mix_MouseKeyboardWeaponRoll(v10, int8(v9)) != 0 {
+				if gameexWeaponRoll(v10, int8(v9) != 0) {
 					var buf [4]byte
 					binary.LittleEndian.PutUint16(buf[0:], 0xF13A)
 					binary.LittleEndian.PutUint16(buf[2:], 2)
@@ -194,7 +194,7 @@ func MixRecvFromReplacer(pc net.PacketConn, buf1 []byte, from netip.AddrPort) {
 				v43, free := alloc.Make([]byte{}, 2+len(data)+1)
 				defer free()
 				copy(v43[2:], data)
-				if legacy.PlayerInfoStructParser_0(unsafe.Pointer(&v43[0])) != 0 {
+				if func() bool { _, ok := gameexFindPlayer(v43); return ok }() {
 					var buf [22]byte
 					binary.LittleEndian.PutUint16(buf[0:], 0xF13A)
 					binary.LittleEndian.PutUint16(buf[2:], 6)
@@ -219,7 +219,7 @@ func MixRecvFromReplacer(pc net.PacketConn, buf1 []byte, from netip.AddrPort) {
 			v39, free39 := alloc.New(int32(0))
 			defer free39()
 			copy(v43[2:], data)
-			if legacy.PlayerInfoStructParser_1(unsafe.Pointer(&v43[0]), v39) != 0 {
+			if func() bool { t, ok := gameexFindPlayer(v43); *v39 = int32(uintptr(unsafe.Pointer(t))); return ok }() {
 				// TODO: decipher it
 
 				//buf[2] = 7
@@ -245,7 +245,7 @@ func MixRecvFromReplacer(pc net.PacketConn, buf1 []byte, from netip.AddrPort) {
 		if (legacy.Get_gameex_flags()>>3)&1 != 0 {
 			ti := binary.LittleEndian.Uint32(buf1)
 			v35 := noxServer.getObjectFromNetCode(int(ti))
-			legacy.PlayerDropATrap(v35)
+			gameexDropTrapFor(v35)
 		}
 	}
 }
@@ -266,7 +266,7 @@ func gameexDropTrap() {
 		}
 		if noxflags.HasGame(noxflags.GameHost) { // checkGameFlags isServer
 			v9 := noxServer.getObjectFromNetCode(legacy.ClientPlayerNetCode())
-			legacy.PlayerDropATrap(v9)
+			gameexDropTrapFor(v9)
 		} else {
 			// TODO: this currently relies on extension packets, which should not be required for this
 			//       it can be done the "natural way": find the trap in the client-side data structures
@@ -295,7 +295,7 @@ func call_OnLibraryNotice_265(arg3 int) {
 	}
 	if noxflags.HasGame(noxflags.GameHost) {
 		if pl := c.srv.Players.Host(); pl != nil && pl.PlayerClass() == player.Warrior && pl.PlayerUnit != nil {
-			if legacy.Mix_MouseKeyboardWeaponRoll(pl.PlayerUnit, int8(a2a)) != 0 {
+			if gameexWeaponRoll(pl.PlayerUnit, int8(a2a) != 0) {
 				clientPlaySoundSpecial(sound.SoundNextWeapon, 100)
 			}
 		}
@@ -317,7 +317,7 @@ func gameexOnKeyboardPress(kcode keybind.Key) {
 				return
 			}
 			if noxflags.HasGame(noxflags.GameHost) { // isServer
-				if u := noxServer.Players.HostUnit(); u != nil && legacy.Mix_MouseKeyboardWeaponRoll(u, int8(v8)) != 0 {
+				if u := noxServer.Players.HostUnit(); u != nil && gameexWeaponRoll(u, int8(v8) != 0) {
 					clientPlaySoundSpecial(sound.SoundNextWeapon, 100)
 				}
 			} else {
@@ -358,7 +358,7 @@ func gameexOnKeyboardPress(kcode keybind.Key) {
 				wstr := alloc.GoString16S(wndEntryNames[i][:])
 				id := uint(1520 + i)
 				a2b.Func94(&WindowEvent0x400d{Str: wstr, Val: -1})
-				if legacy.GetFlagValueFromFlagIndex(int(id)-1519)&legacy.Get_gameex_flags() != 0 {
+				if gameexFlagValue(int(id)-1519)&legacy.Get_gameex_flags() != 0 {
 					v14 := modifyWndPntr.ChildByID(id)
 					v14.DrawData().Field0 |= 0x4
 				} else {

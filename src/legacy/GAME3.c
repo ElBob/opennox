@@ -34,7 +34,6 @@
 
 #include "client__draw__drawrays.h"
 #include "client__draw__fx.h"
-#include "client__draw__lvupdraw.h"
 
 #include "common/fs/nox_fs.h"
 #include "common__binfile.h"

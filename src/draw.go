@@ -680,7 +680,7 @@ func (c *Client) drawCreatureFrontEffects(vp *noxrender.Viewport, dr *client.Dra
 			drawWhiteSpark = c.Things.IndByID("WhiteSpark")
 		}
 		pos := dr.Pos()
-		legacy.Nox_xxx_drawEnergyBolt_499710(pos.X, pos.Y, dr.Z(), drawWhiteSpark)
+		c.drawEnergyBolt(pos, int16(dr.Z()), drawWhiteSpark)
 	}
 	if dr.HasEnchant(server.ENCHANT_CONFUSED) || dr.HasEnchant(server.ENCHANT_HELD) || dr.HasEnchant(server.ENCHANT_ANTI_MAGIC) || dr.HasEnchant(server.ENCHANT_CHARMING) {
 		pos := vp.ToScreenPos(dr.Pos())

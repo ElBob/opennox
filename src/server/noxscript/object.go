@@ -96,6 +96,10 @@ func init() {
 	Register(asm.BuiltinHitLocation, nsHitLocation)
 	Register(asm.BuiltinHitFarLocation, nsHitFarLocation)
 	Register(asm.BuiltinSetShopkeeperText, nsSetShopkeeperText)
+	Register(asm.BuiltinMakeFriendly, nsMakeFriendly)
+	Register(asm.BuiltinMakeEnemy, nsMakeEnemy)
+	Register(asm.BuiltinBecomePet, nsBecomePet)
+	Register(asm.BuiltinBecomeEnemy, nsBecomeEnemy)
 }
 
 func nsGetTrigger(vm VM) int {
@@ -848,6 +852,34 @@ func nsSetShopkeeperText(vm VM) int {
 	obj := vm.PopObjectNS()
 	if obj != nil {
 		obj.SetShopText(ns4.StringID(str))
+	}
+	return 0
+}
+
+func nsMakeFriendly(s VM) int {
+	if obj := s.PopObjectNS(); obj != nil {
+		s.NoxScript().MakeFriendly(obj)
+	}
+	return 0
+}
+
+func nsMakeEnemy(s VM) int {
+	if obj := s.PopObjectNS(); obj != nil {
+		s.NoxScript().MakeEnemy(obj)
+	}
+	return 0
+}
+
+func nsBecomePet(s VM) int {
+	if obj := s.PopObjectNS(); obj != nil {
+		s.NoxScript().BecomePet(obj)
+	}
+	return 0
+}
+
+func nsBecomeEnemy(s VM) int {
+	if obj := s.PopObjectNS(); obj != nil {
+		s.NoxScript().BecomeEnemy(obj)
 	}
 	return 0
 }

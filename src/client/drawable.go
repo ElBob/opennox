@@ -924,3 +924,19 @@ func (s *Drawable) dump() *debugObject {
 func (s *Drawable) MarshalJSON() ([]byte, error) {
 	return json.Marshal(s.dump())
 }
+
+// NetCodeCli returns the net code of the drawable as sent by the client.
+// Static objects have the high bit set.
+func (s *Drawable) NetCodeCli() uint32 { // nox_xxx_netGetUnitCodeCli_578B00
+	if s == nil {
+		return 0
+	}
+	code := s.NetCode32
+	if code >= 0x8000 {
+		return 0
+	}
+	if uint32(s.ObjClass)&0x20400000 != 0 {
+		code |= 0x8000
+	}
+	return code
+}

@@ -11,6 +11,7 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/opennox/libs/console"
 	"github.com/opennox/libs/datapath"
 	"github.com/opennox/libs/env"
 	"github.com/opennox/libs/log"
@@ -839,7 +840,27 @@ func nox_xxx_printCentered_445490(str string) {
 	if len(str) == 0 {
 		return
 	}
-	legacy.Nox_xxx_printCentered_445490(str)
+	printCentered(str)
+}
+
+// printCentered shows a system message in the center of the screen and in the console.
+func printCentered(str string) { // nox_xxx_printCentered_445490
+	ind := legacy.Get_dword_5d4594_825736() + 1
+	if ind == 3 {
+		ind = 0
+	}
+	legacy.Set_dword_5d4594_825736(ind)
+	const (
+		slotSize = 644
+		textSize = 636
+	)
+	buf := unsafe.Slice((*uint16)(memmap.PtrOff(0x5D4594, 823804+slotSize*uintptr(ind))), textSize/2)
+	alloc.StrCopy16(buf, str)
+	fps := noxServer.TickRate()
+	*memmap.PtrUint32(0x5D4594, 824440+slotSize*uintptr(ind)) = noxServer.Frame() + 4*fps + fps
+	*memmap.PtrUint8(0x5D4594, 824444+slotSize*uintptr(ind)) = 0
+	format := strMan.GetStringInFile("systemmsg", "C:\\NoxPost\\src\\Client\\Gui\\guimsg.c")
+	legacy.GetConsole().Print(console.ColorRed, fmt.Sprintf(strings.ReplaceAll(format, "%S", "%s"), str))
 }
 
 var (

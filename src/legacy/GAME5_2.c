@@ -889,23 +889,6 @@ int sub_56FF80(int a1, int a2) {
 	return result;
 }
 
-//----- (00578B00) --------------------------------------------------------
-unsigned int nox_xxx_netGetUnitCodeCli_578B00(int a1) {
-	unsigned int result; // eax
-
-	if (!a1) {
-		return 0;
-	}
-	result = *(uint32_t*)(a1 + 128);
-	if (result >= 0x8000) {
-		return 0;
-	}
-	if (*(uint32_t*)(a1 + 112) & 0x20400000) {
-		BYTE1(result) |= 0x80u;
-	}
-	return result;
-}
-
 //----- (00578B30) --------------------------------------------------------
 int nox_xxx_netClearHighBit_578B30(short a1) { return a1 & 0x7FFF; }
 

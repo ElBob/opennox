@@ -782,6 +782,7 @@ extern nox_render_data_t* nox_draw_curDrawData_3799572;
 */
 import "C"
 import (
+	"math"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client/gui"
@@ -1487,4 +1488,10 @@ func Get_dword_5d4594_1316484_ptr() *uint32 {
 }
 func Get_nox_xxx_lightningSteps_587000_178216_ptr() *uint32 {
 	return (*uint32)(unsafe.Pointer(&C.nox_xxx_lightningSteps_587000_178216))
+}
+func Get_qword_581450_9544() float64 {
+	return math.Float64frombits(uint64(C.qword_581450_9544))
+}
+func Get_qword_581450_9552() float64 {
+	return math.Float64frombits(uint64(C.qword_581450_9552))
 }

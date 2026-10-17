@@ -3000,18 +3000,6 @@ int nox_xxx_unitIsPlant_534A10(int a1) {
 	return *(unsigned short*)(a1 + 4) == v1;
 }
 
-//----- (00534A40) --------------------------------------------------------
-int nox_xxx_unitIsZombie_534A40(int a1) {
-	int v1; // eax
-
-	if (!*getMemU32Ptr(0x5D4594, 2488532)) {
-		*getMemU32Ptr(0x5D4594, 2488532) = nox_xxx_getNameId_4E3AA0("Zombie");
-		*getMemU32Ptr(0x5D4594, 2488536) = nox_xxx_getNameId_4E3AA0("VileZombie");
-	}
-	v1 = *(unsigned short*)(a1 + 4);
-	return (unsigned short)v1 == *getMemU32Ptr(0x5D4594, 2488532) || v1 == *getMemU32Ptr(0x5D4594, 2488536);
-}
-
 //----- (00534A90) --------------------------------------------------------
 char nox_xxx_mobActionGetUp_534A90(int a1) {
 	char result; // al

@@ -373,15 +373,6 @@ int sub_509FF0(int a1) {
 	return result;
 }
 
-//----- (0050A010) --------------------------------------------------------
-int nox_xxx_monsterActionIsCondition_50A010(int a1) {
-	int result; // eax
-
-	result = a1 < 39;
-	LOBYTE(result) = a1 > 39;
-	return result;
-}
-
 //----- (0050A020) --------------------------------------------------------
 int nox_xxx_mobActionGet_50A020(int a1) {
 	return *(uint32_t*)(*(uint32_t*)(a1 + 748) + 24 * (*(char*)(*(uint32_t*)(a1 + 748) + 544) + 23));
@@ -411,25 +402,6 @@ int sub_50A040(int a1) {
 	return *(uint32_t*)(v1 + 8 * (3 * v2 + 69));
 }
 // 50A06B: variable 'v4' is possibly undefined
-
-//----- (0050A090) --------------------------------------------------------
-int nox_xxx_monsterIsActionScheduled_50A090(int a1, int a2) {
-	int v2;      // ecx
-	int v3;      // eax
-	uint32_t* i; // ecx
-
-	v2 = *(uint32_t*)(a1 + 748);
-	v3 = *(char*)(v2 + 544) - 1;
-	if (v3 < 0) {
-		return 0;
-	}
-	for (i = (uint32_t*)(v2 + 8 * (3 * v3 + 69)); *i != a2; i -= 6) {
-		if (--v3 < 0) {
-			return 0;
-		}
-	}
-	return 1;
-}
 
 //----- (0050A360) --------------------------------------------------------
 int* nox_xxx_monsterAction_50A360(int a1, int a2) {

@@ -1093,11 +1093,6 @@ FILE* sub_4E43F0(char* a1) {
 	return result;
 }
 
-//----- (004E44F0) --------------------------------------------------------
-void nox_xxx_unitNeedSync_4E44F0(nox_object_t* a1) {
-	*(uint32_t*)((int)a1 + 152) = -1;
-}
-
 //----- (004E4500) --------------------------------------------------------
 int* sub_4E4500(nox_object_t* a1p, int a2, int a3, int a4) {
 	int a1 = a1p;
@@ -2673,9 +2668,6 @@ int sub_4E7700(int a1) {
 	return result;
 }
 
-//----- (004E7980) --------------------------------------------------------
-int nox_xxx_inventoryGetFirst_4E7980(int a1) { return *(uint32_t*)(a1 + 504); }
-
 //----- (004E7990) --------------------------------------------------------
 int nox_xxx_inventoryGetNext_4E7990(int a1) {
 	int result; // eax
@@ -2878,22 +2870,6 @@ int nox_xxx_unitCountSlaves_4E7CF0(int a1, int a2, int a3) {
 	for (i = *(uint32_t**)(a1 + 516); i; i = (uint32_t*)i[128]) {
 		if (a2 & i[2]) {
 			if (a3 & i[3]) {
-				++result;
-			}
-		}
-	}
-	return result;
-}
-
-//----- (004E7D30) --------------------------------------------------------
-int nox_xxx_inventoryCountObjects_4E7D30(int a1, int a2) {
-	int result; // eax
-	int i;      // ecx
-
-	result = 0;
-	if (a1) {
-		for (i = *(uint32_t*)(a1 + 504); i; i = *(uint32_t*)(i + 496)) {
-			if (!a2 || *(unsigned short*)(i + 4) == a2 && !(*(uint8_t*)(i + 16) & 0x20)) {
 				++result;
 			}
 		}

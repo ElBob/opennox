@@ -843,7 +843,12 @@ func (obj *Object) CountInventoryWithType(typ int) int { // nox_xxx_inventoryCou
 		return 0
 	}
 	if typ == 0 {
-		return obj.CountInventory(nil)
+		// unlike filtered counts, this one includes destroyed items
+		cnt := 0
+		for it := obj.InvFirstItem; it != nil; it = it.InvNextItem {
+			cnt++
+		}
+		return cnt
 	}
 	return obj.CountInventory(func(it *Object) bool {
 		return int(it.TypeInd) == typ
@@ -1320,7 +1325,7 @@ func (obj *Object) EnchantPower(v EnchantID) int { // nox_xxx_buffGetPower_4FF57
 	if obj == nil || v >= 32 {
 		return 0
 	}
-	return int(obj.BuffsDur[v])
+	return int(obj.BuffsPower[v])
 }
 
 func (obj *Object) Aggression() float32 {

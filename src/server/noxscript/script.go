@@ -10,6 +10,8 @@ import (
 
 func init() {
 	Register(asm.BuiltinStopScript, nsAbort)
+	Register(asm.BuiltinIsTalking, nsIsTalking)
+	Register(asm.BuiltinIsTrading, nsIsTrading)
 	Register(asm.BuiltinIntToString, nsIntToString)
 	Register(asm.BuiltinFloatToString, nsFloatToString)
 	Register(asm.BuiltinRandom, nsRandomInt)
@@ -186,5 +188,15 @@ func nsGetCharacterData(s VM) int {
 	fld := int(s.PopI32())
 	val := s.NoxScript().GetCharacterData(fld)
 	s.PushI32(int32(val))
+	return 0
+}
+
+func nsIsTalking(s VM) int {
+	s.PushBool(s.NoxScript().IsTalking())
+	return 0
+}
+
+func nsIsTrading(s VM) int {
+	s.PushBool(s.NoxScript().IsTrading())
 	return 0
 }

@@ -13,14 +13,20 @@ func (s noxScriptNS) Unused5e(id string) int {
 
 func (s noxScriptNS) Unused74(arg1 int, arg2 int) {}
 
-func (s noxScriptNS) Unknownb8(id int) bool {
-	//TODO implement me
-	panic("implement me")
+// Unknownb8 checks the subclass bit set by MakeFriendly.
+func (s noxScriptNS) Unknownb8(id int) bool { // nox_script_builtin_516790
+	obj := s.s.noxScript.ScriptToObject(id)
+	// For an invalid object the original code pushes an uninitialized value
+	// (the unused "this" argument); we push 0 instead.
+	return obj != nil && obj.ObjSubClass&0x100 != 0
 }
 
-func (s noxScriptNS) Unknownb9(id int) bool {
-	//TODO implement me
-	panic("implement me")
+// Unknownb9 checks the subclass bit set by BecomePet.
+func (s noxScriptNS) Unknownb9(id int) bool { // nox_script_builtin_516850
+	obj := s.s.noxScript.ScriptToObject(id)
+	// For an invalid object the original code pushes an uninitialized value
+	// (the unused "this" argument); we push 0 instead.
+	return obj != nil && obj.ObjSubClass&0x80 != 0
 }
 
 func (s noxScriptNS) Unknownc4() {

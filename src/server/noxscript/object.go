@@ -10,6 +10,7 @@ import (
 )
 
 func init() {
+	Register(asm.BuiltinGiveXp, nsGiveXp)
 	Register(asm.BuiltinGetTrigger, nsGetTrigger)
 	Register(asm.BuiltinGetCaller, nsGetCaller)
 	Register(asm.BuiltinIsTrigger, nsIsTrigger)
@@ -880,6 +881,14 @@ func nsBecomePet(s VM) int {
 func nsBecomeEnemy(s VM) int {
 	if obj := s.PopObjectNS(); obj != nil {
 		s.NoxScript().BecomeEnemy(obj)
+	}
+	return 0
+}
+
+func nsGiveXp(s VM) int {
+	xp := s.PopF32()
+	if obj := s.PopObjectNS(); obj != nil {
+		obj.GiveXp(xp)
 	}
 	return 0
 }

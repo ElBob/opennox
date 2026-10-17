@@ -6,7 +6,6 @@ package legacy
 #include "GAME2.h"
 #include "GAME3_2.h"
 
-void sub_409FB0_settings(short a1, unsigned short a2);
 int sub_4D0DC0(int a1, int a2);
 int sub_489FF0(int a1, int a2, const void* a3);
 */
@@ -42,9 +41,6 @@ func Nox_xxx_rateUpdate_40A6D0(a1 int) {
 }
 func Sub_4D0D90(a1 int) {
 	C.sub_4D0D90(C.int(a1))
-}
-func Sub_409FB0_settings(a1 uint16, a2 uint16) {
-	C.sub_409FB0_settings(C.short(a1), C.ushort(a2))
 }
 func Sub_409EC0(a1 int) {
 	C.sub_409EC0(C.int(a1))

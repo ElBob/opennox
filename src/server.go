@@ -31,8 +31,8 @@ import (
 	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"github.com/opennox/opennox/v1/internal/netlist"
+	"github.com/opennox/opennox/v1/internal/nxz"
 	"github.com/opennox/opennox/v1/legacy"
-	"github.com/opennox/opennox/v1/legacy/cnxz"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
@@ -792,7 +792,7 @@ func (s *Server) nox_server_loadMapFile_4CF5F0(mname string, noCrypt bool) error
 		if _, err := ifs.Stat(zname); err != nil {
 			return err
 		}
-		if err := cnxz.DecompressFile(zname, fname); err != nil {
+		if err := nxz.DecompressFile(zname, fname); err != nil {
 			return fmt.Errorf("cannot decompress map %q: %w", zname, err)
 		}
 	}

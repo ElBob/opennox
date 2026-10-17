@@ -11,9 +11,6 @@ package legacy
 #include "GAME4.h"
 extern uint32_t nox_tile_def_cnt;
 extern uint32_t dword_5d4594_251572;
-int nox_free_tile_defs();
-int sub_485F30();
-int sub_4F0640();
 */
 import "C"
 import (
@@ -52,15 +49,6 @@ func sub_42BFE0() { Sub_42BFE0() }
 
 //export sub_4E3AD0
 func sub_4E3AD0(ind int) int { return Sub_4E3AD0(ind) }
-func Sub_4F0640() {
-	C.sub_4F0640()
-}
-func Sub_485CF0() {
-	C.nox_free_tile_defs()
-}
-func Sub_485F30() {
-	C.sub_485F30()
-}
 
 func Nox_thing_skip_spells_415100(f *binfile.MemFile) {
 	C.nox_thing_skip_spells_415100((*nox_memfile)(f.C()))

@@ -383,7 +383,7 @@ func (c *Client) nox_client_queueWallsDraw(vp *noxrender.Viewport, xmin, ymin in
 
 func (c *Client) nox_client_drawBackWalls(vp *noxrender.Viewport) {
 	for _, v20 := range c.BackWalls {
-		legacy.Nox_xxx_drawWalls_473C10(vp, v20)
+		c.drawWall(vp, v20)
 	}
 	c.BackWalls = c.BackWalls[:0]
 }
@@ -391,7 +391,7 @@ func (c *Client) nox_client_drawBackWalls(vp *noxrender.Viewport) {
 func (c *Client) nox_client_maybeDrawFrontWalls(vp *noxrender.Viewport) { // nox_client_maybeDrawFrontWalls_475810_F
 	if nox_client_drawFrontWalls_80812 {
 		for _, wl := range c.FrontWalls {
-			legacy.Nox_xxx_drawWalls_473C10(vp, wl)
+			c.drawWall(vp, wl)
 		}
 	} else {
 		for _, wl := range c.FrontWalls {
@@ -483,7 +483,7 @@ LOOP:
 	for len(objects) > 0 || len(walls) > 0 {
 		if sy >= wy {
 			if len(walls) != 0 {
-				legacy.Nox_xxx_drawWalls_473C10(vp, walls[0])
+				c.drawWall(vp, walls[0])
 				walls = walls[1:]
 				if len(walls) != 0 {
 					wy = legacy.Sub_476080(walls[0].C())

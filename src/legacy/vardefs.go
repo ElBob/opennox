@@ -891,6 +891,18 @@ func Get_dword_5d4594_1193156() int {
 func Get_dword_5d4594_1193188() int {
 	return int(C.dword_5d4594_1193188)
 }
+func Get_dword_5d4594_3807116() int {
+	return int(C.dword_5d4594_3807116)
+}
+func Get_dword_5d4594_3807136() int {
+	return int(C.dword_5d4594_3807136)
+}
+func Get_dword_5d4594_3807140() int {
+	return int(C.dword_5d4594_3807140)
+}
+func Get_dword_5d4594_3807152() int {
+	return int(C.dword_5d4594_3807152)
+}
 func Get_dword_5d4594_3798840() int {
 	return int(C.dword_5d4594_3798840)
 }

@@ -228,7 +228,6 @@ int sub_473960();
 void sub_473970(int2* a1, int2* a2);
 int sub_4739E0(uint32_t* a1, int2* a2, int2* a3);
 int sub_473A10(uint32_t* a1, int2* a2, uint32_t* a3);
-void nox_xxx_drawWalls_473C10(nox_draw_viewport_t* vp, void* data);
 int sub_474B40(nox_drawable* dr);
 int nox_xxx_sprite_4756E0_drawable(nox_drawable* dr);
 int nox_xxx_sprite_475740_drawable(nox_drawable* dr);

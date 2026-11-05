@@ -35,6 +35,7 @@ var (
 	Get_nox_client_texturedFloors_154956 func() bool
 	Sub_480860                           func(dst, src []uint16, w int, a4p, a5p []uint32)
 	Sub_473970                           func(a1 image.Point) image.Point
+	Sub_4831C0                           func(a1, a2 unsafe.Pointer) int16
 	Nox_client_isConnected               func() bool
 	Nox_video_inFadeTransition_44E0D0    func() int
 )
@@ -544,4 +545,11 @@ func Sub_474B40(dr *client.Drawable) int {
 }
 func Sub_495BB0(dr *client.Drawable, vp *noxrender.Viewport) {
 	C.sub_495BB0((*nox_drawable)(dr.C()), (*nox_draw_viewport_t)(vp.C()))
+}
+
+// sub_4831C0 keeps the original C signature: both ints hold pointers on a 32-bit build.
+//
+//export sub_4831C0
+func sub_4831C0(a1, a2 C.int) C.short {
+	return C.short(Sub_4831C0(unsafe.Pointer(uintptr(uint32(a1))), unsafe.Pointer(uintptr(uint32(a2)))))
 }

@@ -1,6 +1,8 @@
 package opennox
 
 import (
+	"unsafe"
+
 	"github.com/opennox/libs/types"
 
 	"github.com/opennox/opennox/v1/client"
@@ -245,6 +247,7 @@ func init() {
 	legacy.Get_nox_client_texturedFloors_154956 = get_nox_client_texturedFloors_154956
 	legacy.Sub_480860 = sub_480860
 	legacy.Sub_473970 = sub_473970
+	legacy.Sub_4831C0 = func(a1, a2 unsafe.Pointer) int16 { return noxClient.sub_4831C0(a1, a2) }
 	legacy.Nox_client_isConnected = nox_client_isConnected
 	legacy.Nox_xxx_pickupDefault_4F31E0 = nox_xxx_pickupDefault_4F31E0
 	legacy.Nox_objectPickupAudEvent_4F3D50 = nox_objectPickupAudEvent_4F3D50

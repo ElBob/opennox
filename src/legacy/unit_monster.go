@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 void* nox_xxx_monsterDefByTT_517560(int a1);
 const char** nox_xxx_getDefaultSoundSet_424350(const char* a1);
-short nox_xxx_monsterAutoSpells_54C0C0(nox_object_t* a1p);
 */
 import "C"
 import (
@@ -34,7 +33,7 @@ func Nox_xxx_monsterDefByTT_517560(typ int) *server.MonsterDef {
 }
 
 func Nox_xxx_monsterAutoSpells_54C0C0(u *server.Object) {
-	C.nox_xxx_monsterAutoSpells_54C0C0(asObjectC(u))
+	nox_xxx_monsterAutoSpells_54C0C0(unsafe.Pointer(u))
 }
 
 func Nox_xxx_getDefaultSoundSet_424350(name string) unsafe.Pointer {

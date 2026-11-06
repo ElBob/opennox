@@ -2845,36 +2845,6 @@ int nox_xxx_actionNByNameMB_5345F0(const char* a1) {
 	return v1;
 }
 
-//----- (00534650) --------------------------------------------------------
-char* sub_534650(int a1) {
-	int v1; // eax
-
-	v1 = 0;
-	while (v1 != a1) {
-		if (++v1 >= 72) {
-			return 0;
-		}
-	}
-	return *(char**)getMemAt(0x587000, 261768 + 4 * v1);
-}
-
-//----- (00534670) --------------------------------------------------------
-int nox_xxx_actionByName_534670(const char* a1) {
-	int v1;          // ebp
-	const char** v2; // edi
-
-	v1 = 0;
-	v2 = (const char**)getMemAt(0x587000, 261768);
-	while (strcmp(*v2, a1)) {
-		++v2;
-		++v1;
-		if ((int)v2 >= (int)getMemAt(0x587000, 262056)) {
-			return 0;
-		}
-	}
-	return v1;
-}
-
 //----- (00534710) --------------------------------------------------------
 int sub_534710(int a1) {
 	int v1;     // ecx

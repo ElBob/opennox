@@ -106,7 +106,6 @@ int sub_54BA60(int a1, int a2, int a3, int a4);
 int sub_54BB20(int a1, int a2, int* a3, uint32_t* a4, int a5);
 int sub_54BD90(int a1, int a2, int* a3, int* a4, int a5);
 int sub_54BF20(int a1, int a2, int* a3, int* a4, int a5);
-short nox_xxx_monsterAutoSpells_54C0C0(nox_object_t* a1p);
 void nox_xxx_monsterCreateFn_54C480(nox_object_t* a1);
 int nox_xxx_createWeapon_54C710(int a1);
 uint32_t* sub_54C950(int a1);

@@ -3451,16 +3451,6 @@ int sub_4D7280(int a1, char a2) {
 	return nox_xxx_netSendPacket1_4E5390(a1, (int)v4, 3, 0, 1);
 }
 
-//----- (004D72D0) --------------------------------------------------------
-int sub_4D72D0(int a1) {
-	int result; // eax
-
-	result = dword_5d4594_1556128;
-	*getMemU32Ptr(0x5D4594, 1556132) = dword_5d4594_1556128;
-	dword_5d4594_1556128 = a1;
-	return result;
-}
-
 //----- (004D7300) --------------------------------------------------------
 int sub_4D7300() { return *getMemU32Ptr(0x5D4594, 1556132); }
 

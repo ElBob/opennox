@@ -16,7 +16,6 @@ int sub_428810(int a1, int a2);
 int sub_428890(short* a1);
 void* sub_4289D0(void** a1);
 int nox_server_mapRWObjectTOC_428B30();
-int nox_server_mapRWPolygons_428CD0(int a1);
 int nox_server_mapRWAmbientData_429200();
 int nox_server_mapRWWindowWalls_4292C0(uint32_t* a1);
 void sub_429450(uint8_t* a1, uint32_t* a2);

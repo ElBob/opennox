@@ -201,7 +201,6 @@ func init() {
 	legacy.Sub_42C300 = sub_42C300
 	legacy.Sub_42BFE0 = sub_42BFE0
 	legacy.Sub_4E3AD0 = sub_4E3AD0
-	legacy.Sub_4A5E90_A = sub_4A5E90_A
 	legacy.Nox_xxx_fireRingEffect_4E05B0 = nox_xxx_fireRingEffect_4E05B0
 	legacy.Nox_xxx_blueFREffect_4E05F0 = nox_xxx_blueFREffect_4E05F0
 	legacy.Sub_4E3B80 = sub_4E3B80

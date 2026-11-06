@@ -1,8 +1,6 @@
 package opennox
 
 import (
-	"unsafe"
-
 	"github.com/opennox/libs/common"
 
 	"github.com/opennox/opennox/v1/client/gui"
@@ -104,7 +102,7 @@ LABEL_20:
 func sub_446380() {
 	sub_44A400()
 	if noxflags.HasGame(noxflags.GameOnline) && !noxflags.HasGame(noxflags.GameModeQuest) && !sub4D6F30() {
-		legacy.Sub_41CEE0(unsafe.Pointer(clientCurSave()), 1)
+		sub_41CEE0(clientCurSave(), 1)
 	}
 	legacy.Nox_xxx_guiServerOptionsHide_4597E0(1)
 	nox_game_exit_xxx2()

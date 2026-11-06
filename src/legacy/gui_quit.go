@@ -78,10 +78,6 @@ func Set_dword_5d4594_2650652(v int) {
 	C.dword_5d4594_2650652 = C.uint(v)
 }
 
-func Sub_41CEE0(p unsafe.Pointer, a2 int) {
-	C.sub_41CEE0(p, C.int(a2))
-}
-
 func Get_nox_xxx_menuGameOnButton_445840() unsafe.Pointer {
 	return C.nox_xxx_menuGameOnButton_445840
 }

@@ -61,7 +61,6 @@ int sub_41C280(void* a1);
 int nox_xxx_parseFileInfoData_41C3B0(int a1);
 int sub_41C780(int a1);
 int nox_xxx_netSavePlayer_41CE00();
-int sub_41CEE0(void* a1, int a2);
 int sub_41D1A0(int a1);
 int sub_41D1B0();
 int sub_41D650();

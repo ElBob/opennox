@@ -10,8 +10,6 @@ package legacy
 #include "GAME5.h"
 #include "common__net_list.h"
 #include "client__system__parsecmd.h"
-#include "common__object__armrlook.h"
-#include "common__object__weaplook.h"
 #include "common__log.h"
 
 extern unsigned int dword_5d4594_2650652;
@@ -38,14 +36,6 @@ func nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode(w, h, d *int) {
 
 //export sub_4AA9C0
 func sub_4AA9C0() int { return Sub_4AA9C0() }
-
-func Nox_xxx_loadLook_415D50() {
-	C.nox_xxx_loadLook_415D50()
-}
-
-func Nox_xxx_loadModifyers_4158C0() {
-	C.nox_xxx_loadModifyers_4158C0()
-}
 
 func Sub_4D11A0() {
 	C.sub_4D11A0()

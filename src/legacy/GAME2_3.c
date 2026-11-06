@@ -3538,18 +3538,6 @@ void sub_49FDB0(int a1) {
 	}
 }
 
-//----- (0049FF20) --------------------------------------------------------
-uint32_t* sub_49FF20() {
-	uint32_t* result; // eax
-
-	result = *(uint32_t**)&dword_5d4594_1305788;
-	if (dword_5d4594_1305788) {
-		result = sub_421B10();
-		dword_5d4594_1305788 = 0;
-	}
-	return result;
-}
-
 //----- (0049FFA0) --------------------------------------------------------
 int* sub_49FFA0(int a1) {
 	int* result; // eax
@@ -3801,22 +3789,3 @@ int* sub_4A0490(int a1) {
 	return result;
 }
 
-//----- (004A04C0) --------------------------------------------------------
-int* sub_4A04C0(int a1) {
-	int v1;      // esi
-	int* result; // eax
-
-	v1 = 0;
-	result = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-	if (!result) {
-		return 0;
-	}
-	while (a1 != v1) {
-		++v1;
-		result = nox_common_list_getNextSafe_4258A0(result);
-		if (!result) {
-			return 0;
-		}
-	}
-	return result;
-}

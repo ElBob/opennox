@@ -7,8 +7,6 @@ void sub_4373A0();
 void nox_client_refreshServerList_4378B0();
 int nox_game_showGameSel_4379F0();
 int sub_4383A0();
-int sub_438770();
-int sub_438BD0();
 void nox_client_gui_serverInfoBlockCheckExp_439370(int2* a1, int a2);
 int nox_xxx_windowMultiplayerSub_439E70(int a1, unsigned int a2, int* a3, int a4);
 void sub_43A810();

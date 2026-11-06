@@ -366,9 +366,6 @@ func Sub_416920() {
 func Nox_xxx_allocPendingOwnsArray_516EE0() int {
 	return int(C.nox_xxx_allocPendingOwnsArray_516EE0())
 }
-func Sub_421B10() {
-	C.sub_421B10()
-}
 func Sub_516F10() {
 	C.sub_516F10()
 }

@@ -384,9 +384,6 @@ func Nox_client_guiXxx_43A9D0() {
 func Sub_43B630() {
 	C.sub_43B630()
 }
-func Sub_49FF20() {
-	C.sub_49FF20()
-}
 func Sub_445450() {
 	C.sub_445450()
 }

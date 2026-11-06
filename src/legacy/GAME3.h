@@ -12,7 +12,6 @@ int sub_4A25C0(uint32_t* a1, int* a2);
 int sub_4A2610(int a1, uint32_t* a2, int* a3);
 uint32_t* sub_4A2830(int a1, int a2, uint32_t* a3);
 int sub_4A2890();
-int sub_4A28B0();
 int sub_4A28C0(int a1);
 int nox_xxx_wndListboxProcWithoutData10_4A28E0(uint32_t* a1, int a2, unsigned int a3, int a4);
 int nox_xxx_wndListBox_4A2D10(int a1, int a2, int a3);

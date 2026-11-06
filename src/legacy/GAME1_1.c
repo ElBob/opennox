@@ -2881,25 +2881,6 @@ uint32_t* sub_420C40(int a1, int a2) {
 	return result;
 }
 
-//----- (00420C70) --------------------------------------------------------
-uint32_t* sub_420C70() {
-	uint32_t* result; // eax
-	uint32_t* v1;     // esi
-
-	result = *(uint32_t**)&dword_5d4594_588068;
-	if (dword_5d4594_588068) {
-		do {
-			v1 = (uint32_t*)result[2];
-			free(result);
-			result = v1;
-		} while (v1);
-		dword_5d4594_588068 = 0;
-	} else {
-		dword_5d4594_588068 = 0;
-	}
-	return result;
-}
-
 //----- (00420CA0) --------------------------------------------------------
 char* nox_xxx_polygon_420CA0() {
 	int v0;           // eax
@@ -3030,50 +3011,6 @@ int sub_420E80(float a1, float a2, float a3) {
 		} while (v5);
 	}
 	return v3;
-}
-
-//----- (00421430) --------------------------------------------------------
-void* sub_421430() {
-	unsigned char* v0; // esi
-	void* result;      // eax
-
-	v0 = getMemAt(0x5D4594, 552476);
-	for (int i = 0; i < 255; i++) {
-		if (*((uint32_t*)v0 - 27)) {
-			if (*getMemU32Ptr(0x5D4594, 588076)) {
-				free(*((void**)v0 - 27));
-			}
-			*((uint32_t*)v0 - 27) = 0;
-		}
-		result = *(void**)v0;
-		if (*(uint32_t*)v0) {
-			if (*getMemU32Ptr(0x5D4594, 588076)) {
-				free(*(void**)v0);
-			}
-			*(uint32_t*)v0 = 0;
-		}
-		*((uint16_t*)v0 + 10) = 0;
-		*((uint32_t*)v0 - 7) = 0;
-		*((uint32_t*)v0 + 2) = -1;
-		*((uint32_t*)v0 + 4) = -1;
-		*((uint32_t*)v0 - 6) = 0;
-		v0 += 140;
-	}
-	nox_xxx_polygonNextIdx_587000_60352 = 1;
-	return result;
-}
-
-//----- (00421010) --------------------------------------------------------
-char* sub_421010() {
-	char* result; // eax
-
-	result = (char*)getMemAt(0x5D4594, 535872);
-	do {
-		*(uint32_t*)result = 0;
-		result += 16;
-	} while ((int)result < (int)getMemAt(0x5D4594, 552240));
-	nox_xxx_polygonNextAngle_587000_60356 = 1;
-	return result;
 }
 
 //----- (00421030) --------------------------------------------------------
@@ -3456,18 +3393,6 @@ int* sub_421990(int2* a1, float a2, int a3) {
 		return i;
 	}
 	return 0;
-}
-
-//----- (00421B10) --------------------------------------------------------
-uint32_t* sub_421B10() {
-	uint32_t* result; // eax
-
-	sub_421430();
-	sub_421010();
-	result = sub_420C70();
-	*getMemU32Ptr(0x5D4594, 588076) = 1;
-	*getMemU16Ptr(0x5D4594, 588072) = 0;
-	return result;
 }
 
 //----- (00421B40) --------------------------------------------------------

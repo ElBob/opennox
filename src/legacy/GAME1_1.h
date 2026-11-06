@@ -5,7 +5,6 @@
 #include "defs.h"
 #include "common__system__team.h"
 
-void* sub_421430();
 void sub_418800(wchar2_t* a1, wchar2_t* a2, int a3);
 int sub_418830(int a1, int a2);
 char* sub_4189D0();
@@ -90,14 +89,12 @@ int sub_420230(char* a1, uint16_t* a2);
 int sub_420360(char* a1, uint16_t* a2);
 int sub_4207E0();
 uint32_t* sub_420C40(int a1, int a2);
-uint32_t* sub_420C70();
 char* nox_xxx_polygon_420CA0();
 char* nox_xxx_polygon_420CD0(uint32_t* a1);
 int sub_420D10();
 unsigned int* nox_xxx_polygonSetAngle_420D40(int a1, int a2, unsigned int a3, int a4);
 unsigned int* sub_420DA0(float a1, float a2);
 int sub_420E80(float a1, float a2, float a3);
-char* sub_421010();
 char* nox_xxx_polygonGetAngle_421030(int a1);
 void sub_421040(int a1);
 char* nox_xxx_polygonGetNext_4210A0();
@@ -113,7 +110,6 @@ int nox_xxx_polygonGetIdxA_421790(int2* a1, int a2);
 nox_player_polygon_check_data* nox_xxx_polygonIsPlayerInPolygon_4217B0(int2* a1, int a2);
 int sub_421880(int a1, int a2, float a3);
 int* sub_421990(int2* a1, float a2, int a3);
-uint32_t* sub_421B10();
 int sub_421B40(uint32_t* a1);
 void nox_xxx_polygonDrawColor_421B80();
 void nox_xxx_questCheckSecretArea_421C70(nox_object_t* a1);

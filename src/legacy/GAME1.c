@@ -11,8 +11,6 @@
 #include "GAME5_2.h"
 #include "client__system__parsecmd.h"
 #include "common__log.h"
-#include "common__object__armrlook.h"
-#include "common__object__weaplook.h"
 #include "common__system__team.h"
 
 #include "client__gui__servopts__playrlst.h"
@@ -2380,15 +2378,6 @@ int nox_xxx_cliSetSettingsAcquired_4169D0(int a1) {
 
 	result = a1;
 	*getMemU32Ptr(0x5D4594, 371704) = a1;
-	return result;
-}
-
-//----- (004169F0) --------------------------------------------------------
-char* sub_4169F0() {
-	char* result; // eax
-
-	result = sub_416640();
-	result[100] &= 0xEFu;
 	return result;
 }
 

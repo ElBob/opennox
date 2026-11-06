@@ -163,7 +163,7 @@ func sub_43B670() {
 	} else {
 		legacy.Sub_43B630()
 	}
-	legacy.Sub_49FF20()
+	sub_49FF20()
 }
 
 func sub_46D6F0() int {

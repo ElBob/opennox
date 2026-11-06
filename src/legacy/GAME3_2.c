@@ -3345,20 +3345,6 @@ int sub_4D6F80(int a1) {
 	return result;
 }
 
-//----- (004D6FA0) --------------------------------------------------------
-int sub_4D6FA0() { return *getMemU32Ptr(0x5D4594, 1556104); }
-
-//----- (004D70B0) --------------------------------------------------------
-char* sub_4D70B0() {
-	char* result; // eax
-
-	result = *(char**)getMemAt(0x5D4594, 1556152);
-	if (!*getMemU32Ptr(0x5D4594, 1556152)) {
-		result = sub_4169F0();
-	}
-	return result;
-}
-
 //----- (004D70C0) --------------------------------------------------------
 int nox_xxx_bookCreatureTest_4D70C0(int a1) {
 	return nox_common_gameFlags_check_40A5C0(4096) || a1 != 37 && a1 != 38 && a1 != 40 && a1 != 39;

@@ -657,6 +657,7 @@ extern nox_window* dword_5d4594_1090100;
 extern unsigned int dword_5d4594_251744;
 extern unsigned int dword_5d4594_1193156;
 extern unsigned int dword_5d4594_1193188;
+extern nox_gui_animation* nox_wnd_xxx_815040;
 extern unsigned int dword_5d4594_2650676;
 extern unsigned int dword_5d4594_2650680;
 extern uint32_t dword_5d4594_3798820;
@@ -1442,4 +1443,97 @@ func Get_dword_5d4594_2488620() uint32 {
 }
 func Nox_xxx_playerGet_470A90() int {
 	return int(C.dword_5d4594_1096252)
+}
+
+// Accessors for the C globals used by the multiplayer game select screen (nox_game_showGameSel_4379F0).
+// The windows are kept in C globals (as 32-bit values in the original).
+
+func gameSelWinToC(w *gui.Window) C.uint { return C.uint(uintptr(unsafe.Pointer(w))) }
+func gameSelWinFromC(v C.uint) *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(v)))
+}
+
+func Set_nox_wol_wnd_world_814980(v *gui.Window) {
+	C.nox_wol_wnd_world_814980 = (*C.nox_window)(unsafe.Pointer(v))
+}
+func Set_dword_5d4594_814984(v *gui.Window) { C.dword_5d4594_814984 = unsafe.Pointer(v) }
+func Get_dword_5d4594_814988() *gui.Window  { return gameSelWinFromC(C.dword_5d4594_814988) }
+func Set_dword_5d4594_814988(v *gui.Window) { C.dword_5d4594_814988 = gameSelWinToC(v) }
+func Get_dword_5d4594_814992() *gui.Window  { return gameSelWinFromC(C.dword_5d4594_814992) }
+func Set_dword_5d4594_814992(v *gui.Window) { C.dword_5d4594_814992 = gameSelWinToC(v) }
+func Set_dword_5d4594_814996(v *gui.Window) { C.dword_5d4594_814996 = unsafe.Pointer(v) }
+func Set_dword_5d4594_815000(v *gui.Window) { C.dword_5d4594_815000 = unsafe.Pointer(v) }
+func Set_dword_5d4594_815004(v *gui.Window) {
+	C.dword_5d4594_815004 = (*C.nox_window)(unsafe.Pointer(v))
+}
+func Get_nox_wol_wnd_gameList_815012() *gui.Window {
+	return gameSelWinFromC(C.nox_wol_wnd_gameList_815012)
+}
+func Set_nox_wol_wnd_gameList_815012(v *gui.Window) { C.nox_wol_wnd_gameList_815012 = gameSelWinToC(v) }
+
+// GameSelColumns returns the list column windows: dword_5d4594_815016, 815020, 815024, 815028, 815032.
+func GameSelColumns() [5]*gui.Window {
+	return [5]*gui.Window{
+		gameSelWinFromC(C.dword_5d4594_815016),
+		gameSelWinFromC(C.dword_5d4594_815020),
+		gameSelWinFromC(C.dword_5d4594_815024),
+		gameSelWinFromC(C.dword_5d4594_815028),
+		gameSelWinFromC(C.dword_5d4594_815032),
+	}
+}
+
+// SetGameSelColumn sets one of dword_5d4594_815016 + 4*i.
+func SetGameSelColumn(i int, v *gui.Window) {
+	switch i {
+	case 0:
+		C.dword_5d4594_815016 = gameSelWinToC(v)
+	case 1:
+		C.dword_5d4594_815020 = gameSelWinToC(v)
+	case 2:
+		C.dword_5d4594_815024 = gameSelWinToC(v)
+	case 3:
+		C.dword_5d4594_815028 = gameSelWinToC(v)
+	case 4:
+		C.dword_5d4594_815032 = gameSelWinToC(v)
+	default:
+		panic("invalid column")
+	}
+}
+
+func Get_nox_wnd_xxx_815040() *gui.Anim { return asGUIAnim(C.nox_wnd_xxx_815040) }
+func Set_nox_wnd_xxx_815040(a *gui.Anim) {
+	C.nox_wnd_xxx_815040 = (*C.nox_gui_animation)(unsafe.Pointer(a))
+}
+func Set_dword_5d4594_815044(v int)            { C.dword_5d4594_815044 = C.uint(v) }
+func Get_dword_5d4594_815052() int             { return int(C.dword_5d4594_815052) }
+func Set_dword_5d4594_815052(v int)            { C.dword_5d4594_815052 = C.uint(v) }
+func Get_dword_5d4594_815056() int             { return int(C.dword_5d4594_815056) }
+func Set_dword_587000_87408(v int)             { C.dword_587000_87408 = C.uint(v) }
+func Set_dword_587000_87412(v int)             { C.dword_587000_87412 = C.int(v) }
+func Get_dword_5d4594_815096() int             { return int(C.dword_5d4594_815096) }
+func Set_dword_5d4594_815096(v int)            { C.dword_5d4594_815096 = C.uint(v) }
+func Get_dword_5d4594_815100() int             { return int(C.dword_5d4594_815100) }
+func Set_dword_5d4594_815100(v int)            { C.dword_5d4594_815100 = C.uint(v) }
+func Set_dword_5d4594_814624(v unsafe.Pointer) { C.dword_5d4594_814624 = v }
+func Get_qword_5d4594_815068() uint64          { return uint64(C.qword_5d4594_815068) }
+func Get_qword_5d4594_814956() uint64          { return uint64(C.qword_5d4594_814956) }
+func Get_nox_client_connError_814552() int     { return int(C.nox_client_connError_814552) }
+
+func Get_dword_5d4594_1193380() *gui.Window  { return gameSelWinFromC(C.dword_5d4594_1193380) }
+func Set_dword_5d4594_1193380(v *gui.Window) { C.dword_5d4594_1193380 = gameSelWinToC(v) }
+func Get_dword_5d4594_1193384() *gui.Window  { return gameSelWinFromC(C.dword_5d4594_1193384) }
+func Set_dword_5d4594_1193384(v *gui.Window) { C.dword_5d4594_1193384 = gameSelWinToC(v) }
+
+func Get_dword_5d4594_588068() unsafe.Pointer {
+	return unsafe.Pointer(uintptr(C.dword_5d4594_588068))
+}
+func Set_dword_5d4594_588068(v unsafe.Pointer) { C.dword_5d4594_588068 = C.uint(uintptr(v)) }
+func Get_dword_5d4594_1305788() int            { return int(C.dword_5d4594_1305788) }
+func Set_dword_5d4594_1305788(v int)           { C.dword_5d4594_1305788 = C.uint(v) }
+func Get_dword_5d4594_1307716() int            { return int(C.dword_5d4594_1307716) }
+func Set_nox_xxx_polygonNextIdx_587000_60352(v int) {
+	C.nox_xxx_polygonNextIdx_587000_60352 = C.uint(v)
+}
+func Set_nox_xxx_polygonNextAngle_587000_60356(v int) {
+	C.nox_xxx_polygonNextAngle_587000_60356 = C.uint(v)
 }

@@ -344,7 +344,7 @@ func sub_4373A0() {
 			clientPlaySoundSpecial(sound.SoundPermanentFizzle, 100)
 		} else {
 			c.nox_game_checkStateSwitch_43C1E0()
-			legacy.Sub_49FF20()
+			sub_49FF20()
 			sub_4A1BE0(1)
 			clientPlaySoundSpecial(sound.SoundPermanentFizzle, 100)
 		}
@@ -357,7 +357,7 @@ func sub_4373A0() {
 		legacy.Get_dword_5d4594_814996().Func94(&gui.StaticTextSetText{Str: v0})
 		clientPlaySoundSpecial(sound.SoundPermanentFizzle, 100)
 	} else {
-		legacy.Sub_49FF20()
+		sub_49FF20()
 		c.nox_game_checkStateSwitch_43C1E0()
 	}
 }

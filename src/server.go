@@ -701,7 +701,7 @@ func (s *Server) newSession() error {
 	if legacy.Nox_xxx_allocPendingOwnsArray_516EE0() == 0 {
 		return errors.New("nox_xxx_allocPendingOwnsArray_516EE0 failed")
 	}
-	legacy.Sub_421B10()
+	sub_421B10()
 	sub_4DB0A0()
 	legacy.Sub_4D0F30()
 	return s.StartServices(isDedicatedServer)
@@ -710,7 +710,7 @@ func (s *Server) newSession() error {
 func (s *Server) nox_xxx_servEndSession_4D3200() {
 	s.ai.Free()
 	sub_4DB100()
-	legacy.Sub_421B10()
+	sub_421B10()
 	legacy.Sub_516F10()
 	s.nox_xxx_replayStopSave_4D33B0()
 	s.nox_xxx_replayStopReadMB_4D3530()
@@ -1131,7 +1131,7 @@ func (s *Server) nox_xxx_mapSwitchLevel_4D12E0(a1 bool) {
 	defer noxflags.UnsetGame(noxflags.GameFlag20)
 
 	legacy.Sub_516F30()
-	legacy.Sub_421B10()
+	sub_421B10()
 	acl := [3]uint32{
 		25, 25, 25,
 	}

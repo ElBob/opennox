@@ -97,8 +97,6 @@ int nox_xxx_isQuest_4D6F50();
 int nox_xxx_setQuest_4D6F60(int a1);
 int sub_4D6F70();
 int sub_4D6F80(int a1);
-int sub_4D6FA0();
-char* sub_4D70B0();
 int nox_xxx_bookCreatureTest_4D70C0(int a1);
 int sub_4D7100(int a1);
 int sub_4D7150();

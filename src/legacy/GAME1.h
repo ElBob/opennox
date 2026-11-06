@@ -172,7 +172,6 @@ int sub_416920();
 int* sub_416950();
 int sub_4169C0();
 int nox_xxx_cliSetSettingsAcquired_4169D0(int a1);
-char* sub_4169F0();
 void nox_ticks_reset_416D40();
 char* nox_xxx_playerForceSendLessons_416E50(int a1);
 nox_playerInfo* nox_common_playerInfoGetFirst_416EA0();

@@ -349,7 +349,7 @@ func nox_xxx_serverHost_43B4D0() {
 		legacy.Sub_43B630()
 		nox_client_createSockAndJoin_43B440()
 	}
-	legacy.Sub_49FF20()
+	sub_49FF20()
 	if isHost {
 		noxServer.maybeRegisterGameOnline()
 	} else {

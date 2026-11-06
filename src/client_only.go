@@ -40,7 +40,7 @@ func (c *Client) nox_xxx_gameClearAll_467DF0(a1 bool) {
 	if !noxflags.HasGame(noxflags.GameHost) {
 		sub_469B90(acl)
 		sub_4349C0(acl)
-		legacy.Sub_421B10()
+		sub_421B10()
 	}
 	legacy.Nox_xxx_spriteDeleteSomeList_49C4B0()
 	legacy.Nox_xxx_sprite_49C4F0()

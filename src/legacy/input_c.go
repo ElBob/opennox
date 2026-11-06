@@ -39,7 +39,6 @@ var (
 	Nox_xxx_keybind_nameByTitle_42E960       func(title string) keybind.Key
 	Nox_xxx_bindevent_bindNameByTitle_42EA40 func(title string) *keybind.BindEvent
 	Sub_4C3B70                               func()
-	Sub_4CBBF0                               func()
 	Nox_input_reset_430140                   func(a1 int)
 )
 
@@ -157,9 +156,6 @@ func nox_xxx_bindevent_bindNameByTitle_42EA40(title *wchar2_t) *C.char {
 
 //export sub_4C3B70
 func sub_4C3B70() { Sub_4C3B70() }
-
-//export sub_4CBBF0
-func sub_4CBBF0() { Sub_4CBBF0() }
 
 //export nox_input_reset_430140
 func nox_input_reset_430140(a1 int) { Nox_input_reset_430140(a1) }

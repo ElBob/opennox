@@ -366,6 +366,15 @@ func (win *Window) fixCoords() {
 	}
 }
 
+// Field93Raw returns the raw C function pointer stored in the window (offset 372).
+// Windows using Go handlers (SetFunc93) leave it unset.
+func (win *Window) Field93Raw() unsafe.Pointer {
+	if win == nil {
+		return nil
+	}
+	return win.field93
+}
+
 func (win *Window) Func93(e WindowEvent) WindowEventResp {
 	if win.isNilOrDead() {
 		return nil

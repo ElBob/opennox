@@ -52,11 +52,9 @@ func init() {
 	legacy.Sub_438770_waitList = sub_438770_waitList
 	legacy.Nox_xxx_createSocketLocal = nox_xxx_createSocketLocal
 	legacy.Sub_554D10 = sub_554D10
-	legacy.Nox_gui_menu_proc_ext = nox_gui_menu_proc_ext
 	legacy.Nox_video_setMenuOptions = nox_video_setMenuOptions
 	legacy.Sub_4A19F0 = guiSetBackButtonText
 	legacy.Sub_4C3A90 = sub_4C3A90
-	legacy.Sub_4CBE70 = sub_4CBE70
 	legacy.Sub_4AAA10 = sub_4AAA10
 	legacy.Nox_new_window_from_file = nox_new_window_from_file
 	legacy.Sub_445B40 = clientLoadCoopAuto445B40
@@ -223,7 +221,6 @@ func init() {
 	legacy.Nox_xxx_keybind_nameByTitle_42E960 = nox_xxx_keybind_nameByTitle_42E960
 	legacy.Nox_xxx_bindevent_bindNameByTitle_42EA40 = nox_xxx_bindevent_bindNameByTitle_42EA40
 	legacy.Sub_4C3B70 = sub_4C3B70
-	legacy.Sub_4CBBF0 = sub_4CBBF0
 	legacy.Nox_input_reset_430140 = nox_input_reset_430140
 	legacy.Nox_xxx_playerDisconnByPlrID_4DEB00 = func(id ntype.PlayerInd) {
 		noxServer.PlayerDisconnectByIndCode4(id)
@@ -308,7 +305,6 @@ func init() {
 		return noxServer.spells.walls.LoadOrSave(cryptfile.Global(), a1)
 	}
 	legacy.Nox_xxx_monsterCreateFn_54C480 = nox_xxx_monsterCreateFn_54C480
-	legacy.Sub_4A1A40 = sub_4A1A40
 	legacy.Nox_client_getChatMap_49FF40 = nox_client_getChatMap_49FF40
 	legacy.Nox_xxx_soundPlayerDamageSound_5328B0 = Nox_xxx_soundPlayerDamageSound_5328B0
 	legacy.Nox_xxx_soundDefaultDamageSound_532E20 = server.Nox_xxx_soundDefaultDamageSound_532E20

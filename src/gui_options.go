@@ -232,7 +232,7 @@ func sub_4CBE70(a1, a2 int, a3 unsafe.Pointer, a4 int) int {
 		nox_common_readcfgfile("nox.cfg", true)
 		sub_4CBBF0()
 	case 932:
-		legacy.Sub_4CBD30()
+		sub_4CBD30()
 	case 933:
 		sub_4CBF40()
 	case 971, 972, 973:

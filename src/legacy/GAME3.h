@@ -4,7 +4,6 @@
 #include "defs.h"
 #include "common__savegame.h"
 
-void sub_4A1A40(int a1);
 int sub_4A1BE0(int a1);
 int nox_client_guiXxxDestroy_4A24A0();
 int sub_4A2560(uint32_t* a1, int a2);
@@ -67,10 +66,8 @@ int nox_xxx_wndRadioButtonProcPre_4A93C0(int a1, int a2, wchar2_t* a3, int a4);
 int nox_xxx_compassGenStrings_4A9C80();
 int nox_game_showOptions_4AA6B0();
 int sub_4AA9C0();
-int sub_4AAA10();
-uint32_t* sub_4AAA70();
-int sub_4AABE0(int a1, int a2, int* a3, int a4);
 int sub_4AB0C0();
+int sub_4AAA10();
 int sub_4AB260();
 int sub_4AB340(int a1, int a2, int a3, int a4);
 int sub_4AB390(int a1, int a2, int* a3, int a4);

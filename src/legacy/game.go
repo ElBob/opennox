@@ -471,9 +471,6 @@ func Nox_xxx_bookInit_45B9D0() int {
 func Sub_476E20() unsafe.Pointer {
 	return unsafe.Pointer(C.sub_476E20())
 }
-func Sub_4BFAD0() int {
-	return int(C.sub_4BFAD0())
-}
 func Nox_xxx_wndCreateInventoryMB_465E00() uint32 {
 	return uint32(C.nox_xxx_wndCreateInventoryMB_465E00())
 }

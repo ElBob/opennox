@@ -994,7 +994,7 @@ func nox_game_guiInit_473680() error {
 	if legacy.Sub_476E20() == nil {
 		return errors.New("sub_476E20 failed")
 	}
-	if legacy.Sub_4BFAD0() == 0 {
+	if sub_4BFAD0() == 0 {
 		return errors.New("sub_4BFAD0 failed")
 	}
 	tmp := legacy.Nox_xxx_wndCreateInventoryMB_465E00()

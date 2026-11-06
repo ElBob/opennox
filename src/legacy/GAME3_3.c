@@ -6179,45 +6179,6 @@ int nox_server_netCodeCache_nextUnused_4ECEF0() {
 	return result;
 }
 
-//----- (004ECF10) --------------------------------------------------------
-int sub_4ECF10(int a1) {
-	int result = nox_server_getFirstObject_4DA790();
-	while (result) {
-		if (!(*(uint8_t*)(result + 16) & 0x20 || *(uint32_t*)(result + 44) != a1)) {
-			return result;
-		}
-
-		int v2 = *(uint32_t*)(result + 504);
-
-		while (v2) {
-			if (!(*(uint8_t*)(v2 + 16) & 0x20 || *(uint32_t*)(v2 + 44) != a1)) {
-				return v2;
-			}
-			v2 = *(uint32_t*)(v2 + 496);
-		}
-		result = nox_server_getNextObject_4DA7A0(result);
-	}
-
-	result = nox_server_getFirstObjectUninited_4DA870();
-	while (result != 0) {
-		if (!(*(uint8_t*)(result + 16) & 0x20) && *(uint32_t*)(result + 44) == a1) {
-			return result;
-		}
-		result = nox_server_getNextObjectUninited_4DA880(result);
-	}
-
-	nox_object_t* obj = nox_xxx_getFirstUpdatable2Object_4DA840();
-	while (obj) {
-		if (!(obj->obj_flags & 0x20) && obj->script_id == a1) {
-			return obj;
-		}
-
-		obj = nox_xxx_getNextUpdatable2Object_4DA850(obj);
-	}
-
-	return obj;
-}
-
 //----- (004ECFA0) --------------------------------------------------------
 int sub_4ECFA0(nox_object_t* a1) {
 	int result;   // eax

@@ -1194,6 +1194,12 @@ func Set_nox_gameDisableMapDraw_5d4594_2650672(v int) {
 func Set_dword_5d4594_831224(v int) {
 	C.dword_5d4594_831224 = C.uint(v)
 }
+func Get_dword_5d4594_1563096() int {
+	return int(C.dword_5d4594_1563096)
+}
+func Get_dword_5d4594_2386920() uint32 {
+	return uint32(C.dword_5d4594_2386920)
+}
 func Set_dword_5d4594_1563096(v int) {
 	C.dword_5d4594_1563096 = C.uint(v)
 }

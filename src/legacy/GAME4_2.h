@@ -208,7 +208,6 @@ int nox_xxx_XFer_ReadMonsterBuffs_52AAB0(uint32_t* a1);
 size_t nox_xxx_readNPCVoiceSet_52AD10(int a1);
 int nox_xxx_XFerNPC_52ADE0(nox_object_t* a1);
 int sub_52BA70(int a1);
-int sub_52BAF0(int a1);
 void nox_xxx_changeOwner_52BE40(nox_object_t* a1, nox_object_t* a2);
 int sub_52BEB0(int a1, int a2, int a3, int a4);
 int nox_xxx_castSpellWinkORrestoreHealth_52BF20(int a1, int a2, int a3, int a4, int* a5);

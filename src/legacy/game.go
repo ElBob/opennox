@@ -41,7 +41,6 @@ void sub_426060();
 void sub_417160();
 void sub_4D2160();
 void sub_4D22B0();
-void sub_4DBA30(int a1);
 int sub_48C980();
 void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
 char* nox_xxx_getSomeMapName_4D0CF0();
@@ -685,9 +684,6 @@ func Sub_57AAA0(a1 string, a2 *server.Settings2, a3 unsafe.Pointer) {
 }
 func Sub_4EF660(a1 *server.Object) {
 	C.sub_4EF660(asObjectC(a1))
-}
-func Sub_4DBA30(a1 bool) {
-	C.sub_4DBA30(C.int(bool2int(a1)))
 }
 func Nox_xxx_isUnit_4E5B50(a1 *server.Object) int {
 	return int(C.nox_xxx_isUnit_4E5B50(asObjectC(a1)))

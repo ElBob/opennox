@@ -3803,26 +3803,6 @@ uint32_t* sub_516F90(int a1, int a2) {
 	return result;
 }
 
-//----- (00516FC0) --------------------------------------------------------
-void sub_516FC0() {
-	int* v0; // esi
-	int v1;  // edi
-	int v2;  // eax
-
-	v0 = *(int**)&dword_5d4594_2386920;
-	if (dword_5d4594_2386920) {
-		do {
-			v1 = sub_4ECF10(*v0);
-			v2 = sub_4ECF10(v0[1]);
-			if (v1 && v2) {
-				nox_xxx_unitSetOwner_4EC290(v1, v2);
-			}
-			v0 = (int*)v0[2];
-		} while (v0);
-	}
-	sub_516F30();
-}
-
 //----- (00517010) --------------------------------------------------------
 int nox_xxx_loadMonsterBin_517010() {
 	int result;   // eax

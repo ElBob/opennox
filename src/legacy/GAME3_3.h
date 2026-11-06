@@ -221,7 +221,6 @@ int sub_4ECE10(uint32_t* a1, int a2);
 int nox_server_netCodeCache_initArray_4ECE50();
 int nox_server_netCodeCache_addObj_4ECEA0(int a1);
 int nox_server_netCodeCache_nextUnused_4ECEF0();
-int sub_4ECF10(int a1);
 int sub_4ECFA0(nox_object_t* a1);
 int sub_4ECFE0();
 int nox_xxx_netGetUnitByExtent_4ED020(int a1);

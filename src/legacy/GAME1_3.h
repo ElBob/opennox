@@ -81,7 +81,6 @@ void nox_client_clearScreen_440900();
 void nox_xxx_netServerCmd_440950_empty();
 void sub_4417E0(wchar2_t* a1, const char* a2);
 wchar2_t* sub_445450();
-int nox_xxx_drawMessageLines_445530();
 int nox_xxx_guiChatMode_4456E0(int* a1);
 int nox_xxx_guiChatShowHide_445730(int a1);
 int sub_445770();

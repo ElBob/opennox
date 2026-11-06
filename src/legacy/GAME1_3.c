@@ -509,67 +509,6 @@ wchar2_t* sub_445450() {
 	return result;
 }
 
-//----- (00445530) --------------------------------------------------------
-int nox_xxx_drawMessageLines_445530() {
-	int v1;             // ebp
-	int v2;             // eax
-	int v3;             // ebx
-	int result;         // eax
-	int v5;             // ebx
-	unsigned short* v6; // ebx
-	int v7;             // kr00_4
-	unsigned char* v8;  // esi
-	int v9;             // edi
-	int v10;            // esi
-	int v11;            // ecx
-	int i;              // [esp+10h] [ebp-Ch]
-	int v13;            // [esp+14h] [ebp-8h]
-	int v14;            // [esp+18h] [ebp-4h]
-
-	v13 = 0;
-	nox_draw_viewport_t* rdr = nox_draw_getViewport_437250();
-	v1 = 3 * rdr->height / 4 + rdr->y1 - 15;
-	v2 = dword_5d4594_825736;
-	for (i = dword_5d4594_825736;; v2 = i) {
-		v3 = 161 * v2;
-		result = gameFrame();
-		v5 = 4 * v3;
-		if (*getMemU32Ptr(0x5D4594, 824440 + v5) < gameFrame()) {
-			break;
-		}
-		nox_xxx_drawSetTextColor_434390(nox_color_black_2650656);
-		v6 = getMemU16Ptr(0x5D4594, 823804 + v5);
-		nox_xxx_drawGetStringSize_43F840(0, v6, &v14, 0, 0);
-		v7 = nox_win_width - v14;
-		v8 = getMemAt(0x587000, 107848);
-		v9 = (nox_win_width - v14) / 2;
-		do {
-			nox_xxx_drawString_43F6E0(0, (short*)v6, v9 + *(uint32_t*)v8, v1 + *((uint32_t*)v8 + 1));
-			v8 += 8;
-		} while ((int)v8 < (int)getMemAt(0x587000, 107880));
-		v10 = v13;
-		if (v13) {
-			nox_xxx_drawSetTextColor_434390(*getMemIntPtr(0x5D4594, 2597996));
-		} else {
-			nox_xxx_drawSetTextColor_434390(nox_color_white_2523948);
-		}
-		nox_xxx_drawString_43F6E0(0, (short*)v6, v7 / 2, v1);
-		v11 = -4 - nox_xxx_guiFontHeightMB_43F320(0);
-		result = i;
-		v1 += v11;
-		if (i) {
-			--i;
-		} else {
-			i = 2;
-		}
-		++v13;
-		if (v10 + 1 >= 3) {
-			break;
-		}
-	}
-	return result;
-}
-
 //----- (004456E0) --------------------------------------------------------
 int nox_xxx_guiChatMode_4456E0(int* a1) {
 	int* v1; // esi

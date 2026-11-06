@@ -185,7 +185,7 @@ func (c *Client) nox_xxx_clientDrawAll_436100_draw() {
 		legacy.Nox_xxx_clientDrawAll_436100_draw_A()
 	} else if c.ClientPlayerUnit() != nil && nox_client_isConnected() {
 		c.nox_xxx_drawAllMB_475810_draw(vp)
-		legacy.Nox_xxx_drawMinimapAndLines_4738E0()
+		c.nox_xxx_drawMinimapAndLines_4738E0()
 	} else {
 		c.r.ClearScreen(color.Black)
 	}

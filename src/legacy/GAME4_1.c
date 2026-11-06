@@ -672,44 +672,6 @@ int nox_xxx_mobAction_50A910(nox_object_t* a1p) {
 	return result;
 }
 
-//----- (0050AAE0) --------------------------------------------------------
-int nox_xxx_minimapFirstMonster_50AAE0() {
-	int v0; // eax
-
-	v0 = nox_server_getFirstObject_4DA790();
-	dword_5d4594_1599696 = v0;
-	if (!v0) {
-		return 0;
-	}
-	while (!(*(uint8_t*)(v0 + 8) & 2)) {
-		v0 = nox_server_getNextObject_4DA7A0(v0);
-		dword_5d4594_1599696 = v0;
-		if (!v0) {
-			return 0;
-		}
-	}
-	return v0 + 56;
-}
-
-//----- (0050AB10) --------------------------------------------------------
-int nox_xxx_minimapNextMonster_50AB10() {
-	int v0; // eax
-
-	v0 = nox_server_getNextObject_4DA7A0(*(int*)&dword_5d4594_1599696);
-	dword_5d4594_1599696 = v0;
-	if (!v0) {
-		return 0;
-	}
-	while (!(*(uint8_t*)(v0 + 8) & 2)) {
-		v0 = nox_server_getNextObject_4DA7A0(v0);
-		dword_5d4594_1599696 = v0;
-		if (!v0) {
-			return 0;
-		}
-	}
-	return v0 + 56;
-}
-
 //----- (0050CAC0) --------------------------------------------------------
 void sub_50CAC0(int a1, int a2) {
 	if (dword_5d4594_1599708 != 1) {

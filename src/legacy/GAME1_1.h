@@ -109,7 +109,6 @@ unsigned char* sub_421230();
 char* nox_xxx_polygonGetByIdx_4214A0(int a1);
 void sub_4214D0();
 int nox_xxx_polygon_421660(int* a1, int a2);
-int nox_xxx_polygonGetIdxA_421790(int2* a1, int a2);
 nox_player_polygon_check_data* nox_xxx_polygonIsPlayerInPolygon_4217B0(int2* a1, int a2);
 int sub_421880(int a1, int a2, float a3);
 int* sub_421990(int2* a1, float a2, int a3);

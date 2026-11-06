@@ -25,7 +25,6 @@
 #include "client__gui__guivote.h"
 #include "client__gui__window.h"
 #include "client__network__cdecode.h"
-#include "client__network__deathmsg.h"
 #include "client__shell__noxworld.h"
 
 #include "client__draw__fx.h"
@@ -1889,41 +1888,6 @@ char* sub_4951C0() {
 
 //----- (004951F0) --------------------------------------------------------
 int nox_xxx_unitSpriteCheckAlly_4951F0(int a1) { return sub_495020(a1) != 0; }
-
-//----- (00495210) --------------------------------------------------------
-int sub_495210(int a1) {
-	int v1; // esi
-	int v2; // eax
-	int v3; // eax
-
-	v1 = dword_5d4594_1203836;
-	if ((dword_5d4594_1203836 + 1) % 100 == dword_5d4594_1203840) {
-		dword_5d4594_1203840 = (dword_5d4594_1203840 + 1) % 100;
-	}
-	if (*(uint8_t*)(a1 + 10) == 1) {
-		v2 = *(unsigned short*)(a1 + 8);
-		if ((unsigned short)v2 == *getMemU32Ptr(0x5D4594, 1203844)) {
-			*(uint16_t*)(a1 + 8) = *getMemU16Ptr(0x5D4594, 1203856);
-			v1 = dword_5d4594_1203836;
-			goto LABEL_9;
-		}
-		if (v2 == *getMemU32Ptr(0x5D4594, 1203848)) {
-			*(uint16_t*)(a1 + 8) = *getMemU16Ptr(0x5D4594, 1203852);
-			v1 = dword_5d4594_1203836;
-			goto LABEL_9;
-		}
-	}
-LABEL_9:
-	v3 = 24 * v1;
-	*getMemU32Ptr(0x5D4594, 1201428 + v3) = *(unsigned short*)(a1 + 2);
-	*getMemU32Ptr(0x5D4594, 1201432 + v3) = *(unsigned short*)(a1 + 4);
-	*getMemU32Ptr(0x5D4594, 1201436 + v3) = *(unsigned short*)(a1 + 6);
-	*getMemU32Ptr(0x5D4594, 1201440 + v3) = *(unsigned short*)(a1 + 8);
-	*getMemU32Ptr(0x5D4594, 1201444 + v3) = *(unsigned char*)(a1 + 10);
-	*getMemU32Ptr(0x5D4594, 1201448 + v3) = gameFrame();
-	dword_5d4594_1203836 = (v1 + 1) % 100;
-	return sub_4952E0((uint16_t*)a1);
-}
 
 //----- (00495430) --------------------------------------------------------
 int sub_495430() {

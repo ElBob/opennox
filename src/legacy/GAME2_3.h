@@ -55,7 +55,6 @@ int sub_495150(int a1, short a2);
 int sub_495180(int a1, uint16_t* a2, uint16_t* a3, uint8_t* a4);
 char* sub_4951C0();
 int nox_xxx_unitSpriteCheckAlly_4951F0(int a1);
-int sub_495210(int a1);
 int* sub_495500(int* a1);
 int sub_4958F0();
 int nox_xxx_allocClassListFriends_495980();

@@ -4,6 +4,7 @@ void nullsub_68();
 uint32_t dword_5d4594_1046492 = 0;
 void* nox_xxx_aClosewoodengat_587000_133480 = 0;
 nox_window* nox_wol_wnd_world_814980 = 0;
+nox_window* dword_5d4594_1090048 = 0; // was defined in client__gui__guirank.c
 uint32_t dword_5d4594_1045516 = 0;
 uint32_t dword_5d4594_1045684 = 0;
 uint32_t dword_5d4594_1307784 = 0;

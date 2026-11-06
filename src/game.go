@@ -805,7 +805,7 @@ func nox_xxx_gameTick_4D2580_server_A1() {
 		*memmap.PtrUint64(0x5D4594, 1548676) = platformTicks() + 10000
 		legacy.Nox_xxx_guiServerOptionsHide_4597E0(0)
 		netstr.Log.Println("EndGame")
-		legacy.Sub_46DCC0()
+		sub_46DCC0()
 	}
 }
 
@@ -1052,7 +1052,7 @@ func nox_game_guiInit_473680() error {
 	if legacy.Sub_4C3500() == 0 {
 		return errors.New("sub_4C3500 failed")
 	}
-	tmp = legacy.Nox_xxx_guiDrawRank_46E870()
+	tmp = nox_xxx_guiDrawRank_46E870()
 	*memmap.PtrUint32(0x5D4594, 1096340) = tmp
 	if tmp == 0 {
 		return errors.New("nox_xxx_guiDrawRank_46E870 failed")

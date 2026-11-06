@@ -24,7 +24,6 @@ package legacy
 #include "common__net_list.h"
 #include "client__gui__guicon.h"
 #include "client__gui__guisave.h"
-#include "client__gui__guirank.h"
 #include "client__gui__guisumn.h"
 #include "client__gui__guiquit.h"
 #include "client__gui__gui_ctf.h"
@@ -435,9 +434,6 @@ func Nox_server_gameUnsetMapLoad_40A690() {
 func Sub_416650() int {
 	return int(C.sub_416650())
 }
-func Sub_46DCC0() {
-	C.sub_46DCC0()
-}
 func Sub_409B80() string {
 	return GoString(C.sub_409B80())
 }
@@ -509,9 +505,6 @@ func Sub_46A730() unsafe.Pointer {
 }
 func Sub_4C3500() int {
 	return int(C.sub_4C3500())
-}
-func Nox_xxx_guiDrawRank_46E870() uint32 {
-	return uint32(C.nox_xxx_guiDrawRank_46E870())
 }
 func Nox_xxx_guiMotdLoad_4465C0() uint32 {
 	return uint32(C.nox_xxx_guiMotdLoad_4465C0())

@@ -1762,40 +1762,6 @@ short sub_4BF9F0(int a1, int a2, int a3, int a4, int a5, int a6, int a7) {
 // 4BFA4C: variable 'v10' is possibly undefined
 // 4BFA4C: variable 'v11' is possibly undefined
 
-//----- (004BFAD0) --------------------------------------------------------
-int sub_4BFAD0() {
-	int v0;         // esi
-	int v1;         // ebx
-	int i;          // edi
-	char* v3;       // eax
-	const char* v4; // ecx
-	int v5;         // ebp
-	int v6;         // ebp
-
-	v0 = 0;
-	v1 = 0;
-	for (i = 0; i < 8; i += 4) {
-		v3 = nox_xxx_gLoadImg_42F970(*(const char**)getMemAt(0x587000, 180960 + i));
-		v4 = *(const char**)getMemAt(0x587000, 180968 + i);
-		*getMemU32Ptr(0x973A20, 16 + i) = v3;
-		*getMemU32Ptr(0x973A20, 24 + i) = nox_xxx_gLoadImg_42F970(v4);
-		v5 = 26;
-		do {
-			*getMemU32Ptr(0x973A20, 32 + v1) = nox_xxx_gLoadImg_42F970(*(const char**)getMemAt(0x587000, 180976 + v1));
-			v1 += 4;
-			--v5;
-		} while (v5);
-		v6 = 27;
-		do {
-			*getMemU32Ptr(0x973A20, 256 + v0) = nox_xxx_gLoadImg_42F970(*(const char**)getMemAt(0x587000, 181184 + v0));
-			v0 += 4;
-			--v6;
-		} while (v6);
-	}
-	*getMemU32Ptr(0x5D4594, 1319052) = nox_xxx_gLoadImg_42F970("MaleMedievalCloakTop");
-	return 1;
-}
-
 //----- (004BFB70) --------------------------------------------------------
 void sub_4BFB70(int a1) {
 	if (dword_5d4594_1319056) {

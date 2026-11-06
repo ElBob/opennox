@@ -1443,3 +1443,134 @@ func Get_dword_5d4594_2488620() uint32 {
 func Nox_xxx_playerGet_470A90() int {
 	return int(C.dword_5d4594_1096252)
 }
+
+// SelColor screen globals (client__shell__selcolor.c, GAME3.c): windows are stored as ints in C.
+func Get_dword_5d4594_1308084() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308084)))
+}
+func Set_dword_5d4594_1308084(win *gui.Window) {
+	C.dword_5d4594_1308084 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308088() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308088)))
+}
+func Set_dword_5d4594_1308088(win *gui.Window) {
+	C.dword_5d4594_1308088 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308096() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308096)))
+}
+func Set_dword_5d4594_1308096(win *gui.Window) {
+	C.dword_5d4594_1308096 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308100() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308100)))
+}
+func Set_dword_5d4594_1308100(win *gui.Window) {
+	C.dword_5d4594_1308100 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308104() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308104)))
+}
+func Set_dword_5d4594_1308104(win *gui.Window) {
+	C.dword_5d4594_1308104 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308108() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308108)))
+}
+func Set_dword_5d4594_1308108(win *gui.Window) {
+	C.dword_5d4594_1308108 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308112() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308112)))
+}
+func Set_dword_5d4594_1308112(win *gui.Window) {
+	C.dword_5d4594_1308112 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308116() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308116)))
+}
+func Set_dword_5d4594_1308116(win *gui.Window) {
+	C.dword_5d4594_1308116 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308120() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308120)))
+}
+func Set_dword_5d4594_1308120(win *gui.Window) {
+	C.dword_5d4594_1308120 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308124() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308124)))
+}
+func Set_dword_5d4594_1308124(win *gui.Window) {
+	C.dword_5d4594_1308124 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308128() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308128)))
+}
+func Set_dword_5d4594_1308128(win *gui.Window) {
+	C.dword_5d4594_1308128 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308132() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308132)))
+}
+func Set_dword_5d4594_1308132(win *gui.Window) {
+	C.dword_5d4594_1308132 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308136() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308136)))
+}
+func Set_dword_5d4594_1308136(win *gui.Window) {
+	C.dword_5d4594_1308136 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308140() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308140)))
+}
+func Set_dword_5d4594_1308140(win *gui.Window) {
+	C.dword_5d4594_1308140 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308144() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308144)))
+}
+func Set_dword_5d4594_1308144(win *gui.Window) {
+	C.dword_5d4594_1308144 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308148() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308148)))
+}
+func Set_dword_5d4594_1308148(win *gui.Window) {
+	C.dword_5d4594_1308148 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1308152() *gui.Window {
+	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_1308152)))
+}
+func Set_dword_5d4594_1308152(win *gui.Window) {
+	C.dword_5d4594_1308152 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+}
+func Get_dword_5d4594_1307784() *server.PlayerInfo {
+	return (*server.PlayerInfo)(unsafe.Pointer(uintptr(C.dword_5d4594_1307784)))
+}
+func Set_dword_5d4594_1307784(p *server.PlayerInfo) {
+	C.dword_5d4594_1307784 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+}
+func Get_dword_5d4594_1307792() uint32 {
+	return uint32(C.dword_5d4594_1307792)
+}
+func Set_dword_5d4594_1307792(v uint32) {
+	C.dword_5d4594_1307792 = C.uint32_t(v)
+}
+func Get_dword_587000_171388() uint32 {
+	return uint32(C.dword_587000_171388)
+}
+func Set_dword_587000_171388(v uint32) {
+	C.dword_587000_171388 = C.uint32_t(v)
+}
+func Get_dword_5d4594_1308156() unsafe.Pointer {
+	return C.dword_5d4594_1308156
+}
+func Get_dword_5d4594_1308160() unsafe.Pointer {
+	return C.dword_5d4594_1308160
+}
+func Get_dword_5d4594_1308164() unsafe.Pointer {
+	return C.dword_5d4594_1308164
+}

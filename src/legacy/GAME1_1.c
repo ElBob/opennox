@@ -2900,40 +2900,6 @@ uint32_t* sub_420C70() {
 	return result;
 }
 
-//----- (00420CA0) --------------------------------------------------------
-char* nox_xxx_polygon_420CA0() {
-	int v0;           // eax
-	unsigned char* i; // ecx
-
-	v0 = 1;
-	if (nox_xxx_polygonNextAngle_587000_60356 <= 1u) {
-		return 0;
-	}
-	for (i = getMemAt(0x5D4594, 535872); !*(uint32_t*)i; i += 16) {
-		if ((unsigned int)++v0 >= *(int*)&nox_xxx_polygonNextAngle_587000_60356) {
-			return 0;
-		}
-	}
-	return (char*)getMemAt(0x5D4594, 535844 + 16 * v0);
-}
-
-//----- (00420CD0) --------------------------------------------------------
-char* nox_xxx_polygon_420CD0(uint32_t* a1) {
-	unsigned int v1;  // eax
-	unsigned char* i; // ecx
-
-	v1 = *a1 + 1;
-	if (v1 >= *(int*)&nox_xxx_polygonNextAngle_587000_60356) {
-		return 0;
-	}
-	for (i = getMemAt(0x5D4594, 535856 + 16 * v1); !*(uint32_t*)i; i += 16) {
-		if (++v1 >= *(int*)&nox_xxx_polygonNextAngle_587000_60356) {
-			return 0;
-		}
-	}
-	return (char*)getMemAt(0x5D4594, 535844 + 16 * v1);
-}
-
 //----- (00420D10) --------------------------------------------------------
 int sub_420D10() {
 	int result;       // eax
@@ -3074,76 +3040,6 @@ char* sub_421010() {
 	} while ((int)result < (int)getMemAt(0x5D4594, 552240));
 	nox_xxx_polygonNextAngle_587000_60356 = 1;
 	return result;
-}
-
-//----- (00421030) --------------------------------------------------------
-char* nox_xxx_polygonGetAngle_421030(int a1) { return (char*)getMemAt(0x5D4594, 535844 + 16 * a1); }
-
-//----- (00421040) --------------------------------------------------------
-void sub_421040(int a1) {
-	int v1;       // esi
-	uint32_t* v2; // ebx
-	uint32_t* v3; // eax
-	int v4;       // ecx
-	int v5;       // edx
-	uint32_t* v6; // ecx
-
-	v1 = 0;
-	if (*(uint16_t*)(a1 + 128)) {
-		v2 = *(uint32_t**)&dword_5d4594_588068;
-		do {
-			v3 = v2;
-			if (v2) {
-				v4 = *(uint32_t*)(a1 + 108);
-				v5 = *(uint32_t*)(v4 + 4 * v1);
-				v6 = (uint32_t*)(v4 + 4 * v1);
-				while (v5 != v3[1]) {
-					v3 = (uint32_t*)v3[2];
-					if (!v3) {
-						goto LABEL_9;
-					}
-				}
-				*v6 = *v3;
-				v2 = *(uint32_t**)&dword_5d4594_588068;
-			}
-		LABEL_9:
-			++v1;
-		} while (v1 < *(unsigned short*)(a1 + 128));
-	}
-}
-
-//----- (004210A0) --------------------------------------------------------
-char* nox_xxx_polygonGetNext_4210A0() {
-	int v0;           // eax
-	unsigned char* i; // ecx
-
-	v0 = 1;
-	if (nox_xxx_polygonNextIdx_587000_60352 <= 1u) {
-		return 0;
-	}
-	for (i = getMemAt(0x5D4594, 552452); !*(uint32_t*)i; i += 140) {
-		if ((unsigned int)++v0 >= *(int*)&nox_xxx_polygonNextIdx_587000_60352) {
-			return 0;
-		}
-	}
-	return (char*)getMemAt(0x5D4594, 552228 + 140 * v0);
-}
-
-//----- (004210E0) --------------------------------------------------------
-char* sub_4210E0(int a1) {
-	unsigned int v1;  // eax
-	unsigned char* i; // ecx
-
-	v1 = *(uint32_t*)(a1 + 80) + 1;
-	if (v1 >= *(int*)&nox_xxx_polygonNextIdx_587000_60352) {
-		return 0;
-	}
-	for (i = getMemAt(0x5D4594, 552312 + 140 * v1); !*(uint32_t*)i; i += 140) {
-		if (++v1 >= *(int*)&nox_xxx_polygonNextIdx_587000_60352) {
-			return 0;
-		}
-	}
-	return (char*)getMemAt(0x5D4594, 552228 + 140 * v1);
 }
 
 //----- (00421130) --------------------------------------------------------
@@ -4683,34 +4579,6 @@ int nox_xxx_tile_422C10(int a1, int a2) {
 		++v46;
 	} while (v46 < v45 + v79);
 	return 1;
-}
-
-//----- (00423930) --------------------------------------------------------
-void set_bitmask_flags_from_plus_separated_names_423930(const char* input, uint32_t* bitmask,
-														const char** allowed_names) {
-	char input_copy[256];
-	strcpy(input_copy, input);
-	if (strncmp(input_copy, "NULL", 4u) == 0) {
-		return;
-	}
-
-	char* cur_value = strtok(input_copy, "+");
-	while (cur_value) {
-		set_one_bitmask_flag_by_name_4239C0(cur_value, bitmask, allowed_names);
-		cur_value = strtok(0, "+");
-	}
-}
-
-//----- (004239C0) --------------------------------------------------------
-int set_one_bitmask_flag_by_name_4239C0(char* name, uint32_t* bitmask, const char** allowed_names) {
-	for (char i = 0; allowed_names[i]; ++i) {
-		if (!nox_strcmpi(allowed_names[i], name)) {
-			*bitmask |= 1 << i;
-			return 1;
-		}
-	}
-
-	return 0;
 }
 
 //----- (004240F0) --------------------------------------------------------

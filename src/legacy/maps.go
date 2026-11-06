@@ -141,7 +141,7 @@ func Nox_server_mapRWAmbientData_429200(_ *cryptfile.CryptFile, a1 unsafe.Pointe
 	return nil
 }
 func Nox_server_mapRWPolygons_428CD0(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
-	if ccall.CallIntPtr(C.nox_server_mapRWPolygons_428CD0, a1) == 0 {
+	if nox_server_mapRWPolygons_428CD0(uint32(uintptr(a1))) == 0 {
 		return fmt.Errorf("%s failed", caller(0))
 	}
 	return nil

@@ -719,3 +719,6 @@ func Sub_41CAC0(a1 string, data []byte) {
 func Nox_xxx_spell_4FE680(a1 *server.Object, a2 float32) {
 	C.nox_xxx_spell_4FE680(asObjectC(a1), C.float(a2))
 }
+func Sub_4B9470(a1 unsafe.Pointer) int {
+	return int(C.sub_4B9470((**C.char)(a1)))
+}

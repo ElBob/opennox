@@ -3335,20 +3335,6 @@ int nox_xxx_polygon_421660(int* a1, int a2) {
 	return v2 & 1;
 }
 
-//----- (00421790) --------------------------------------------------------
-int nox_xxx_polygonGetIdxA_421790(int2* a1, int a2) {
-	nox_player_polygon_check_data* v2; // eax
-	int result;                        // eax
-
-	v2 = nox_xxx_polygonIsPlayerInPolygon_4217B0(a1, a2);
-	if (v2) {
-		result = v2->field_0[20];
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
 //----- (004217B0) --------------------------------------------------------
 nox_player_polygon_check_data* nox_xxx_polygonIsPlayerInPolygon_4217B0(int2* a1, int a2) {
 	int v2;           // eax

@@ -1443,3 +1443,23 @@ func Get_dword_5d4594_2488620() uint32 {
 func Nox_xxx_playerGet_470A90() int {
 	return int(C.dword_5d4594_1096252)
 }
+func Get_nox_win_width() int {
+	return int(C.nox_win_width)
+}
+func Get_nox_win_height() int {
+	return int(C.nox_win_height)
+}
+func Get_nox_xxx_minimap_587000_149232() uint32 {
+	return uint32(C.nox_xxx_minimap_587000_149232)
+}
+func Get_dword_5d4594_825736() uint32 {
+	return uint32(C.dword_5d4594_825736)
+}
+
+// Get_dword_5d4594_1599696 returns the C global holding a server object pointer (32-bit).
+func Get_dword_5d4594_1599696() *server.Object {
+	return (*server.Object)(unsafe.Pointer(uintptr(C.dword_5d4594_1599696)))
+}
+func Set_dword_5d4594_1599696(p *server.Object) {
+	C.dword_5d4594_1599696 = C.uint(uintptr(unsafe.Pointer(p)))
+}

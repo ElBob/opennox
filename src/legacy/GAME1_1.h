@@ -91,17 +91,11 @@ int sub_420360(char* a1, uint16_t* a2);
 int sub_4207E0();
 uint32_t* sub_420C40(int a1, int a2);
 uint32_t* sub_420C70();
-char* nox_xxx_polygon_420CA0();
-char* nox_xxx_polygon_420CD0(uint32_t* a1);
 int sub_420D10();
 unsigned int* nox_xxx_polygonSetAngle_420D40(int a1, int a2, unsigned int a3, int a4);
 unsigned int* sub_420DA0(float a1, float a2);
 int sub_420E80(float a1, float a2, float a3);
 char* sub_421010();
-char* nox_xxx_polygonGetAngle_421030(int a1);
-void sub_421040(int a1);
-char* nox_xxx_polygonGetNext_4210A0();
-char* sub_4210E0(int a1);
 int sub_421130();
 int sub_421160(int a1);
 int sub_4211D0(int a1);
@@ -126,7 +120,6 @@ int nox_xxx_tileFreeTile_422200(int a1);
 int nox_server_mapRWFloorMap_422230(int a1);
 unsigned char nox_xxx_tileReadOne_422A40(int a1, uint8_t* a2);
 int nox_xxx_tile_422C10(int a1, int a2);
-int set_one_bitmask_flag_by_name_4239C0(char* name, uint32_t* bitmask, const char** allowed_names);
 int sub_4240F0(int a1, const char* a2, int a3);
 int nox_xxx_parseSoundSetBin_424170(char* a1);
 void* nox_xxx_monsterGetSoundSet_424300(nox_object_t* a1);
@@ -211,7 +204,5 @@ int sub_4277B0(nox_object_t* a1p, unsigned short a2);
 int sub_427980(float4* a1, float4* a2);
 int sub_427DF0(int a1, int* a2, float a3);
 
-void set_bitmask_flags_from_plus_separated_names_423930(const char* input, uint32_t* bitmask,
-														const char** allowed_names);
 
 #endif // NOX_PORT_GAME1_1
